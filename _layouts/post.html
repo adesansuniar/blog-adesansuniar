@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<article>
+  <h1>{{ page.title }}</h1>
+  <p style="color: #777;"><small>{{ page.date | date: "%d %B %Y" }}</small></p>
+  <div>
+    {{ content }}
+  </div>
+  <hr>
+  <p><a href="{{ "/" | relative_url }}">&larr; Kembali ke Beranda</a></p>
+</article>
