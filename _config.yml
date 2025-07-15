@@ -1,4 +1,7 @@
-title: Tentang 
-description: Blog inspirasi, tips fashion dan gaya hidup mearik , dan katalog produk
+title: Blog Adesansuniar
+description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
+baseurl: "" 
+url: "https://adesansuniar.github.io"
 theme: minima
 markdown: kramdown
+permalink: pretty
