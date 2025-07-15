@@ -1,14 +1,20 @@
-<header style="background-color: #f7f7f7; padding: 20px 0; border-bottom: 2px solid #e0e0e0;">
-  <h1 style="margin: 0; font-size: 2em; color: #2c3e50;">
-    <a href="{{ "/" | relative_url }}" style="text-decoration: none; color: #2c3e50;">
+<header style="background-color: #f7f7f7; padding: 20px 0; border-bottom: 2px solid #e0e0e0; text-align: center;">
+  <h1 style="margin: 0; font-size: 2em; font-weight: bold; color: #000; text-transform: uppercase;">
+    <a href="{{ "/" | relative_url }}" style="text-decoration: none; color: #000;">
       {{ site.title }}
     </a>
   </h1>
-  <p style="margin: 5px 0 15px; color: #555;">{{ site.description }}</p>
-  <nav>
+  <p style="margin: 5px 0 15px; font-size: 1em; color: #666;">
+    <small>{{ site.description }}</small>
+  </p>
+
+  <nav style="margin-top: 10px;">
     <a href="{{ "/" | relative_url }}">Beranda</a> |
     <a href="{{ "/about/" | relative_url }}">Tentang</a> |
+    <a href="{{ "/katalog/" | relative_url }}">Katalog</a> |
+    <a href="{{ "/search/" | relative_url }}">Cari</a> |
     <a href="https://wa.me/6288801758800">Kontak</a>
   </nav>
+</header>
   
   
