@@ -24,3 +24,17 @@ async function searchPosts() {
 }
 
 searchPosts();
+---
+layout: none
+---
+
+[
+  {% for post in site.posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | absolute_url | jsonify }},
+    "date": "{{ post.date | date: "%d %B %Y" }}",
+    "content": {{ post.content | strip_html | strip_newlines | jsonify }}
+  } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
