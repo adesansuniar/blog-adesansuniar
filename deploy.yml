@@ -1,26 +1,52 @@
-name: Deploy to GitHub Pages
+name: Deploy Jekyll site to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # atau sesuaikan dengan nama branch kamu
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # Jika pakai HTML biasa, kamu bisa skip step build ini
-      # Jika pakai Jekyll/Hugo/Quarto, tambahkan build command di sini
-      # Contoh Hugo:
-      # - uses: peaceiris/actions-hugo@v2
-      #   with:
-      #     hugo-version: '0.120.4'
-      # - run: hugo
-
-      - uses: actions/upload-pages-artifact@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          path: ./  # sesuaikan folder output HTML kamu
+          ruby-version: 3.1
 
-      - uses: actions/deploy-pages@v1
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build site with Jekyll
+        run: bundle exec jekyll build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
