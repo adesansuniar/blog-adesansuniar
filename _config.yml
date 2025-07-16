@@ -8,3 +8,14 @@ permalink: pretty
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  
+lsi: false
+future: true
+strict_front_matter: false
+encoding: "utf-8"
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
