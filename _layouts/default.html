@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <meta name="description" content="{{ site.description }}">
-    <meta name="robots" content="index, follow">
+    {% seo %}
+
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    
-    <!-- Schema Markup dasar -->
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,7 +24,7 @@
       {% include header.html %}
     </header>
 
-    <main>
+    <main style="max-width: 960px; margin: auto; padding: 20px;">
       {{ content }}
     </main>
 
