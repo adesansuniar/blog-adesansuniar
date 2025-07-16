@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="id">
+---
+
+_layouts/default.html
+
+
+---
+
+<!DOCTYPE html><html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% seo %}
-
-    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -18,18 +24,43 @@
     }
     </script>
   </head>
-
   <body>
-    <header>
-      {% include header.html %}
-    </header>
-
-    <main style="max-width: 960px; margin: auto; padding: 20px;">
+    {% include header.html %}
+    <main>
       {{ content }}
     </main>
-
-    <footer>
-      {% include footer.html %}
-    </footer>
+    {% include footer.html %}
   </body>
 </html>
+---
+
+_layouts/page.html
+
+
+---
+
+
+---
+
+layout: default
+
+<main class="container" style="max-width: 960px; margin: 0 auto; padding: 20px;">
+  <article class="page-content">
+    <h1 style="text-align: center; color: #222; font-size: 2em; margin-bottom: 20px;">
+      {{ page.title }}
+    </h1>
+    <div style="font-size: 1em; line-height: 1.6; color: #444;">
+      {{ content }}
+    </div>
+  </article>
+</main>
+---
+
+_includes/header.html
+
+
+---
+
+<header style="background-color: #f7f7f7; padding: 20px 0; border-bottom: 2px solid #e0e0e0; text-align: center;">
+  <h1 style="margin: 0; font-size: 2em; font-weight: bold; color: #000; text-transform: uppercase;">
+    <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #
