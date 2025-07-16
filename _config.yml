@@ -5,3 +5,6 @@ url: "https://adesansuniar.github.io"
 theme: minima
 markdown: kramdown
 permalink: pretty
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
