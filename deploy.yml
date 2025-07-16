@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # atau sesuaikan dengan nama branch kamu
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Jika pakai HTML biasa, kamu bisa skip step build ini
+      # Jika pakai Jekyll/Hugo/Quarto, tambahkan build command di sini
+      # Contoh Hugo:
+      # - uses: peaceiris/actions-hugo@v2
+      #   with:
+      #     hugo-version: '0.120.4'
+      # - run: hugo
+
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./  # sesuaikan folder output HTML kamu
+
+      - uses: actions/deploy-pages@v1
