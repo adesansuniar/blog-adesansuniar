@@ -9,24 +9,57 @@
     {{ site.description }}
   </p>
 
-  <nav style="margin-top: 10px; font-size: 1em;">
-    <a href="{{ '/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Beranda</a>
-    |
-    <a href="{{ '/about/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Tentang</a>
-    |
-    <a href="{{ '/katalog/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Katalog</a>
-    |
-    <a href="{{ '/search/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Cari</a>
-    |
-    <a href="https://wa.me/6288801758800" style="margin: 0 10px; text-decoration: none; color: #28a745;">Kontak</a>
+  <nav class="nav-links" style="margin-top: 10px; font-size: 1em;">
+    <a href="{{ '/' | relative_url }}">Beranda</a>
+    <a href="{{ '/about/' | relative_url }}">Tentang</a>
+    <a href="{{ '/katalog/' | relative_url }}">Katalog</a>
+    <a href="{{ '/search/' | relative_url }}">Cari</a>
+    <a href="https://wa.me/6288801758800" class="wa">Kontak</a>
   </nav>
+
   <style>
-  nav a:hover {
-    color: #005999;
-    text-decoration: underline;
-    transition: 0.3s ease;
-  }
-</style>
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 5px 15px;
+      font-size: 1em;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #0077cc;
+      margin: 0 8px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a.wa {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #005999;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.95em;
+      }
+
+      h1 {
+        font-size: 1.8em !important;
+      }
+
+      p {
+        font-size: 0.75em !important;
+      }
+    }
+  </style>
 </header>
 
   
