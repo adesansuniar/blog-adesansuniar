@@ -1,6 +1,6 @@
 title: Blog Adesansuniar
 description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
-baseurl: "" 
+baseurl: "/blog-adesansuniar"
 url: "https://adesansuniar.github.io"
 theme: minima
 markdown: kramdown
