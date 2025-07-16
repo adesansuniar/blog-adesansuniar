@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Katalog Produk
-permalink: /Katalog/
+permalink: /katalog/
 ---
 
 ## ✂️ Koleksi Produk Handmade
