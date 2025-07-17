@@ -1,37 +1,13 @@
 ---
 layout: page
-title: Katalog Produk
-permalink: /katalog/
-tags: [katalog]
+title: Label: Katalog
+permalink: /label/katalog/
 ---
 
-## ✂️ Koleksi Produk Handmade
+### Artikel dengan Label *Katalog*
 
-Berikut adalah beberapa produk unggulan dari Penjahit Alamanda:
-
----
-
-### 👗 Gamis Batik Outdoor  
-**Harga**: Rp250.000  
-**Deskripsi**: Gamis kasual berbahan batik parang kombinasi katun, cocok untuk aktivitas luar ruang.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
----
-
-### 🧥 Outer Ringan Motif Batik  
-**Harga**: Rp180.000  
-**Deskripsi**: Outer layer santai berbahan batik halus, cocok dipadukan dengan kaos polos.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
----
-
-### 🎓 Seragam Sekolah SMA Custom  
-**Harga**: Rp160.000 / stel  
-**Deskripsi**: Seragam jahitan rapi dan presisi, bisa request nama bordir.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
----
-
-> ✏️ Ingin request desain khusus?  
-Langsung hubungi kami di WhatsApp:  
-[Klik untuk Konsultasi Gratis](https://wa.me/6288801758800)
+{% for post in site.posts %}
+  {% if post.tags contains "katalog" %}
+  - [{{ post.title }}]({{ post.url }})
+  {% endif %}
+{% endfor %}
