@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tentang Blog Adesansuniar
-permalink: /tentang/
+permalink: /about/
 ---
 
 # Tentang Blog Adesansuniar
