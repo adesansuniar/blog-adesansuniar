@@ -54,14 +54,6 @@ Artikel dalam blog ini ditulis oleh **Ade Sansuniar**, seorang digital marketer 
 
 ---
 
-## 📷 Logo Blog
-
-<img src="https://github.com/adesansuniar/blog-adesansuniar/blob/main/assets/img/logoblogade.png " alt="Logo Blog Adesansuniar" style="max-width: 50%; margin: height:auto: 10px auto; display: block;">
-
-Logo ini mencerminkan filosofi desain yang kuat, tegas, namun tetap organik—selaras dengan misi kami dalam membentuk citra brand yang elegan dan fungsional.
-
----
-
 ## 🔍 Penutup
 
 Blog ini akan terus dikembangkan sesuai kebutuhan pembaca dan tren menjahit yang berkembang. Anda bisa menyimpan halaman ini sebagai referensi, atau berlangganan artikel terbaru melalui GitHub atau RSS reader Anda.
@@ -79,13 +71,16 @@ Blog ini akan terus dikembangkan sesuai kebutuhan pembaca dan tren menjahit yang
     "@type": "Person",
     "name": "Ade Sansuniar"
   },
-  "image": "https://adesansuniar.github.io/blog-adesansuniar/assets/img/logo-adesansuniar.png",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://raw.githubusercontent.com/adesansuniar/blog-adesansuniar/main/assets/img/logoblogade.png"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "Blog Adesansuniar",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://adesansuniar.github.io/blog-adesansuniar/assets/img/logo-adesansuniar.png"
+      "url": "https://raw.githubusercontent.com/adesansuniar/blog-adesansuniar/main/assets/img/logoblogade.png"
     }
   }
 }
