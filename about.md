@@ -56,7 +56,7 @@ Artikel dalam blog ini ditulis oleh **Ade Sansuniar**, seorang digital marketer 
 
 ## 📷 Logo Blog
 
-<img src="https://github.com/adesansuniar/blog-adesansuniar/blob/main/assets/img/logoblogade.png " alt="Logo Blog Adesansuniar" style="max-width: 100px; margin: 20px auto; display: block;">
+<img src="https://github.com/adesansuniar/blog-adesansuniar/blob/main/assets/img/logoblogade.png " alt="Logo Blog Adesansuniar" style="max-width: 800px; margin: height:auto: 20px auto; display: block;">
 
 Logo ini mencerminkan filosofi desain yang kuat, tegas, namun tetap organik—selaras dengan misi kami dalam membentuk citra brand yang elegan dan fungsional.
 
