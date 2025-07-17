@@ -1,26 +1,59 @@
-<!-- ⭐ Sistem Rating Bintang -->
-<div id="rating-section" style="margin-top: 40px; text-align: center;">
-  <h3 style="margin-bottom: 10px; font-size: 1.2em; color: #2c3e50;">Beri Rating untuk Artikel Ini:</h3>
-  <div id="star-rating" style="font-size: 2em; cursor: pointer; color: #ccc;">
-    <span data-star="1">&#9733;</span>
-    <span data-star="2">&#9733;</span>
-    <span data-star="3">&#9733;</span>
-    <span data-star="4">&#9733;</span>
-    <span data-star="5">&#9733;</span>
-  </div>
-  <p id="rating-msg" style="margin-top: 10px; font-size: 0.9em; color: #555;"></p>
-</div>
+<!DOCTYPE html>
+<html lang="id">
+  {% include head.html %}
+  <body>
+    <header>
+      {% include header.html %}
+    </header>
 
-<script>
-  const stars = document.querySelectorAll('#star-rating span');
-  const msg = document.getElementById('rating-msg');
+    <main style="max-width: 960px; margin: auto; padding: 20px;">
+      {{ content }}
 
-  stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-      stars.forEach((s, i) => {
-        s.style.color = i <= index ? '#ffc107' : '#ccc';
+      <!-- ⭐ Sistem Rating Bintang -->
+      <div id="rating-section" style="margin-top: 40px; text-align: center;">
+        <h3 style="margin-bottom: 10px; font-size: 1.2em; color: #2c3e50;">Beri Rating untuk Artikel Ini:</h3>
+        <div id="star-rating" style="font-size: 2em; cursor: pointer; color: #ccc;">
+          <span data-star="1">&#9733;</span>
+          <span data-star="2">&#9733;</span>
+          <span data-star="3">&#9733;</span>
+          <span data-star="4">&#9733;</span>
+          <span data-star="5">&#9733;</span>
+        </div>
+        <p id="rating-msg" style="margin-top: 10px; font-size: 0.9em; color: #555;"></p>
+      </div>
+    </main>
+
+    <footer>
+      {% include footer.html %}
+    </footer>
+
+    <!-- ⭐ Script Rating -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll('#star-rating span');
+        const msg = document.getElementById('rating-msg');
+        const stored = localStorage.getItem('rating-value');
+
+        function updateStars(value) {
+          stars.forEach((s, i) => {
+            s.style.color = (i < value) ? '#ffc107' : '#ccc';
+          });
+        }
+
+        if (stored) {
+          updateStars(parseInt(stored));
+          msg.innerText = `Anda telah memberi ${stored} bintang.`;
+        }
+
+        stars.forEach((star, index) => {
+          star.addEventListener('click', () => {
+            const rating = index + 1;
+            localStorage.setItem('rating-value', rating);
+            updateStars(rating);
+            msg.innerText = `Terima kasih! Anda memberi ${rating} bintang.`;
+          });
+        });
       });
-      msg.innerText = `Terima kasih! Anda memberi ${index + 1} bintang.`;
-    });
-  });
-</script>
+    </script>
+  </body>
+</html>
