@@ -30,6 +30,7 @@ Deskripsi: Seragam jahitan rapi dan presisi, bisa request nama bordir.
   
 ---  
   
-> Ingin request desain khusus?    
-Langsung hubungi kami di WhatsApp 👇    
-[Klik untuk Konsultasi Gratis](https://wa.me/6288801758800
+### Ingin request desain khusus?    
+Langsung konsultasi gratis di WhatsApp 👇    
+[Klik untuk Konsultasi Gratis](https://wa.me/6288801758800)
+ 
