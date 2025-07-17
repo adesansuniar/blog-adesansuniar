@@ -3,9 +3,6 @@ layout: page
 title: Tentang Blog Adesansuniar
 permalink: /about/
 ---
-
-# Tentang Blog Adesansuniar
-
 Selamat datang di **Blog Adesansuniar**, sebuah ruang digital yang dibuat khusus oleh Ade Sansuniar untuk berbagi ilmu, inspirasi, dan pengalaman seputar dunia menjahit dan produk handmade. Kami percaya bahwa setiap helai kain bisa menjadi karya seni, dan blog ini hadir untuk membantu Anda meraih kreativitas terbaik dalam menjahit.
 
 Blog ini merupakan bagian dari inisiatif untuk mendokumentasikan proses kreatif, berbagi tips yang aplikatif, serta memperkenalkan katalog produk berkualitas buatan tangan. Dengan semangat keterbukaan dan edukasi, kami berharap Blog Adesansuniar dapat menjadi rujukan utama bagi para penjahit rumahan, pemula yang ingin belajar, maupun pelanggan yang mencari produk lokal berkualitas tinggi.
