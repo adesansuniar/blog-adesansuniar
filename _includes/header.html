@@ -7,13 +7,15 @@
   <p style="margin: 5px 0 15px; font-size: 0.8em; color: #666; font-style: italic; font-family: 'Georgia', serif;">
     {{ site.description }}
   </p>
-  <nav style="margin-top: 10px; font-size: 1em;">
-    <a href="{{ '/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Beranda</a> |
-    <a href="{{ '/about/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Tentang</a> |
-    <a href="{{ '/katalog/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Katalog</a> |
-    <a href="{{ '/search/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Cari</a> |
-    <a href="https://wa.me/6288801758800" style="margin: 0 10px; text-decoration: none; color: #28a745;">Kontak</a>
-  </nav>
+  <nav class="main-nav">
+  <ul>
+    <li><a href="{{ '/' | relative_url }}">Beranda</a></li>
+    <li><a href="{{ '/about/' | relative_url }}">Tentang</a></li>
+    <li><a href="{{ '/katalog/' | relative_url }}">Katalog</a></li>
+    <li><a href="{{ '/search/' | relative_url }}">Cari</a></li>
+    <li><a href="https://wa.me/6288801758800">Kontak</a></li>
+  </ul>
+</nav>
   <style>
   nav a:hover {
     color: #005999;
