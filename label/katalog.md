@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Label: katalog
+title: "Label: katalog"
 permalink: /label/katalog/
 ---
 
