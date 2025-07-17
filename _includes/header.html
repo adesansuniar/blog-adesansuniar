@@ -1,26 +1,27 @@
-<header style="background-color: #f7f7f7; padding: 20px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif;">
-  <h1 style="margin: 0; font-size: 2.5em; font-weight: bold; color: #000; letter-spacing: 1px;">
+
+<header style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif;">
+  <h1 style="margin: 0; font-size: 2em; font-weight: bold; color: #000; text-transform: uppercase; letter-spacing: 1px;">
     <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #000;">
-      {{ site.title | upcase }}
+      {{ site.title }}
     </a>
   </h1>
-  <p style="margin: 5px 0 15px; font-size: 0.8em; color: #666; font-style: italic; font-family: 'Georgia', serif;">
+  <p style="margin: 5px 0 15px; font-size: 0.9em; color: #666; font-style: italic;">
     {{ site.description }}
-  </p>
-<nav class="main-nav" style="text-align: center; margin-top: 20px;">
-  <ul style="list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
-    <li><a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #007acc; font-weight: 600;">Beranda</a></li>
-    <li><a href="{{ '/about/' | relative_url }}" style="text-decoration: none; color: #007acc; font-weight: 600;">Tentang</a></li>
-    <li><a href="{{ '/katalog/' | relative_url }}" style="text-decoration: none; color: #007acc; font-weight: 600;">Katalog</a></li>
-    <li><a href="{{ '/search/' | relative_url }}" style="text-decoration: none; color: #007acc; font-weight: 600;">Cari</a></li>
-    <li><a href="https://wa.me/6288801758800" style="text-decoration: none; color: #28a745; font-weight: 600;">Kontak</a></li>
-  </ul>
-</nav>
-  <style>
-  nav a:hover {
-    color: #005999;
-    text-decoration: underline;
-    transition: 0.3s ease;
-  }
-  </style>
-</header>
+  </p>  <!-- Hamburger Menu Toggle -->  <button id="menu-toggle" style="background: none; border: none; font-size: 1.5em; cursor: pointer; display: block; margin: auto;">
+    ☰
+  </button>  <!-- Navigation -->  <nav id="main-nav" style="display: none; margin-top: 10px;">
+    <a href="{{ '/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Beranda</a> |
+    <a href="{{ '/about/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Tentang</a> |
+    <a href="{{ '/katalog/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Katalog</a> |
+    <a href="{{ '/search/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Cari</a> |
+    <a href="https://wa.me/6288801758800" style="margin: 0 10px; text-decoration: none; color: #28a745;">Kontak</a>
+  </nav>  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("main-nav");
+
+      toggle.addEventListener("click", function () {
+        nav.style.display = nav.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script></header>
