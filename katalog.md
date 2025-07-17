@@ -2,6 +2,7 @@
 layout: page
 title: Katalog Produk
 permalink: /katalog/
+tags: [katalog]
 ---
 
 ## ✂️ Koleksi Produk Handmade
