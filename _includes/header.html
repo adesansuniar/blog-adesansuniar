@@ -1,5 +1,8 @@
+<header style="background-color: #f7f7f7; padding: 15px 0 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif;">
+  <!-- 🔰 Banner Gambar -->
+  <img src="{{ '/assets/img/bannerblogade.png' | relative_url }}" alt="Banner Blog Ade Sansuniar" loading="lazy" style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
 
-<header style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif;">
+  <!-- 📝 Judul & Deskripsi -->
   <h1 style="margin: 0; font-size: 2em; font-weight: bold; color: #000; text-transform: uppercase; letter-spacing: 1px;">
     <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #000;">
       {{ site.title }}
@@ -7,21 +10,31 @@
   </h1>
   <p style="margin: 5px 0 15px; font-size: 0.9em; color: #666; font-style: italic;">
     {{ site.description }}
-  </p>  <!-- Hamburger Menu Toggle -->  <button id="menu-toggle" style="background: none; border: none; font-size: 1.5em; cursor: pointer; display: block; margin: auto;">
+  </p>
+
+  <!-- ☰ Hamburger Menu -->
+  <button id="menu-toggle" style="background: none; border: none; font-size: 1.5em; cursor: pointer; display: block; margin: auto;">
     ☰
-  </button>  <!-- Navigation -->  <nav id="main-nav" style="display: none; margin-top: 10px;">
+  </button>
+
+  <!-- 🔗 Navigasi Utama -->
+  <nav id="main-nav" style="display: none; margin-top: 10px;">
     <a href="{{ '/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Beranda</a> |
     <a href="{{ '/about/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Tentang</a> |
     <a href="{{ '/katalog/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Katalog</a> |
     <a href="{{ '/search/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Cari</a> |
     <a href="https://wa.me/6288801758800" style="margin: 0 10px; text-decoration: none; color: #28a745;">Kontak</a>
-  </nav>  <script>
+  </nav>
+
+  <!-- 📜 Script Toggle Menu -->
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggle = document.getElementById("menu-toggle");
       const nav = document.getElementById("main-nav");
-
       toggle.addEventListener("click", function () {
         nav.style.display = nav.style.display === "block" ? "none" : "block";
       });
     });
-  </script></header>
+  </script>
+</header>
+
