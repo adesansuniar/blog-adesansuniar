@@ -1,21 +1,50 @@
 title: Blog Adesansuniar
 description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
-baseurl: "/blog-adesansuniar"
-url: "https://adesansuniar.github.io"
+baseurl: "/blog-adesansuniar" # Ganti jadi "" saat custom domain
+url: "https://adesansuniar.github.io" # Ganti jadi domain kamu saat custom
 theme: minima
+
 markdown: kramdown
 permalink: pretty
+
+# ✅ Plugin SEO dan Sitemap
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  
+
+# ✅ Pengaturan Tambahan
 lsi: false
 future: true
 strict_front_matter: false
 encoding: "utf-8"
+
+# ✅ Default Layout dan Metadata untuk post
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+      tags: []
+      categories: []
+
+# ✅ Konfigurasi Pencarian dan Tagging
+collections:
+  posts:
+    output: true
+
+# ✅ Optional (untuk halaman manual seperti about, search, dll)
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# ✅ SEO tambahan (jika pakai jekyll-seo-tag)
+seo:
+  twitter:
+    username: alamandacollect1
+    card: summary_large_image
+  facebook:
+    publisher: https://facebook.com/alamandacollect1
