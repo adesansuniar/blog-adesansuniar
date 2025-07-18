@@ -4,8 +4,16 @@ title: "Bisnis Keluarga Bukan Bisnis Kacau"
 description: "Tips membagi peran, menghindari konflik, dan menjaga keharmonisan dalam bisnis keluarga."
 image: "/assets/images/bisnis-keluarga-rukun.jpg"
 keywords: "bisnis keluarga, kerja sama keluarga, konflik bisnis, jia he wan shi xing"
----
+date: 2025-07-18
+tags: [bisnis keluarga, harmoni, konflik usaha]
+categories: [Bisnis, Relasi]
 
+# SEO Tambahan
+author: "Ade Sansuniar"
+lang: "id"
+twitter_username: "alamandacollect1"
+excerpt: "Tips jitu menjaga keharmonisan dan profesionalitas dalam bisnis keluarga, agar usaha tetap rukun dan menguntungkan."
+---
 **“Keluarga yang rukun, rezekinya lancar.”**  
 Kalimat itu bukan sekadar petuah tua, melainkan prinsip hidup yang terbukti kokoh dalam banyak perjalanan bisnis keluarga yang sukses. Namun, di sisi lain, tak sedikit kisah kehancuran usaha hanya karena urusan warung berubah jadi urusan warisan. Lalu, bagaimana caranya agar bisnis keluarga tak berubah jadi ladang konflik?
 
