@@ -8,16 +8,37 @@ description: "Cari artikel berdasarkan judul, isi, tag, atau kategori dari Blog 
   🔎 Pencarian Artikel & Kategori
 </h2>
 
+<!-- 📌 Filter Kategori Populer -->
+<div style="max-width: 800px; margin: 20px auto; text-align: center;">
+  <span style="display: inline-block; margin: 6px;">
+    <button class="category-btn" data-category="tips" style="padding: 6px 12px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background-color: #f1f1f1; cursor: pointer;">🎯 Tips</button>
+  </span>
+  <span style="display: inline-block; margin: 6px;">
+    <button class="category-btn" data-category="katalog" style="padding: 6px 12px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background-color: #f1f1f1; cursor: pointer;">🧵 Katalog</button>
+  </span>
+  <span style="display: inline-block; margin: 6px;">
+    <button class="category-btn" data-category="ongkos jahit" style="padding: 6px 12px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background-color: #f1f1f1; cursor: pointer;">💸 Ongkos Jahit</button>
+  </span>
+  <span style="display: inline-block; margin: 6px;">
+    <button class="category-btn" data-category="fashion" style="padding: 6px 12px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background-color: #f1f1f1; cursor: pointer;">👗 Fashion</button>
+  </span>
+</div>
+
+<!-- 🔍 Kotak Pencarian -->
 <div style="max-width: 600px; margin: 20px auto;">
   <input type="text" id="search-box" placeholder="Cari berdasarkan kata, tag, atau kategori..."
          style="width: 100%; padding: 12px 16px; font-size: 1em; border: 1px solid #ccc; border-radius: 6px;" />
 </div>
 
+<!-- 📋 Hasil Pencarian -->
 <div id="search-results" style="max-width: 800px; margin: 30px auto; line-height: 1.6;"></div>
 
+<!-- 🔧 Script Pencarian -->
 <script>
   const searchBox = document.getElementById("search-box");
   const resultsContainer = document.getElementById("search-results");
+  const categoryButtons = document.querySelectorAll(".category-btn");
+
   let posts = [];
 
   fetch("{{ '/search.json' | relative_url }}")
@@ -26,19 +47,23 @@ description: "Cari artikel berdasarkan judul, isi, tag, atau kategori dari Blog 
       posts = data;
     });
 
-  searchBox.addEventListener("input", function () {
-    const query = this.value.toLowerCase().trim();
+  function tampilkanHasil(query) {
     resultsContainer.innerHTML = "";
 
-    if (query.length < 2) return;
+    if (query.length < 2 && query.length !== 0) return;
 
-    const filtered = posts.filter(post =>
-      post.title.toLowerCase().includes(query) ||
-      post.description.toLowerCase().includes(query) ||
-      post.content.toLowerCase().includes(query) ||
-      post.tags.some(tag => tag.toLowerCase().includes(query)) ||
-      post.categories.some(cat => cat.toLowerCase().includes(query))
-    );
+    const filtered = posts.filter(post => {
+      const tags = Array.isArray(post.tags) ? post.tags : [];
+      const categories = Array.isArray(post.categories) ? post.categories : [];
+
+      return (
+        post.title.toLowerCase().includes(query) ||
+        post.description.toLowerCase().includes(query) ||
+        post.content.toLowerCase().includes(query) ||
+        tags.some(tag => tag.toLowerCase().includes(query)) ||
+        categories.some(cat => cat.toLowerCase().includes(query))
+      );
+    });
 
     if (filtered.length === 0) {
       resultsContainer.innerHTML = "<p style='text-align:center;'>🔍 Tidak ditemukan hasil pencarian.</p>";
@@ -46,19 +71,37 @@ description: "Cari artikel berdasarkan judul, isi, tag, atau kategori dari Blog 
     }
 
     filtered.forEach(post => {
+      const tags = Array.isArray(post.tags) ? post.tags.join(', ') : '–';
+      const categories = Array.isArray(post.categories) ? post.categories.join(', ') : '–';
+
       const el = document.createElement("div");
       el.innerHTML = `
         <h3 style="margin-bottom: 5px;">
           <a href="${post.url}" style="color: #2b6777;">${post.title}</a>
         </h3>
-        <p style="font-size: 0.9em; color: #555;">${post.description}</p>
+        <p style="font-size: 0.9em; color: #555;">${post.description || ''}</p>
         <p style="font-size: 0.8em; color: #888;">
-          🏷️ <strong>Tags:</strong> ${post.tags.join(', ')} |
-          📂 <strong>Kategori:</strong> ${post.categories.join(', ')}
+          🏷️ <strong>Tags:</strong> ${tags} |
+          📂 <strong>Kategori:</strong> ${categories}
         </p>
         <hr style="margin: 20px 0;" />
       `;
       resultsContainer.appendChild(el);
+    });
+  }
+
+  // 🔍 Input Manual
+  searchBox.addEventListener("input", function () {
+    const query = this.value.toLowerCase().trim();
+    tampilkanHasil(query);
+  });
+
+  // 🔘 Klik Kategori Populer
+  categoryButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const category = this.getAttribute("data-category").toLowerCase();
+      searchBox.value = category;
+      tampilkanHasil(category);
     });
   });
 </script>
