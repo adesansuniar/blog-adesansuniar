@@ -10,4 +10,11 @@ layout: default
   </div>
   <hr>
   <p><a href="{{ "/" | relative_url }}">&larr; Kembali ke Beranda</a></p>
+<main style="max-width: 960px; margin: auto; padding: 20px;">
+  {{ content }}
+
+  {% if page.layout == "post" %}
+    {% include giscus.html %}
+  {% endif %}
+</main>
 </article>
