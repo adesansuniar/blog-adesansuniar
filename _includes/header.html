@@ -1,38 +1,66 @@
-<header style="background-color: #f7f7f7; padding: 15px 0 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif;">
-  <!-- 🔰 Banner Gambar -->
-  <img src="{{ '/assets/img/bannerblogade.png' | relative_url }}" alt="Banner Blog Ade Sansuniar" loading="lazy" style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
+<header style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif; position: relative;">
 
-  <!-- 📝 Judul & Deskripsi -->
-  <h1 style="margin: 0; font-size: 2em; font-weight: bold; color: #000; text-transform: uppercase; letter-spacing: 1px;">
-    <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #000;">
-      {{ site.title }}
-    </a>
-  </h1>
-  <p style="margin: 5px 0 15px; font-size: 0.9em; color: #666; font-style: italic;">
-    {{ site.description }}
-  </p>
+  <!-- 🔰 Banner -->
+  <img src="{{ '/assets/img/bannerblogade.png' | relative_url }}" 
+       alt="Banner Blog Ade Sansuniar" 
+       loading="lazy" 
+       style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
 
-  <!-- ☰ Hamburger Menu -->
-  <button id="menu-toggle" style="background: none; border: none; font-size: 1.5em; cursor: pointer; display: block; margin: auto;">
-    ☰
-  </button>
+  <!-- ☰ Hamburger Button -->
+  <div id="menu-toggle" style="width: 30px; height: 25px; margin: 10px auto; cursor: pointer; position: relative;">
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 0; transition: 0.4s;"></span>
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 11px; transition: 0.4s;"></span>
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 22px; transition: 0.4s;"></span>
+  </div>
 
-  <!-- 🔗 Navigasi Utama -->
-  <nav id="main-nav" style="display: none; margin-top: 10px;">
-    <a href="{{ '/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Beranda</a> |
-    <a href="{{ '/about/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Tentang</a> |
-    <a href="{{ '/katalog/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Katalog</a> |
-    <a href="{{ '/search/' | relative_url }}" style="margin: 0 10px; text-decoration: none; color: #0077cc;">Cari</a> |
-    <a href="https://wa.me/6288801758800" style="margin: 0 10px; text-decoration: none; color: #28a745;">Kontak</a>
+  <!-- 📁 Navigation -->
+  <nav id="main-nav" style="display: none; flex-direction: column; gap: 10px; margin-top: 15px;">
+    <a href="{{ '/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Beranda</a>
+    <a href="{{ '/about/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Tentang</a>
+    <a href="{{ '/katalog/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Katalog</a>
+    <a href="{{ '/search/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Cari</a>
+    <a href="https://wa.me/6288801758800" style="color: #28a745; text-decoration: none;">Kontak</a>
   </nav>
 
-  <!-- 📜 Script Toggle Menu -->
+  <style>
+    #menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 11px;
+    }
+    #menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 11px;
+    }
+
+    nav#main-nav.show {
+      display: flex !important;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggle = document.getElementById("menu-toggle");
+      const spans = toggle.querySelectorAll("span");
       const nav = document.getElementById("main-nav");
+
       toggle.addEventListener("click", function () {
-        nav.style.display = nav.style.display === "block" ? "none" : "block";
+        toggle.classList.toggle("open");
+        nav.classList.toggle("show");
       });
     });
   </script>
