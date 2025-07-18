@@ -1,123 +1,47 @@
-<!DOCTYPE html>
-<html lang="id">
-  {% include head.html %}
-  <body>
-    <header>
-      {% include header.html %}
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <main style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
-      {{ content }}
+  <!-- SEO Meta -->
+  <meta name="description" content="Blog Ade Sansuniar tentang tips, katalog, dan informasi seputar menjahit serta fashion lokal di Indonesia, termasuk ongkos jahit baju, tips dan inspirasi dari Surabaya." />
+  <meta name="keywords" content="ongkos jahit, tips menjahit, baju, fashion Surabaya, Indonesia, katalog produk" />
+  <meta name="author" content="Ade Sansuniar" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:title" content="Blog Ade Sansuniar" />
+  <meta property="og:description" content="Informasi dan katalog produk menjahit dari Surabaya." />
+  <meta property="og:url" content="https://adesansuniar.github.io/blog-adesansuniar/" />
+  <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg" />
+  <meta name="theme-color" content="#2b6777" />
 
-      <!-- 💬 Giscus Komentar -->
-      {% if page.layout == "post" %}
-        {% include giscus.html %}
-      {% endif %}
+  <!-- Title -->
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Blog Ade Sansuniar</title>
 
-      <!-- ⭐ Sistem Rating Bintang -->
-      <div id="rating-section" style="margin-top: 40px; text-align: center;">
-        <h3 style="margin-bottom: 10px; font-size: 1.2em; color: #2c3e50;">
-          Beri Rating untuk Artikel Ini:
-        </h3>
-        <div id="star-rating" style="font-size: 2em; cursor: pointer; color: #ccc;">
-          <span data-star="1">&#9733;</span>
-          <span data-star="2">&#9733;</span>
-          <span data-star="3">&#9733;</span>
-          <span data-star="4">&#9733;</span>
-          <span data-star="5">&#9733;</span>
-        </div>
-        <p id="rating-msg" style="margin-top: 10px; font-size: 0.9em; color: #555;"></p>
+  <!-- Favicon -->
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg" />
 
-        <!-- 🔢 Statistik Rating -->
-        <div id="rating-stats" style="margin-top: 15px; font-size: 0.85em; color: #666;"></div>
-      </div>
-    </main>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 
-    <footer>
-      {% include footer.html %}
-    </footer>
+  <!-- Giscus Theme (Opsional jika menggunakan script async giscus) -->
+  <link rel="preconnect" href="https://giscus.app" crossorigin />
 
-    <!-- 📦 Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-database-compat.js"></script>
-
-    <!-- ⭐ Script Firebase + Rating -->
-    <script>
-      // Konfigurasi Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyBdgmjLQ59mdhgzcRvPvMRp1PUDHdanaUU",
-        authDomain: "rating-blog-adesansuniar.firebaseapp.com",
-        databaseURL: "https://rating-blog-adesansuniar-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "rating-blog-adesansuniar",
-        storageBucket: "rating-blog-adesansuniar.appspot.com",
-        messagingSenderId: "171318132609",
-        appId: "1:171318132609:web:bf9f3bdfc87cfa820c3280",
-        measurementId: "G-QHZE2NGMWL"
-      };
-
-      // Inisialisasi Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      const database = firebase.database();
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const stars = document.querySelectorAll('#star-rating span');
-        const msg = document.getElementById('rating-msg');
-        const stats = document.getElementById('rating-stats');
-        const pageSlug = window.location.pathname.replace(/^\/+|\/+$/g, '').replaceAll('/', '_') || 'home';
-
-        const ratingRef = database.ref(`rating-blog-adesansuniar/${pageSlug}`);
-        const storedRating = localStorage.getItem(`rating-${pageSlug}`);
-
-        function updateStars(value) {
-          stars.forEach((s, i) => {
-            s.style.color = (i < value) ? '#ffc107' : '#ccc';
-          });
-        }
-
-        function calculateStats(snapshot) {
-          let total = 0, count = 0;
-          snapshot.forEach(child => {
-            const r = child.val().rating;
-            if (typeof r === 'number') {
-              total += r;
-              count++;
-            }
-          });
-          if (count > 0) {
-            const average = (total / count).toFixed(2);
-            stats.innerText = `⭐ Rata-rata: ${average} dari ${count} penilaian`;
-          } else {
-            stats.innerText = `Belum ada rating untuk artikel ini.`;
-          }
-        }
-
-        if (storedRating) {
-          updateStars(parseInt(storedRating));
-          msg.innerText = `Anda telah memberi ${storedRating} bintang.`;
-        }
-
-        stars.forEach((star, index) => {
-          star.addEventListener('click', () => {
-            const rating = index + 1;
-            updateStars(rating);
-            localStorage.setItem(`rating-${pageSlug}`, rating);
-            msg.innerText = `Terima kasih! Anda memberi ${rating} bintang.`;
-
-            // Simpan ke Firebase
-            ratingRef.push({
-              rating: rating,
-              timestamp: new Date().toISOString()
-            });
-          });
-        });
-
-        // Ambil statistik
-        ratingRef.once('value', snapshot => {
-          calculateStats(snapshot);
-        });
-      });
-    </script>
-  </body>
-</html>
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog Ade Sansuniar",
+    "url": "https://adesansuniar.github.io/blog-adesansuniar/",
+    "description": "Blog informasi dan tips menjahit serta katalog produk.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ade Sansuniar"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg"
+    }
+  }
+  </script>
+</head>
