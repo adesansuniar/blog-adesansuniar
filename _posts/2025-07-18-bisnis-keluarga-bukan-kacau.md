@@ -2,7 +2,6 @@
 layout: post
 title: "Bisnis Keluarga Bukan Bisnis Kacau"
 description: "Tips membagi peran, menghindari konflik, dan menjaga keharmonisan dalam bisnis keluarga."
-image: " "
 keywords: "bisnis keluarga, kerja sama keluarga, konflik bisnis, jia he wan shi xing"
 date: 2025-07-18
 tags: [bisnis keluarga, harmoni, konflik usaha]
