@@ -1,94 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" itemscope itemtype="https://schema.org/WebPage">
   {% include head.html %}
   <body>
-    <header>
+    <header role="banner">
       {% include header.html %}
     </header>
 
-    <main style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
+    <main role="main" style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
       {{ content }}
 
-      <!-- Giscus Komentar -->
       {% if page.layout == "post" %}
         {% include giscus.html %}
+        {% include rating.html %}
       {% endif %}
-
-      <!-- ⭐ Sistem Rating Bintang -->
-      <div id="rating-section" style="margin-top: 40px; text-align: center;">
-        <h3 style="margin-bottom: 10px; font-size: 1.2em; color: #2c3e50;">Beri Rating untuk Artikel Ini:</h3>
-        <div id="star-rating" style="font-size: 2em; cursor: pointer; color: #ccc;">
-          <span data-star="1">&#9733;</span>
-          <span data-star="2">&#9733;</span>
-          <span data-star="3">&#9733;</span>
-          <span data-star="4">&#9733;</span>
-          <span data-star="5">&#9733;</span>
-        </div>
-        <p id="rating-msg" style="margin-top: 10px; font-size: 0.9em; color: #555;"></p>
-      </div>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
       {% include footer.html %}
     </footer>
 
-    <!-- ⭐ Script Rating + Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-database-compat.js"></script>
-
-    <script>
-      // Konfigurasi Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyBdgmjLQ59mdhgzcRvPvMRp1PUDHdanaUU",
-        authDomain: "rating-blog-adesansuniar.firebaseapp.com",
-        databaseURL: "https://rating-blog-adesansuniar-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "rating-blog-adesansuniar",
-        storageBucket: "rating-blog-adesansuniar.appspot.com",
-        messagingSenderId: "171318132609",
-        appId: "1:171318132609:web:bf9f3bdfc87cfa820c3280",
-        measurementId: "G-QHZE2NGMWL"
-      };
-
-      // Inisialisasi Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      const database = firebase.database();
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const stars = document.querySelectorAll('#star-rating span');
-        const msg = document.getElementById('rating-msg');
-        const pageSlug = window.location.pathname.replace(/^\/+|\/+$/g, '').replaceAll('/', '_') || 'home';
-
-        const storedRating = localStorage.getItem(`rating-${pageSlug}`);
-        const ratingRef = database.ref(`rating-blog-adesansuniar/${pageSlug}`);
-
-        function updateStars(value) {
-          stars.forEach((s, i) => {
-            s.style.color = (i < value) ? '#ffc107' : '#ccc';
-          });
-        }
-
-        if (storedRating) {
-          updateStars(parseInt(storedRating));
-          msg.innerText = `Anda telah memberi ${storedRating} bintang.`;
-        }
-
-        stars.forEach((star, index) => {
-          star.addEventListener('click', () => {
-            const rating = index + 1;
-            updateStars(rating);
-            localStorage.setItem(`rating-${pageSlug}`, rating);
-            msg.innerText = `Terima kasih! Anda memberi ${rating} bintang.`;
-
-            // Simpan ke Firebase
-            ratingRef.push({
-              rating: rating,
-              timestamp: new Date().toISOString()
-            });
-          });
-        });
-      });
-    </script>
+    {% include firebase-rating.html %}
   </body>
 </html>
