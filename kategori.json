@@ -1,0 +1,21 @@
+---
+layout: none
+permalink: /kategori.json
+---
+
+{
+  {% assign kategori_unik = site.categories %}
+  {% for kategori in kategori_unik %}
+    "{{ kategori[0] }}": [
+      {% assign posts = kategori[1] | sort: "date" | reverse %}
+      {% for post in posts %}
+        {
+          "title": {{ post.title | jsonify }},
+          "url": {{ post.url | relative_url | jsonify }},
+          "formatted_date": "{{ post.date | date: "%d %B %Y" }}",
+          "iso_date": "{{ post.date | date: "%Y-%m-%d" }}"
+        }{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    ]{% unless forloop.last %}, {% endunless %}
+  {% endfor %}
+}
