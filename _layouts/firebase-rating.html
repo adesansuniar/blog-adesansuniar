@@ -1,0 +1,51 @@
+<script defer src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/12.0.0/firebase-database-compat.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const firebaseConfig = {
+      apiKey: "AIzaSyBdgmjLQ59mdhgzcRvPvMRp1PUDHdanaUU",
+      authDomain: "rating-blog-adesansuniar.firebaseapp.com",
+      databaseURL: "https://rating-blog-adesansuniar-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rating-blog-adesansuniar",
+      storageBucket: "rating-blog-adesansuniar.appspot.com",
+      messagingSenderId: "171318132609",
+      appId: "1:171318132609:web:bf9f3bdfc87cfa820c3280",
+      measurementId: "G-QHZE2NGMWL"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const database = firebase.database();
+
+    const stars = document.querySelectorAll('#star-rating span');
+    const msg = document.getElementById('rating-msg');
+    const pageSlug = window.location.pathname
+      .replace(/^\/+|\/+$/g, '')
+      .split('?')[0].split('#')[0]
+      .replaceAll('/', '_') || 'home';
+
+    const storedRating = localStorage.getItem(`rating-${pageSlug}`);
+    const ratingRef = database.ref(`rating-blog-adesansuniar/${pageSlug}`);
+
+    function updateStars(value) {
+      stars.forEach((s, i) => s.style.color = (i < value ? '#ffc107' : '#ccc'));
+    }
+
+    if (storedRating) {
+      updateStars(parseInt(storedRating));
+      msg.innerText = `Anda telah memberi ${storedRating} bintang.`;
+    }
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        const rating = index + 1;
+        updateStars(rating);
+        localStorage.setItem(`rating-${pageSlug}`, rating);
+        msg.innerText = `Terima kasih! Anda memberi ${rating} bintang.`;
+        ratingRef.push({ rating, timestamp: new Date().toISOString() });
+      });
+    });
+  });
+</script>
