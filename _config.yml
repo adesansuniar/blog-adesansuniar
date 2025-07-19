@@ -1,35 +1,48 @@
+# 🌐 Informasi Situs
 title: Blog Adesansuniar
 description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
-baseurl: "/blog-adesansuniar"
 url: "https://adesansuniar.github.io"
+baseurl: "/blog-adesansuniar"
 
-# SEO & Tema
-theme: minima
+# 🧪 Konfigurasi Build
 markdown: kramdown
+kramdown:
+  input: GFM
 permalink: pretty
+encoding: "utf-8"
+lsi: false
+future: true
+strict_front_matter: false
 
-# Plugin resmi GitHub Pages
+# 🎨 Tema & Plugin
+theme: minima
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Opsi Umum
-lsi: false
-future: true
-strict_front_matter: false
-encoding: "utf-8"
-
-# Default untuk semua post
+# 📝 Default untuk Postingan
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+      lang: id
+      locale: id_ID
 
-# Metadata Sosial & SEO
+# 👤 Metadata Penulis & Sosial
 author: Ade Sansuniar
+locale: id_ID
 lang: id
+email: collectionalamanda10@gmail.com
 twitter_username: alamandacollect1
 facebook_username: alamandacollection
-email: collectionalamanda10@gmail.com
+
+# 📈 Metadata SEO Tambahan (opsional jika pakai jekyll-seo-tag)
+seo:
+  type: Blog
+  name: Blog Adesansuniar
+  description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
+  twitter:
+    username: alamandacollect1
+    card: summary_large_image
