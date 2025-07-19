@@ -1,0 +1,24 @@
+{% if page.permalink == "/tentang/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Tentang Penjahit Alamanda & Blog Adesansuniar",
+  "description": "Profil penulis, latar belakang Penjahit Alamanda, serta visi edukatif dari Blog Adesansuniar yang menggabungkan usaha jahit dan konten digital inspiratif.",
+  "url": "{{ page.url | absolute_url }}",
+  "image": "{{ page.image | absolute_url }}",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Ade Sansuniar",
+    "url": "https://penjahitalamanda.com",
+    "sameAs": [
+      "https://adesansuniar.github.io/blog-adesansuniar/",
+      "https://api.whatsapp.com/send?phone=6288801758800"
+    ],
+    "jobTitle": "Penjahit & Digital Creator",
+    "description": "Pelaku usaha jahit Surabaya yang aktif menyebarkan edukasi melalui blog dan katalog digital."
+  },
+  "inLanguage": "{{ page.lang | default: site.lang }}"
+}
+</script>
+{% endif %}
