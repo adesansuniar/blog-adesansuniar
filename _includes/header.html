@@ -1,27 +1,36 @@
-<header style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif; position: relative;">
-
-  <!-- 🔰 Banner -->
+<header itemscope itemtype="https://schema.org/WPHeader" style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif; position: relative;">
+  
+  <!-- 🖼️ Banner Blog -->
   <img src="{{ '/assets/img/bannerblogade.png' | relative_url }}" 
        alt="Banner Blog Ade Sansuniar" 
-       loading="lazy" 
+       loading="lazy" width="1000" height="250"
        style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
 
-  <!-- ☰ Hamburger Button -->
-  <div id="menu-toggle" style="width: 30px; height: 25px; margin: 10px auto; cursor: pointer; position: relative;">
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 0; transition: 0.4s;"></span>
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 11px; transition: 0.4s;"></span>
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 22px; transition: 0.4s;"></span>
+  <!-- ☰ Tombol Hamburger Menu -->
+  <div id="menu-toggle" aria-label="Tombol Menu Navigasi" tabindex="0"
+       style="width: 30px; height: 25px; margin: 10px auto; cursor: pointer; position: relative;">
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 0;"></span>
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 11px;"></span>
+    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 22px;"></span>
   </div>
 
-  <!-- 📁 Navigation -->
-  <nav id="main-nav" style="display: none; flex-direction: column; gap: 10px; margin-top: 15px;">
-    <a href="{{ '/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Beranda</a>
-    <a href="{{ '/about/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Tentang</a>
-    <a href="{{ '/katalog/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Katalog</a>
-    <a href="{{ '/search/' | relative_url }}" style="color: #0077cc; text-decoration: none;">Cari</a>
-    <a href="https://wa.me/6288801758800" style="color: #28a745; text-decoration: none;">Kontak</a>
+  <!-- 📁 Navigasi Modular -->
+  {% include nav.html %}
+
+  <!-- 🧭 Breadcrumb Dinamis -->
+  <nav aria-label="Breadcrumb" style="font-size: 0.9em; margin-top: 15px; color: #555;">
+    <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
+    {% if page.categories %}
+      {% for category in page.categories %}
+        &nbsp;›&nbsp;<a href="{{ '/' | relative_url }}{{ category }}" style="color: #0077cc;">{{ category | capitalize }}</a>
+      {% endfor %}
+    {% endif %}
+    {% if page.title %}
+      &nbsp;›&nbsp;<strong>{{ page.title }}</strong>
+    {% endif %}
   </nav>
 
+  <!-- 🎨 Gaya & Interaksi -->
   <style>
     #menu-toggle.open span:nth-child(1) {
       transform: rotate(45deg);
@@ -41,28 +50,26 @@
     }
 
     @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggle = document.getElementById("menu-toggle");
-      const spans = toggle.querySelectorAll("span");
       const nav = document.getElementById("main-nav");
 
       toggle.addEventListener("click", function () {
         toggle.classList.toggle("open");
         nav.classList.toggle("show");
       });
+
+      toggle.addEventListener("keypress", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          toggle.click();
+        }
+      });
     });
   </script>
 </header>
-
