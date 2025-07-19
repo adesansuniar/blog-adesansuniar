@@ -9,8 +9,9 @@ description: "Artikel terbaru dari Blog Ade Sansuniar - katalog, tips, dan info 
     ✨ Artikel Terbaru
   </h2>
 
-  {% if site.posts.size > 0 %}
-    {% for post in site.posts limit:10 %}
+  {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+  {% if sorted_posts.size > 0 %}
+    {% for post in sorted_posts %}
       <article style="margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px;">
         <h3 style="margin-bottom: 8px;">
           <a href="{{ post.url | relative_url }}" style="color: #2b6777; text-decoration: none;">
@@ -18,15 +19,17 @@ description: "Artikel terbaru dari Blog Ade Sansuniar - katalog, tips, dan info 
           </a>
         </h3>
 
-        {% if post.date %}
-          <p style="font-size: 0.8em; color: #888; margin-top: -10px;">
-            🗓️ {{ post.date | date: "%d %B %Y" }}
-          </p>
-        {% endif %}
+        <p style="font-size: 0.8em; color: #888; margin-top: -10px;">
+          🗓️ {{ post.date | date: "%d %B %Y" }}
+        </p>
 
-        {% if post.description %}
-          <p style="font-size: 0.95em; color: #444;">{{ post.description }}</p>
-        {% endif %}
+        <p style="font-size: 0.95em; color: #444;">
+          {% if post.description %}
+            {{ post.description }}
+          {% elsif post.excerpt %}
+            {{ post.excerpt | strip_html | truncatewords: 30 }}
+          {% endif %}
+        </p>
 
         <a href="{{ post.url | relative_url }}"
            style="display: inline-block; margin-top: 10px; padding: 8px 16px; background-color: #2b6777; color: #fff; border-radius: 5px; text-decoration: none;">
