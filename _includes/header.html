@@ -72,4 +72,15 @@
       });
     });
   </script>
+  <nav>
+  <strong>Kategori:</strong>
+  <ul style="list-style: none; padding-left: 0;">
+    {% assign kategori_unik = site.categories %}
+    {% for kategori in kategori_unik %}
+      <li>
+        <a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
 </header>
