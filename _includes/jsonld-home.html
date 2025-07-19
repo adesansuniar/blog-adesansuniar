@@ -1,0 +1,25 @@
+{% if page.url == "/" or page.id == "home" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title | escape }}",
+  "url": "{{ site.url | append: site.baseurl | replace: '//', '/' }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author }}"
+  },
+  "description": "{{ site.description | escape }}",
+  "inLanguage": "{{ site.lang | default: 'id' }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Beranda",
+  "url": "{{ site.url | append: site.baseurl | replace: '//', '/' }}"
+}
+</script>
+{% endif %}
