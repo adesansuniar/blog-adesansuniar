@@ -1,0 +1,15 @@
+---
+layout: none
+permalink: /search-mini.json
+---
+
+[
+  {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+  {% for post in sorted_posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": {{ post.url | relative_url | jsonify }},
+      "formatted_date": "{{ post.date | date: '%d %B %Y' }}"
+    }{% unless forloop.last %}, {% endunless %}
+  {% endfor %}
+]
