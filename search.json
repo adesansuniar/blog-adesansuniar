@@ -29,5 +29,13 @@
     "date": "2025-06-30",
     "formatted_date": "30 Juni 2025"
   }
-  const sorted = filtered.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date));
+ const sorted = filtered.sort((a, b) => {
+  return new Date(b.iso_date) - new Date(a.iso_date);
+});
+{
+  "title": "...",
+  "url": "...",
+  "formatted_date": "19 Juli 2025",
+  "iso_date": "2025-07-19"
+}
 ]
