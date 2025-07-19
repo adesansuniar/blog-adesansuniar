@@ -1,0 +1,38 @@
+---
+layout: page
+title: Arsip Artikel
+permalink: /archive.html
+description: "Daftar lengkap semua artikel blog Adesansuniar secara kronologis, dari yang terbaru hingga terlama."
+lang: "id"
+locale: "id_ID"
+---
+
+<main role="main" itemscope itemtype="https://schema.org/CollectionPage"
+      style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
+
+  <h1 style="text-align: center; margin-bottom: 30px;">Arsip Artikel</h1>
+
+  <ul style="list-style: none; padding: 0;">
+    {% for post in site.posts %}
+      <li style="margin-bottom: 25px;">
+        <a href="{{ post.url | relative_url }}" 
+           style="font-size: 1.1em; font-weight: bold; color: #0077cc;">
+          {{ post.title }}
+        </a><br>
+        <span style="font-size: 0.9em; color: #777;">
+          {{ post.date | date: "%d %B %Y" }}
+        </span><br>
+        {% if post.excerpt %}
+          <span style="font-size: 0.95em; color: #444;">
+            {{ post.excerpt | strip_html | truncate: 120 }}
+          </span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if site.posts.size == 0 %}
+    <p style="text-align: center; color: #999;">Belum ada artikel yang dipublikasikan.</p>
+  {% endif %}
+
+</main>
