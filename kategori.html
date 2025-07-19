@@ -1,0 +1,27 @@
+---
+layout: default
+title: "Kategori Artikel"
+permalink: /kategori.html
+description: "Lihat semua artikel berdasarkan kategori dari Blog Ade Sansuniar."
+lang: "id"
+---
+
+<main style="max-width: 800px; margin: auto; padding: 40px;">
+  <h1 style="text-align: center;">📁 Semua Kategori</h1>
+
+  {% assign kategori_unik = site.categories %}
+  {% for kategori in kategori_unik %}
+    <section id="{{ kategori[0] | slugify }}" style="margin-top: 30px;">
+      <h2 style="color: #2b6777;">📁 {{ kategori[0] }}</h2>
+      <ul>
+        {% assign posts = kategori[1] | sort: "date" | reverse %}
+        {% for post in posts %}
+          <li style="margin-bottom: 16px;">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <br><small>{{ post.date | date: "%d %B %Y" }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</main>
