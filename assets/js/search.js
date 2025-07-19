@@ -60,3 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 });
+import { renderSearchResults } from "./search-ui.js";
+
+// ...
+
+const sorted = filtered.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date));
+renderSearchResults(sorted, resultsList, query);
