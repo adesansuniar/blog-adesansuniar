@@ -84,5 +84,18 @@ input.addEventListener('input', function () {
     "date": "30 Juni 2025"
   }
 ]
-
+{% assign posts = site.posts %}
+[
+{% for post in posts %}
+  {
+    "title": "{{ post.title | escape }}",
+    "url": "{{ post.url | relative_url }}",
+    "description": "{{ post.excerpt | strip_html | normalize_whitespace | escape }}",
+    "content": "{{ post.content | strip_html | normalize_whitespace | escape }}",
+    "tags": [{% for tag in post.tags %}"{{ tag | downcase }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+    "categories": [{% for cat in post.categories %}"{{ cat | downcase }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+    "date": "{{ post.date | date: '%d %B %Y' }}"
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
 searchPosts();
