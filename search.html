@@ -1,128 +1,32 @@
 ---
 layout: default
-title: "Pencarian Artikel"
-description: "Cari artikel berdasarkan judul, isi, tag, atau kategori dari Blog Ade Sansuniar."
+title: "Daftar Tanggal Postingan"
 permalink: /search.html
+description: "Menampilkan semua tanggal publikasi postingan blog secara otomatis dan kronologis."
 lang: "id"
 ---
 
-<main role="main" itemscope itemtype="https://schema.org/SearchResultsPage"
-      style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: center;">
+<main role="main" itemscope itemtype="https://schema.org/CollectionPage"
+      style="max-width: 700px; margin: auto; padding: 30px; line-height: 2; text-align: center;">
 
-  <h1 style="margin-bottom: 20px;">🔎 Pencarian Artikel</h1>
+  <h1 style="margin-bottom: 40px;">📅 Daftar Tanggal Postingan</h1>
 
-  <!-- ✅ Tombol Filter Kategori -->
-  <div style="margin-bottom: 20px;">
-    {% assign popular_categories = "tips,katalog,ongkos jahit,fashion" | split: "," %}
-    {% for category in popular_categories %}
-      <button class="category-btn" data-category="{{ category | downcase }}" 
-              style="margin: 6px; padding: 6px 12px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background-color: #f1f1f1; cursor: pointer;">
-        {{ category | capitalize }}
-      </button>
-    {% endfor %}
-  </div>
-
-  <!-- 🔍 Kotak Pencarian -->
-  <input type="text" id="search-box" placeholder="Cari berdasarkan kata, tag, atau kategori..."
-         style="width: 100%; max-width: 600px; padding: 12px 16px; font-size: 1em; border: 1px solid #ccc; border-radius: 6px;" />
-
-  <!-- 📋 Hasil -->
-  <div id="search-results" style="margin-top: 40px; text-align: left;"></div>
-
+  <ul id="date-list" style="list-style: none; padding: 0; font-size: 1.1em; color: #333;"></ul>
 </main>
 
-<!-- 🔧 Script Pencarian -->
 <script>
-  const searchBox = document.getElementById("search-box");
-  const resultsContainer = document.getElementById("search-results");
-  const categoryButtons = document.querySelectorAll(".category-btn");
+  const container = document.getElementById("date-list");
 
-  let posts = [];
-
-  // 🧠 Fetch data
   fetch("{{ '/search.json' | relative_url }}")
     .then(res => res.json())
     .then(data => {
-      posts = data;
+      data.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item.formatted_date || item.date;
+        container.appendChild(li);
+      });
     })
-    .catch(err => {
-      resultsContainer.innerHTML = "<p style='color: #b00;'>Gagal memuat data pencarian.</p>";
+    .catch(() => {
+      container.innerHTML = "<li style='color:red;'>Gagal memuat daftar tanggal.</li>";
     });
-
-  // 🔎 Tampilkan hasil
-  function tampilkanHasil(query) {
-    resultsContainer.innerHTML = "";
-
-    if (query.length < 2) return;
-
-    const filtered = posts.filter(post => {
-      const tags = Array.isArray(post.tags) ? post.tags : [];
-      const categories = Array.isArray(post.categories) ? post.categories : [];
-
-      return (
-        post.title?.toLowerCase().includes(query) ||
-        post.description?.toLowerCase().includes(query) ||
-        post.content?.toLowerCase().includes(query) ||
-        tags.some(tag => tag.toLowerCase().includes(query)) ||
-        categories.some(cat => cat.toLowerCase().includes(query))
-      );
-    });
-
-    if (filtered.length === 0) {
-      resultsContainer.innerHTML = "<p style='text-align:center;'>🔍 Tidak ditemukan hasil pencarian.</p>";
-      return;
-    }
-
-    filtered.forEach(post => {
-      const tags = Array.isArray(post.tags) ? post.tags.join(', ') : '–';
-      const categories = Array.isArray(post.categories) ? post.categories.join(', ') : '–';
-      const el = document.createElement("div");
-
-      el.innerHTML = `
-        <h3 style="margin-bottom: 5px;">
-          <a href="${post.url}" style="color: #2b6777;">${post.title}</a>
-        </h3>
-        <p style="font-size: 0.9em; color: #555;">${post.description || ''}</p>
-        <p style="font-size: 0.8em; color: #888;">
-          🏷️ <strong>Tags:</strong> ${tags} |
-          📂 <strong>Kategori:</strong> ${categories}
-        </p>
-        <hr style="margin: 20px 0;" />
-      `;
-
-      resultsContainer.appendChild(el);
-    });
-  }
-
-  // 🕒 Debounce input
-  let debounce;
-  searchBox.addEventListener("input", function () {
-    clearTimeout(debounce);
-    const query = this.value.toLowerCase().trim();
-    debounce = setTimeout(() => tampilkanHasil(query), 300);
-  });
-
-  // 🔘 Klik kategori
-  categoryButtons.forEach(btn => {
-    btn.addEventListener("click", function () {
-      const category = this.getAttribute("data-category");
-      searchBox.value = category;
-      tampilkanHasil(category);
-    });
-  });
-
-  // 📱 Fokus otomatis
-  document.addEventListener("DOMContentLoaded", () => {
-    searchBox.focus();
-  });
-</script>
-
-<!-- 🧬 JSON-LD Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SearchAction",
-  "target": "{{ site.url }}/search.html?q={search_term_string}",
-  "query-input": "required name=search_term_string"
-}
 </script>
