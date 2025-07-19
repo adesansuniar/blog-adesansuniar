@@ -1,0 +1,8 @@
+{% comment %}
+Tag Canonical Dinamis untuk SEO
+Gabungan site.url + baseurl + page.url
+{% endcomment %}
+
+{% assign base = site.baseurl | default: '' %}
+{% assign full_base = site.url | append: base | replace: '//', '/' %}
+<link rel="canonical" href="{{ full_base }}{{ page.url }}" />
