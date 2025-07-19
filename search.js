@@ -40,5 +40,49 @@ async function searchPosts() {
     });
   });
 }
+fetch('{{ "/search.json" | relative_url }}')
+  .then(res => res.json())
+  .then(data => { posts = data; })
+  .catch(() => {
+    resultsList.innerHTML = "<li style='color:red;'>Gagal memuat data pencarian.</li>";
+  });
+let debounce;
+input.addEventListener('input', function () {
+  clearTimeout(debounce);
+  const query = this.value.toLowerCase().trim();
+  debounce = setTimeout(() => {
+    resultsList.innerHTML = '';
+    if (query.length >= 2) { /* proses filter */ }
+  }, 300);
+});
+[
+  {
+    "title": "Tips Menjahit Lurus Tanpa Garis",
+    "url": "/2025/07/19/tips-menjahit-lurus.html",
+    "description": "Cara menjahit lurus tanpa bantuan garis, cocok untuk pemula.",
+    "content": "Menjahit lurus tanpa bantuan garis bisa dilatih dengan teknik sederhana...",
+    "tags": ["tips", "menjahit", "pemula"],
+    "categories": ["tutorial", "skill"],
+    "date": "19 Juli 2025"
+  },
+  {
+    "title": "Katalog Outer Batik Handmade",
+    "url": "/2025/07/14/katalog-outer-batik.html",
+    "description": "Koleksi outer batik eksklusif dari Penjahit Alamanda, tersedia dalam berbagai ukuran.",
+    "content": "Outer batik kami didesain dengan sentuhan etnik dan modern...",
+    "tags": ["katalog", "fashion", "batik"],
+    "categories": ["produk", "koleksi"],
+    "date": "14 Juli 2025"
+  },
+  {
+    "title": "Etika Usaha Keluarga Jahit",
+    "url": "/2025/06/30/etika-usaha-keluarga.html",
+    "description": "Prinsip komunikasi, tanggung jawab, dan profesionalitas dalam bisnis menjahit keluarga.",
+    "content": "Usaha keluarga seringkali menghadapi tantangan komunikasi dan peran kerja...",
+    "tags": ["aturan", "etika", "keluarga"],
+    "categories": ["manajemen", "inspirasi"],
+    "date": "30 Juni 2025"
+  }
+]
 
 searchPosts();
