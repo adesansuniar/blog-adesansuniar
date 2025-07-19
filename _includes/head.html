@@ -7,7 +7,9 @@
   <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}ongkos jahit, tips menjahit, baju, fashion Surabaya, Indonesia{% endif %}" />
   <meta name="author" content="Ade Sansuniar" />
   <meta name="theme-color" content="#2b6777" />
-
+{% if page.url %}
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+{% endif %}
   <!-- ✅ Open Graph (Facebook & WhatsApp) -->
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="id_ID" />
