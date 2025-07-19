@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id" itemscope itemtype="https://schema.org/CollectionPage">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <main style="max-width: 960px; margin: auto; padding: 40px;">
+      <h1 style="text-align: center;">🧵 Katalog & Artikel</h1>
+
+      <!-- Filter Kategori -->
+      <details style="margin-bottom: 30px;">
+        <summary style="cursor:pointer;">📁 Filter Kategori</summary>
+        <ul style="list-style: none; padding-left: 0;">
+          {% assign kategori_unik = site.categories %}
+          {% for kategori in kategori_unik %}
+            <li>
+              <a href="#{{ kategori[0] | slugify }}">{{ kategori[0] }} ({{ kategori[1].size }})</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+
+      <!-- Daftar Post per Kategori -->
+      {% for kategori in kategori_unik %}
+        <section id="{{ kategori[0] | slugify }}" style="margin-top: 30px;">
+          <h2 style="color: #2b6777;">📁 {{ kategori[0] }}</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            {% assign daftar = kategori[1] | sort: "date" | reverse %}
+            {% for post in daftar %}
+              <div style="border: 1px solid #ccc; border-radius: 6px; padding: 16px;">
+                {% assign thumb = post.image | default: "/assets/images/" | append: post.slug | append: ".jpg" %}
+                <img src="{{ thumb | relative_url }}" alt="{{ post.title }}" style="width: 100%; border-radius: 4px;">
+
+                <h3 style="margin-top: 12px;">
+                  <a href="{{ post.url | relative_url }}" style="text-decoration: none;">{{ post.title }}</a>
+                </h3>
+                <small>{{ post.date | date: "%d %B %Y" }}</small>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>
