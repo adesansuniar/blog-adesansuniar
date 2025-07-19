@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id" itemscope itemtype="https://schema.org/BlogPosting">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <main style="max-width: 700px; margin: auto; padding: 30px;">
+      {% assign image_path = page.image | default: "/assets/images/" | append: page.slug | append: ".jpg" %}
+      <img src="{{ image_path | relative_url }}" alt="{{ page.title }}" style="width:100%; border-radius:6px;">
+
+      <h1 style="margin-top: 20px;">{{ page.title }}</h1>
+      <small style="color: #777;">🗓️ {{ page.date | date: "%d %B %Y" }}</small>
+      {% if page.categories %}
+        <p style="color:#999;">📁 {{ page.categories | join: ', ' }}</p>
+      {% endif %}
+
+      <div style="margin-top: 20px;">{{ content }}</div>
+
+      {% include giscus.html %}
+    </main>
+
+    {% include footer.html %}
+    {% include firebase-rating.html %}
+  </body>
+</html>
