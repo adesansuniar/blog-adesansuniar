@@ -1,1 +1,8 @@
-{% assign full_base = site.url | append: site.baseurl %}
+{% comment %}
+Menentukan full_base URL yang aman digunakan untuk link absolut di GitHub Pages.
+- Menggabungkan site.url dan site.baseurl
+- Menangani kemungkinan nilai kosong atau duplikasi slash
+{% endcomment %}
+
+{% assign base = site.baseurl | default: '' %}
+{% assign full_base = site.url | append: base | replace: '//', '/' %}
