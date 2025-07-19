@@ -1,33 +1,56 @@
 ---
 layout: default
-title: "Daftar Tanggal Postingan"
+title: "Arsip Bulanan"
 permalink: /search.html
-description: "Menampilkan semua tanggal publikasi postingan blog secara otomatis dan kronologis."
+description: "Daftar semua artikel blog Ade Sansuniar berdasarkan bulan terbit."
 lang: "id"
 ---
 
 <main role="main" itemscope itemtype="https://schema.org/CollectionPage"
-      style="max-width: 700px; margin: auto; padding: 30px; line-height: 2; text-align: center;">
+      style="max-width: 700px; margin: auto; padding: 30px; line-height: 2; text-align: left;">
 
-  <h1 style="margin-bottom: 40px;">📅 Daftar Tanggal Postingan</h1>
+  <h1 style="text-align: center; margin-bottom: 40px;">📂 Arsip Bulanan</h1>
 
-  <ul id="date-list" style="list-style: none; padding: 0; font-size: 1.1em; color: #333;"></ul>
+  <div id="archive-list"></div>
 </main>
 
 <script>
-  const container = document.getElementById("date-list");
+  const container = document.getElementById("archive-list");
 
   fetch("{{ '/search.json' | relative_url }}")
     .then(res => res.json())
     .then(data => {
-      data.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item.formatted_date || item.date;
-        container.appendChild(li);
+      const archive = {};
+
+      data.forEach(post => {
+        const date = new Date(post.iso_date);
+        const monthYear = date.toLocaleString("id-ID", { month: "long", year: "numeric" });
+
+        if (!archive[monthYear]) {
+          archive[monthYear] = [];
+        }
+        archive[monthYear].push(post);
       });
+
+      for (const [monthYear, posts] of Object.entries(archive)) {
+        const section = document.createElement("section");
+        section.innerHTML = `<h2 style="color:#2b6777;">${monthYear}</h2><ul style="list-style:none; padding-left:0;"></ul>`;
+        const ul = section.querySelector("ul");
+
+        posts.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date)).forEach(post => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <a href="${post.url}" style="text-decoration:none; color:#333;">
+              📅 ${post.formatted_date}
+            </a>
+          `;
+          ul.appendChild(li);
+        });
+
+        container.appendChild(section);
+      }
     })
     .catch(() => {
-      container.innerHTML = "<li style='color:red;'>Gagal memuat daftar tanggal.</li>";
+      container.innerHTML = "<p style='color:red;'>Gagal memuat arsip bulanan.</p>";
     });
-      <small>${post.formatted_date}</small>
 </script>
