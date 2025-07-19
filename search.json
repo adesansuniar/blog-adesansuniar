@@ -29,4 +29,5 @@
     "date": "2025-06-30",
     "formatted_date": "30 Juni 2025"
   }
+  const sorted = filtered.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date));
 ]
