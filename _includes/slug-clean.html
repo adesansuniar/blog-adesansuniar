@@ -1,0 +1,4 @@
+{% assign raw = include.judul | slugify %}
+{% assign cleaned = raw | replace: "#", "" | replace: "+", "" | replace: "&", "dan" | replace: "'", "" %}
+{% assign slug = cleaned | truncate: 60, "" %}
+{{ slug }}
