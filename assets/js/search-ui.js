@@ -29,4 +29,7 @@ function highlight(text, keyword) {
   const regex = new RegExp(`(${keyword})`, "gi");
   return text.replace(regex, `<mark>$1</mark>`);
 }
+if (post.image) {
+  li.innerHTML = `<img src="${post.image}" alt="${post.image_alt}" style="width: 120px;">` + li.innerHTML;
+}
 <script type="module" src="/assets/js/search.js"></script>
