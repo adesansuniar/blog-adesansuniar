@@ -76,6 +76,9 @@ function initSearch(renderFn) {
     fetchSearchData(renderFn);
   }
 }
+       function isVersionMismatch(data) {
+  return data.version !== "1.2"; // versi sesuai yang kamu tetapkan
+}
         <hr>
       `;
       resultsList.appendChild(li);
