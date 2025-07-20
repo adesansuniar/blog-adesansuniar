@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "generated": "2025-07-21T03:45:00+07:00",
+  "products": [
+    {
+      "title": "Gamis Batik Outdoor",
+      "slug": "gamis-batik-outdoor",
+      "description": "Gamis kasual berbahan batik parang kombinasi katun, cocok untuk aktivitas luar ruang.",
+      "price": "Rp250.000",
+      "category": "fashion",
+      "tags": ["gamis", "batik", "outdoor"],
+      "whatsapp": "https://wa.me/6288801758800"
+    },
+    {
+      "title": "Outer Ringan Motif Batik",
+      "slug": "outer-ringan-batik",
+      "description": "Outer layer santai berbahan batik halus, cocok dipadukan dengan kaos polos.",
+      "price": "Rp180.000",
+      "category": "fashion",
+      "tags": ["outer", "batik", "santai"],
+      "whatsapp": "https://wa.me/6288801758800"
+    },
+    {
+      "title": "Seragam Sekolah SMA Custom",
+      "slug": "seragam-sma-custom",
+      "description": "Seragam jahitan rapi dan presisi, bisa request nama bordir.",
+      "price": "Rp160.000 / stel",
+      "category": "seragam",
+      "tags": ["seragam", "SMA", "bordir"],
+      "whatsapp": "https://wa.me/6288801758800"
+    }
+  ]
+}
