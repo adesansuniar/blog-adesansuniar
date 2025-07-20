@@ -1,58 +1,45 @@
-[
-  {
-    "title": "Tips Menjahit Lurus Tanpa Garis",
-    "url": "/2025/07/19/tips-menjahit-lurus.html",
-    "description": "Cara menjahit lurus tanpa bantuan garis, cocok untuk pemula.",
-    "content": "Menjahit lurus tanpa bantuan garis bisa dilatih dengan teknik sederhana yang stabil meskipun tanpa tanda garis...",
-    "tags": ["tips", "menjahit", "pemula"],
-    "categories": ["tutorial", "skill"],
-    "date": "2025-07-19",
-    "formatted_date": "19 Juli 2025"
-  },
-  {
-    "title": "Katalog Outer Batik Handmade",
-    "url": "/2025/07/14/katalog-outer-batik.html",
-    "description": "Koleksi outer batik eksklusif dari Penjahit Alamanda.",
-    "content": "Outer batik kami didesain dengan sentuhan etnik dan modern, cocok untuk berbagai acara...",
-    "tags": ["katalog", "fashion", "batik"],
-    "categories": ["produk", "koleksi"],
-    "date": "2025-07-14",
-    "formatted_date": "14 Juli 2025"
-  },
-  {
-    "title": "Etika Usaha Keluarga Jahit",
-    "url": "/2025/06/30/etika-usaha-keluarga.html",
-    "description": "Prinsip komunikasi dan profesionalitas dalam bisnis jahit keluarga.",
-    "content": "Usaha keluarga sering menghadapi tantangan komunikasi dan pembagian tanggung jawab...",
-    "tags": ["aturan", "etika", "keluarga"],
-    "categories": ["manajemen", "inspirasi"],
-    "date": "2025-06-30",
-    "formatted_date": "30 Juni 2025"
-  }
- const sorted = filtered.sort((a, b) => {
-  return new Date(b.iso_date) - new Date(a.iso_date);
-});
 {
-  "title": "...",
-  "url": "...",
-  "formatted_date": "19 Juli 2025",
-  "iso_date": "2025-07-19"
+  "version": "1.3",
+  "generated": "2025-07-21T03:35:00+07:00",
+  "posts": [
+    {
+      "title": "Tips Menjahit Lurus Tanpa Garis",
+      "slug": "tips-menjahit-lurus",
+      "url": "/2025/07/19/tips-menjahit-lurus.html",
+      "formatted_date": "19 Juli 2025",
+      "iso_date": "2025-07-19",
+      "excerpt": "Menjahit lurus bisa dilatih dengan teknik sederhana meski tanpa tanda garis.",
+      "description": "Cara menjahit lurus tanpa bantuan garis, cocok untuk pemula.",
+      "image": "/assets/images/tips-menjahit-lurus.jpg",
+      "image_alt": "Tips menjahit lurus tanpa bantuan garis",
+      "tags": ["tips", "menjahit", "pemula"],
+      "categories": ["tutorial", "skill"]
+    },
+    {
+      "title": "Katalog Outer Batik Handmade",
+      "slug": "katalog-outer-batik",
+      "url": "/2025/07/14/katalog-outer-batik.html",
+      "formatted_date": "14 Juli 2025",
+      "iso_date": "2025-07-14",
+      "excerpt": "Outer batik etnik modern cocok untuk acara santai dan formal.",
+      "description": "Koleksi outer batik eksklusif dari Penjahit Alamanda.",
+      "image": "/assets/images/katalog-outer-batik.jpg",
+      "image_alt": "Koleksi outer batik handmade",
+      "tags": ["katalog", "fashion", "batik"],
+      "categories": ["produk", "koleksi"]
+    },
+    {
+      "title": "Etika Usaha Keluarga Jahit",
+      "slug": "etika-usaha-keluarga",
+      "url": "/2025/06/30/etika-usaha-keluarga.html",
+      "formatted_date": "30 Juni 2025",
+      "iso_date": "2025-06-30",
+      "excerpt": "Usaha jahit keluarga butuh struktur dan komunikasi yang saling menghargai.",
+      "description": "Prinsip komunikasi dan profesionalitas dalam bisnis jahit keluarga.",
+      "image": "/assets/images/etika-usaha-keluarga.jpg",
+      "image_alt": "Tips etika usaha keluarga jahit",
+      "tags": ["aturan", "etika", "keluarga"],
+      "categories": ["manajemen", "inspirasi"]
+    }
+  ]
 }
-  const CACHE_KEY_LATEST = "latestPosts";
-const CACHE_TIME_LATEST = 3600 * 1000;
-
-function loadTerbaru(callback) {
-  if (localStorage.getItem(CACHE_KEY_LATEST) && Date.now() - localStorage.getItem("terbaruTime") < CACHE_TIME_LATEST) {
-    const data = JSON.parse(localStorage.getItem(CACHE_KEY_LATEST));
-    callback(data.posts);
-  } else {
-    fetch("/blog-adesansuniar/terbaru.json")
-      .then(res => res.json())
-      .then(data => {
-        localStorage.setItem(CACHE_KEY_LATEST, JSON.stringify(data));
-        localStorage.setItem("terbaruTime", Date.now());
-        callback(data.posts);
-      });
-  }
-}
-]
