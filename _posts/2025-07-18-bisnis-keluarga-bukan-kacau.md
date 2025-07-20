@@ -8,10 +8,13 @@ author: "Ade Sansuniar"
 lang: "id"
 locale: "id_ID"
 twitter_username: "alamandacollect1"
-categories: [bisnis, relasi]
-tags: [bisnis keluarga, keharmonisan, konflik usaha]
+categories: ["bisnis", "relasi"]
+tags: ["bisnis keluarga", "keharmonisan", "konflik usaha"]
 image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg"
+layout_style: "artikel"
+permalink: /2025/07/18/bisnis-keluarga-bukan-bisnis-kacau.html
 ---
+<h1>{{ page.title }}</h1>
 
 **“Keluarga yang rukun, rezekinya lancar.”**  
 Petuah ini bukan sekadar nasihat tua, tapi prinsip kokoh di banyak bisnis keluarga yang sukses. Namun tak sedikit usaha yang justru hancur karena warung berubah jadi warisan.
