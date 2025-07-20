@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adesansuniar.github.io/blog-adesansuniar/sitemap.xml
