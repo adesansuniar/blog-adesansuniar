@@ -44,6 +44,38 @@ document.addEventListener("DOMContentLoaded", () => {
           🏷️ ${post.tags?.join(', ') || '–'} |
           📂 ${post.categories?.join(', ') || '–'}
         </span>
+        const CACHE_KEY = "searchData";
+const CACHE_EXPIRY = 3600 * 1000; // 1 jam
+
+function isCacheValid() {
+  const cachedTime = localStorage.getItem("searchTime");
+  if (!cachedTime) return false;
+  return Date.now() - parseInt(cachedTime) < CACHE_EXPIRY;
+}
+
+function getCachedSearch() {
+  return JSON.parse(localStorage.getItem(CACHE_KEY));
+}
+
+function fetchSearchData(callback) {
+  fetch("/blog-adesansuniar/search.json")
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      localStorage.setItem("searchTime", Date.now());
+      callback(data);
+    })
+    .catch(() => callback([])); // fallback kosong jika error
+}
+
+function initSearch(renderFn) {
+  if (isCacheValid()) {
+    const cached = getCachedSearch();
+    renderFn(cached);
+  } else {
+    fetchSearchData(renderFn);
+  }
+}
         <hr>
       `;
       resultsList.appendChild(li);
