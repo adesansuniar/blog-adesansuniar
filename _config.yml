@@ -39,12 +39,7 @@ lang: id
 email: collectionalamanda10@gmail.com
 twitter_username: alamandacollect1
 facebook_username: alamandacollection
+card: summary_large_image
+keywords: "blog jahit, kerajinan tangan, katalog baju, bisnis kreatif, Surabaya"
 
-# 📈 Metadata SEO Tambahan (opsional jika pakai jekyll-seo-tag)
-seo:
-  type: Blog
-  name: Blog Adesansuniar
-  description: Blog inspirasi, tips menjahit, dan katalog produk pilihan
-  twitter:
-    username: alamandacollect1
-    card: summary_large_image
+    
