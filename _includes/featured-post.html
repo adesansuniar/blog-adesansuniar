@@ -1,0 +1,34 @@
+{% assign featured_posts = site.posts | where: "featured", true | sort: "date" | reverse %}
+
+{% if featured_posts.size > 0 %}
+<section style="max-width: 960px; margin: auto; padding: 40px;">
+  <h2 style="text-align: center; font-size: 1.8em; margin-bottom: 30px; color: #1c3c4d;">
+    🌟 Artikel Unggulan
+  </h2>
+
+  {% for post in featured_posts limit: 3 %}
+    {% assign slug = post.title | slugify %}
+    {% assign thumb = post.image | default: "/assets/images/" | append: slug | append: ".jpg" %}
+    <article style="margin-bottom: 40px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+      <a href="{{ post.url | relative_url }}" style="flex: 1; min-width: 240px;">
+        <img src="{{ thumb | relative_url }}" alt="{{ post.image_alt | default: post.title }}" style="width: 100%; border-radius: 6px;" loading="lazy">
+      </a>
+      <div style="flex: 2; min-width: 260px;">
+        <h3 style="margin-bottom: 6px;">
+          <a href="{{ post.url | relative_url }}" style="color: #2b6777; text-decoration: none;">
+            {{ post.title }}
+          </a>
+        </h3>
+        <small style="color: #888;">🗓️ {{ post.date | date: "%d %B %Y" }}</small>
+        <p style="margin-top: 8px; font-size: 0.95em; color: #555;">
+          {{ post.description | default: post.excerpt | strip_html | truncatewords: 25 }}
+        </p>
+        <a href="{{ post.url | relative_url }}"
+           style="display: inline-block; margin-top: 10px; padding: 6px 14px; background-color: #2b6777; color: #fff; border-radius: 5px; text-decoration: none;">
+          → Baca Selengkapnya
+        </a>
+      </div>
+    </article>
+  {% endfor %}
+</section>
+{% endif %}
