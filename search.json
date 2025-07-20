@@ -38,4 +38,21 @@
   "formatted_date": "19 Juli 2025",
   "iso_date": "2025-07-19"
 }
+  const CACHE_KEY_LATEST = "latestPosts";
+const CACHE_TIME_LATEST = 3600 * 1000;
+
+function loadTerbaru(callback) {
+  if (localStorage.getItem(CACHE_KEY_LATEST) && Date.now() - localStorage.getItem("terbaruTime") < CACHE_TIME_LATEST) {
+    const data = JSON.parse(localStorage.getItem(CACHE_KEY_LATEST));
+    callback(data.posts);
+  } else {
+    fetch("/blog-adesansuniar/terbaru.json")
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem(CACHE_KEY_LATEST, JSON.stringify(data));
+        localStorage.setItem("terbaruTime", Date.now());
+        callback(data.posts);
+      });
+  }
+}
 ]
