@@ -8,8 +8,8 @@
 
   <!-- ✅ SEO Dinamis -->
   <title>{% if page.title %}{{ page.title }} | {% endif %}Blog Ade Sansuniar</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Blog Ade Sansuniar seputar tips menjahit dan katalog produk handmade dari Surabaya.{% endif %}" />
-  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}ongkos jahit, tips menjahit, katalog baju, fashion Surabaya{% endif %}" />
+  <meta name="description" content="{{ page.description | default: 'Blog Ade Sansuniar seputar tips menjahit dan katalog produk handmade dari Surabaya.' }}" />
+  <meta name="keywords" content="{{ page.keywords | default: 'ongkos jahit, tips menjahit, katalog baju, fashion Surabaya' }}" />
   <link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}" />
 
   <!-- ✅ Open Graph -->
@@ -35,17 +35,23 @@
   <link rel="preload" href="{{ site.search_json }}" as="fetch" />
   {% endif %}
 
+  <!-- ✅ Preload Gambar Unggulan untuk LCP -->
+  {% if page.image %}
+  <link rel="preload" as="image" href="{{ page.image | absolute_url }}" fetchpriority="high">
+  {% endif %}
+
   <!-- ✅ Favicon -->
   <link rel="icon" href="{{ site.default_image | absolute_url }}" />
 
-  <!-- ✅ Stylesheet -->
+  <!-- ✅ CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 
-  <!-- ✅ Lazy Load Gambar di HTML -->
+  <!-- ✅ Lazy Load Gambar Otomatis -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll("img:not([loading])").forEach(img => {
         img.setAttribute("loading", "lazy");
+        img.setAttribute("decoding", "async");
       });
     });
   </script>
@@ -68,6 +74,7 @@
   }
   </script>
 
+  <!-- ✅ Tambahan Modular -->
   {% include canonical.html %}
   {% include jsonld-post.html %}
   {% include jsonld-home.html %}
