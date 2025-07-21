@@ -5,7 +5,11 @@
     <header role="banner">
       {% include header.html %}
     </header>
-
+{% if page.head_mode == "lite" %}
+  {% include head-lite.html %}
+{% else %}
+  {% include head.html %}
+{% endif %}
     <main role="main" style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
       {{ content }}
 
