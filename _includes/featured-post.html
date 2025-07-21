@@ -1,9 +1,16 @@
 {% assign featured_posts = site.posts | where: "featured", true | sort: "date" | reverse %}
 
 {% if featured_posts.size > 0 %}
+<img src="/assets/images/bannerblogade.webp"
+     alt="Banner katalog produk handmade Penjahit Alamanda"
+     width="1200"
+     height="675"
+     loading="lazy"
+     decoding="async"
+     fetchpriority="high">
 <section style="max-width: 960px; margin: auto; padding: 40px;">
   <h2 style="text-align: center; font-size: 1.8em; margin-bottom: 30px; color: #1c3c4d;">
-    🌟 Artikel Unggulan
+ 🌟 Artikel Unggulan
   </h2>
 
   {% for post in featured_posts limit: 3 %}
