@@ -63,6 +63,7 @@ Pernah bingung bagi peran antar keluarga dalam usaha?
     💬 Konsultasi Gratis via WhatsApp
   </a>
 </div>
+{% include giscus.html %}
 
 ---
 
