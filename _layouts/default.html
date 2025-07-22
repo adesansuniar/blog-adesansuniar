@@ -6,11 +6,12 @@
     {% include head.html %}
   {% endif %}
 
-  <body>
-    <header role="banner">
-      {% include header.html %}
-    </header>
+  <body style="margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;">
+    
+    <!-- 🔰 HEADER (dengan Banner, Navigasi, Breadcrumb, dsb.) -->
+    {% include header.html %}
 
+    <!-- 📑 KONTEN UTAMA -->
     <main role="main"
           style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
       {{ content }}
@@ -21,9 +22,8 @@
       {% endif %}
     </main>
 
-    <footer role="contentinfo">
-      {% include footer.html %}
-    </footer>
+    <!-- 🔚 FOOTER -->
+    {% include footer.html %}
 
     {% if site.firebase_rating_active %}
       {% include firebase-rating.html %}
