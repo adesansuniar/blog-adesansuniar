@@ -16,29 +16,38 @@
   </div>
 
   <!-- 🧭 Navigasi Utama -->
-  <nav id="main-nav" role="navigation" aria-label="Navigasi Utama"
-       style="display: none; margin-top: 15px;">
+  <nav id="main-nav" role="navigation" aria-label="Navigasi utama" style="display: none;">
     {% include nav.html %}
   </nav>
-<!-- 🍞 Breadcrumb -->
-<nav role="navigation" aria-label="Breadcrumb"
-     style="font-size: 0.9em; margin-top: 15px; color: #555;">
-  {% if page.url == "/" %}
-    <span><strong>Beranda</strong></span>
-  {% else %}
-    <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
-    {% if page.categories %}
-      {% for category in page.categories %}
-        &nbsp;›&nbsp;<a href="/kategori.html#{{ category | slugify }}" style="color: #0077cc;">
-          {{ category | capitalize }}
-        </a>
+
+  <!-- 🍞 Breadcrumb (hanya jika bukan halaman beranda) -->
+  {% unless page.url == "/" %}
+    <nav role="navigation" aria-label="Breadcrumb"
+         style="font-size: 0.9em; margin-top: 15px; color: #555;">
+      <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
+      {% if page.categories %}
+        {% for category in page.categories %}
+          &nbsp;›&nbsp;<a href="/kategori.html#{{ category | slugify }}" style="color: #0077cc;">
+            {{ category | capitalize }}
+          </a>
+        {% endfor %}
+      {% endif %}
+      {% if page.title %}
+        &nbsp;›&nbsp;<strong>{{ page.title }}</strong>
+      {% endif %}
+    </nav>
+  {% endunless %}
+
+  <!-- 📁 Daftar Kategori Otomatis -->
+  <nav role="navigation" aria-label="Daftar Kategori" style="margin-top: 10px;">
+    <strong>Kategori:</strong>
+    <ul style="list-style: none; padding-left: 0;">
+      {% assign kategori_unik = site.categories %}
+      {% for kategori in kategori_unik %}
+        <li><a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a></li>
       {% endfor %}
-    {% endif %}
-    {% if page.title %}
-      &nbsp;›&nbsp;<strong>{{ page.title }}</strong>
-    {% endif %}
-  {% endif %}
-</nav>
+    </ul>
+  </nav>
 
   <!-- 🎨 Interaksi Menu Toggle -->
   <style>
@@ -56,9 +65,6 @@
 
     #main-nav.show {
       display: flex !important;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
       animation: slideDown 0.3s ease-out;
     }
 
