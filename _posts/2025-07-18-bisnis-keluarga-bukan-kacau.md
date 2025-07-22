@@ -64,6 +64,9 @@ Pernah bingung bagi peran antar keluarga dalam usaha?
   </a>
 </div>
 {% include giscus.html %}
+{% if page.rating != false %}
+  {% include rating.html %}
+{% endif %}
 
 ---
 
