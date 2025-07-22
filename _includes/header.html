@@ -20,10 +20,12 @@
        style="display: none; margin-top: 15px;">
     {% include nav.html %}
   </nav>
-
-  <!-- 🍞 Breadcrumb -->
-  <nav role="navigation" aria-label="Breadcrumb"
-       style="font-size: 0.9em; margin-top: 15px; color: #555;">
+<!-- 🍞 Breadcrumb -->
+<nav role="navigation" aria-label="Breadcrumb"
+     style="font-size: 0.9em; margin-top: 15px; color: #555;">
+  {% if page.url == "/" %}
+    <span><strong>Beranda</strong></span>
+  {% else %}
     <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
     {% if page.categories %}
       {% for category in page.categories %}
@@ -35,7 +37,8 @@
     {% if page.title %}
       &nbsp;›&nbsp;<strong>{{ page.title }}</strong>
     {% endif %}
-  </nav>
+  {% endif %}
+</nav>
 
   <!-- 🎨 Interaksi Menu Toggle -->
   <style>
