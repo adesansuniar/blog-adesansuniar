@@ -2,10 +2,11 @@
 layout: page
 title: "Tentang Penjahit Alamanda & Blog Adesansuniar"
 permalink: /tentang/
-description: "Profil penulis, latar belakang Penjahit Alamanda, serta visi edukatif dari Blog Adesansuniar yang menggabungkan usaha jahit dan konten digital inspiratif."
+description: "Profil penulis, sejarah Penjahit Alamanda, dan misi Blog Adesansuniar dalam menjahit dan literasi digital."
 lang: "id"
 locale: "id_ID"
-image: "/assets/img/logoblogade.png"
+image: "/assets/img/logoblogade.webp"
+keywords: ["Penjahit Surabaya", "blog menjahit", "usaha keluarga", "Ade Sansuniar", "katalog baju", "jahitan custom"]
 ---
 
 <main role="main" itemscope itemtype="https://schema.org/AboutPage"
@@ -18,46 +19,57 @@ image: "/assets/img/logoblogade.png"
      style="display: block; margin: auto; width: 260px; border-radius: 8px; box-shadow: 0 0 5px #ccc; margin-bottom: 30px;" />
 
 <p>
-Blog ini dikelola oleh <strong>Ade Sansuniar</strong>—penjahit sekaligus digital creator asal Surabaya—yang membangun reputasi melalui konten edukatif dan produk handmade. Bersama brand <strong>Penjahit Alamanda</strong>, ia menjembatani dunia usaha jahit dengan literasi digital berbasis GitHub Pages dan domain mandiri <code>penjahitalamanda.com</code>.
+Selamat datang di <strong>Blog Adesansuniar</strong>, ruang kreatif yang digagas oleh <strong>Ade Sansuniar</strong>—penjahit rumahan dan penulis digital asal Surabaya—yang ingin menyatukan nilai-nilai <em>craftsmanship</em> dengan teknologi modern. 
 </p>
 
 <p>
-Blog ini hadir bukan sekadar untuk promosi, tapi juga sebagai pusat edukasi menjahit, harmoni usaha keluarga, dan tutorial digital berbasis pengalaman nyata. Semua konten dibuat modular dan valid SEO, agar mudah dirawat dan bisa direplikasi oleh pelaku usaha lainnya.
+Blog ini adalah bagian dari usaha <strong>Penjahit Alamanda</strong>, tempat di mana inspirasi menjahit, etika usaha keluarga, dan teknik digital saling bersinergi. Mulai dari <em>tutorial</em>, katalog produk, hingga pembahasan harga jahit—semua dibangun dengan pendekatan edukatif dan profesional.
 </p>
 
 ---
 
-## 🎯 Visi & Nilai Utama
+## 🎯 Misi & Komitmen Kami
 
-- 🧵 Menjahit bukan hanya produk, tapi juga kepercayaan
-- 🚀 Membangun reputasi melalui konten berkualitas dan konsisten
-- 🤝 Mendorong sinergi antar anggota keluarga dalam usaha bersama
-- 📡 Mengadopsi teknologi untuk keberlanjutan brand lokal
+- ✂️ Menyediakan konten menjahit yang praktis dan aplikatif
+- 🤝 Mendorong kerja sama keluarga dalam menjalankan usaha kecil
+- 💡 Menyederhanakan teknologi untuk pelaku UMKM dan penjahit
+- 📚 Menjadi pusat referensi etika, teknik, dan harga dalam dunia jahit
 
 ---
 
-## ⚙️ Teknologi & Platform
+## 🧵 Tentang Penjahit Alamanda
+
+<blockquote style="font-style: italic; color: #555;">
+“Jahit bukan sekadar rapi — tapi juga menyampaikan rasa percaya.”  
+</blockquote>
+
+Berdiri di Surabaya, Penjahit Alamanda melayani pembuatan dan permak berbagai jenis pakaian dari gamis, kebaya, hingga seragam sekolah. Kami percaya, usaha rumahan bisa setara dengan butik jika dikerjakan dengan hati dan sistem yang tepat.
+
+---
+
+## 🔧 Teknologi di Balik Blog
 
 - Dibangun dengan **Jekyll + GitHub Pages**
-- Plugin SEO: `jekyll-seo-tag`, `jekyll-sitemap`, `html-proofer`
-- Struktur data: JSON-LD, canonical, microdata
-- Rating interaktif via Firebase & komentar via Giscus
-- 100% responsif untuk tampilan mobile dan desktop
+- Desain ringan, mobile-friendly, dan 100% statis
+- SEO dengan `jekyll-seo-tag`, sitemap otomatis, dan struktur data JSON-LD
+- Komentar via Giscus dan rating pelanggan via Firebase
+- Dioptimalkan untuk blog + katalog + artikel edukatif
 
 ---
 
-## 📬 Hubungi Kami
+## 📬 Kontak & Kolaborasi
 
-Ingin diskusi, kolaborasi, atau konsultasi produk?
+Tertarik menjalin kerja sama, diskusi bisnis jahit, atau sekadar berbagi inspirasi?
 
-- 🌐 [PenjahitAlamanda.com](https://penjahitalamanda.com)
-- 💬 [WhatsApp](https://api.whatsapp.com/send?phone=6288801758800&text=Halo%20Penjahit%20Alamanda%20-%20saya%20ingin%20konsultasi)
-- 📖 [Blog Adesansuniar](https://adesansuniar.github.io/blog-adesansuniar/)
+- 🌐 Situs utama: [PenjahitAlamanda.com](https://penjahitalamanda.com)
+- 💬 WhatsApp: [Hubungi via WhatsApp](https://wa.me/6288801758800)
+- 📧 Email: [collectionalamanda10@gmail.com](mailto:collectionalamanda10@gmail.com)
+- 📖 Blog: [adesansuniar.github.io/blog-adesansuniar](https://adesansuniar.github.io/blog-adesansuniar)
 
 ---
 
 <blockquote style="font-style: italic; color: #555; margin-top: 30px;">
-“Usaha kecil bisa berdampak besar jika dibangun dengan cinta, logika, dan literasi digital.”
+“Usaha kecil bisa berdampak besar bila dibangun dengan cinta, logika, dan literasi digital.”
 </blockquote>
 
 </main>
