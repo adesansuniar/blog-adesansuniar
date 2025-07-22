@@ -16,7 +16,8 @@
   </div>
 
   <!-- 🧭 Navigasi Utama -->
-  <nav id="main-nav" role="navigation" aria-label="Navigasi Utama" style="display: none;">
+  <nav id="main-nav" role="navigation" aria-label="Navigasi Utama"
+       style="display: none; margin-top: 15px;">
     {% include nav.html %}
   </nav>
 
@@ -36,17 +37,6 @@
     {% endif %}
   </nav>
 
-  <!-- 📁 Daftar Kategori Otomatis -->
-  <nav role="navigation" aria-label="Daftar Kategori" style="margin-top: 10px;">
-    <strong>Kategori:</strong>
-    <ul style="list-style: none; padding-left: 0;">
-      {% assign kategori_unik = site.categories %}
-      {% for kategori in kategori_unik %}
-        <li><a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
-
   <!-- 🎨 Interaksi Menu Toggle -->
   <style>
     #menu-toggle.open span:nth-child(1) {
@@ -63,6 +53,9 @@
 
     #main-nav.show {
       display: flex !important;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
       animation: slideDown 0.3s ease-out;
     }
 
