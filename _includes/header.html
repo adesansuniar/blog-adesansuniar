@@ -1,29 +1,25 @@
+
 <header itemscope itemtype="https://schema.org/WPHeader"
-        style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; text-align: center; font-family: 'Segoe UI', sans-serif; position: relative;">
+        style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; font-family: 'Segoe UI', sans-serif;">
 
   <!-- 🖼️ Banner -->
-  <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
-       alt="Banner Blog Ade Sansuniar"
-       loading="lazy" width="1000" height="250"
-       style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
-
-  <!-- ☰ Hamburger Menu -->
-  <div id="menu-toggle" aria-label="Tombol Menu" tabindex="0"
-       style="width: 30px; height: 25px; margin: 10px auto; cursor: pointer; position: relative;">
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 0;"></span>
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 11px;"></span>
-    <span style="background: #333; height: 3px; width: 100%; position: absolute; top: 22px;"></span>
+  <div style="text-align: center;">
+    <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
+         alt="Banner Blog Ade Sansuniar"
+         loading="lazy"
+         style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
   </div>
 
   <!-- 🧭 Navigasi Utama -->
-  <nav id="main-nav" role="navigation" aria-label="Navigasi utama" style="display: none;">
+  <nav id="main-nav" role="navigation" aria-label="Navigasi utama"
+       style="text-align: center; margin-bottom: 10px;">
     {% include nav.html %}
   </nav>
 
   <!-- 🍞 Breadcrumb (hanya jika bukan halaman beranda) -->
   {% unless page.url == "/" %}
     <nav role="navigation" aria-label="Breadcrumb"
-         style="font-size: 0.9em; margin-top: 15px; color: #555;">
+         style="font-size: 0.9em; text-align: center; color: #555;">
       <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
       {% if page.categories %}
         {% for category in page.categories %}
@@ -39,56 +35,16 @@
   {% endunless %}
 
   <!-- 📁 Daftar Kategori Otomatis -->
-  <nav role="navigation" aria-label="Daftar Kategori" style="margin-top: 10px;">
+  <nav role="navigation" aria-label="Daftar Kategori"
+       style="margin-top: 10px; text-align: center;">
     <strong>Kategori:</strong>
-    <ul style="list-style: none; padding-left: 0;">
+    <ul style="list-style: none; padding-left: 0; display: inline-block;">
       {% assign kategori_unik = site.categories %}
       {% for kategori in kategori_unik %}
-        <li><a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a></li>
+        <li style="display: inline; margin: 0 8px;">
+          <a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a>
+        </li>
       {% endfor %}
     </ul>
   </nav>
-
-  <!-- 🎨 Interaksi Menu Toggle -->
-  <style>
-    #menu-toggle.open span:nth-child(1) {
-      transform: rotate(45deg);
-      top: 11px;
-    }
-    #menu-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    #menu-toggle.open span:nth-child(3) {
-      transform: rotate(-45deg);
-      top: 11px;
-    }
-
-    #main-nav.show {
-      display: flex !important;
-      animation: slideDown 0.3s ease-out;
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.getElementById("menu-toggle");
-      const nav = document.getElementById("main-nav");
-
-      toggle.addEventListener("click", function () {
-        toggle.classList.toggle("open");
-        nav.classList.toggle("show");
-      });
-
-      toggle.addEventListener("keypress", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          toggle.click();
-        }
-      });
-    });
-  </script>
 </header>
