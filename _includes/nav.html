@@ -1,7 +1,26 @@
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-  <li><a href="{{ '/' | relative_url }}">Beranda</a></li>
-  <li><a href="{{ '/about/' | relative_url }}">Tentang</a></li>
-  <li><a href="{{ '/katalog/' | relative_url }}">Katalog</a></li>
-  <li><a href="{{ '/search/' | relative_url }}">Cari</a></li>
-  <li><a href="https://wa.me/6288801758800">Kontak</a></li>
+<ul role="menubar"
+    style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
+
+  <li role="none">
+    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda">Beranda</a>
+  </li>
+
+  <li role="none">
+    <a role="menuitem" href="{{ '/about/' | relative_url }}" aria-label="Tentang Blog">Tentang</a>
+  </li>
+
+  <li role="none">
+    <a role="menuitem" href="{{ '/katalog/' | relative_url }}" aria-label="Katalog Produk">Katalog</a>
+  </li>
+
+  <li role="none">
+    <a role="menuitem" href="{{ '/search/' | relative_url }}" aria-label="Pencarian Konten">Cari</a>
+  </li>
+
+  <li role="none">
+    <a role="menuitem" href="https://wa.me/6288801758800" target="_blank" rel="noopener" aria-label="Kontak WhatsApp">
+      Kontak
+    </a>
+  </li>
+
 </ul>
