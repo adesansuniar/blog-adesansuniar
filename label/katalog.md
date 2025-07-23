@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Label: Katalog"
+title: "Katalog"
 permalink: /label/katalog/
 description: "Kumpulan artikel katalog busana, produk unggulan, dan inspirasi menjahit dari Penjahit Alamanda."
 lang: "id"
