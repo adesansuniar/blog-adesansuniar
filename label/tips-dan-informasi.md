@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Label: Tips dan Informasi"
+title: "Tips dan Informasi"
 permalink: /label/tips-dan-informasi/
 description: "Artikel pilihan seputar tips praktis, edukasi menjahit, dan informasi inspiratif dari blog Penjahit Alamanda."
 lang: "id"
