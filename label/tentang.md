@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Label: Tentang"
+title: "Tentang"
 permalink: /label/tentang/
 description: "Artikel dengan label Tentang: cerita di balik brand, visi usaha, dan profil Penjahit Alamanda."
 lang: "id"
