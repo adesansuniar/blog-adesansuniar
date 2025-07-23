@@ -196,3 +196,9 @@ a:hover {
     padding: 10px;
   }
 }
+.banner-wrapper img {
+  aspect-ratio: 4 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
