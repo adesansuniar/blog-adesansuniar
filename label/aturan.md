@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Label: Aturan"
+title: "Aturan"
 permalink: /label/aturan/
 description: "Kumpulan artikel bertema aturan, etika bisnis keluarga, dan pedoman praktis agar usaha berjalan tertib dan profesional."
 lang: "id"
