@@ -1,8 +1,7 @@
-
 <header itemscope itemtype="https://schema.org/WPHeader"
         style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; font-family: 'Segoe UI', sans-serif;">
 
-  <!-- 🖼️ Banner -->
+  <!-- 🖼️ Banner Blog -->
   <div style="text-align: center;">
     <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
          alt="Banner Blog Ade Sansuniar"
@@ -10,41 +9,11 @@
          style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
   </div>
 
-  <!-- 🧭 Navigasi Utama -->
+  <!-- 🧭 Navigasi Utama (dari nav.html) -->
   <nav id="main-nav" role="navigation" aria-label="Navigasi utama"
        style="text-align: center; margin-bottom: 10px;">
     {% include nav.html %}
   </nav>
 
-  <!-- 🍞 Breadcrumb (hanya jika bukan halaman beranda) -->
-  {% unless page.url == "/" %}
-    <nav role="navigation" aria-label="Breadcrumb"
-         style="font-size: 0.9em; text-align: center; color: #555;">
-      <span><a href="{{ '/' | relative_url }}" style="color: #0077cc;">Beranda</a></span>
-      {% if page.categories %}
-        {% for category in page.categories %}
-          &nbsp;›&nbsp;<a href="/kategori.html#{{ category | slugify }}" style="color: #0077cc;">
-            {{ category | capitalize }}
-          </a>
-        {% endfor %}
-      {% endif %}
-      {% if page.title %}
-        &nbsp;›&nbsp;<strong>{{ page.title }}</strong>
-      {% endif %}
-    </nav>
-  {% endunless %}
-
-  <!-- 📁 Daftar Kategori Otomatis -->
-  <nav role="navigation" aria-label="Daftar Kategori"
-       style="margin-top: 10px; text-align: center;">
-    <strong>Kategori:</strong>
-    <ul style="list-style: none; padding-left: 0; display: inline-block;">
-      {% assign kategori_unik = site.categories %}
-      {% for kategori in kategori_unik %}
-        <li style="display: inline; margin: 0 8px;">
-          <a href="/kategori.html#{{ kategori[0] | slugify }}">{{ kategori[0] }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
 </header>
+
