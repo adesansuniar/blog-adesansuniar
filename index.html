@@ -12,13 +12,16 @@ lang: "id"
 
   {% assign posts_terbaru = site.posts | sort: "date" | reverse %}
   {% for post in posts_terbaru limit: 10 %}
-    {% assign slug = post.title | slugify %}
-    {% assign thumb = post.image | default: "/assets/images/" | append: slug | append: ".jpg" %}
-
     <article style="margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px;">
-      <a href="{{ post.url | relative_url }}">
-        <img src="{{ thumb | relative_url }}" alt="{{ post.title }}" style="width: 100%; border-radius: 6px; margin-bottom: 12px;">
-      </a>
+
+      <!-- Hanya tampilkan gambar jika image ada -->
+      {% if post.image %}
+        <a href="{{ post.url | relative_url }}">
+          <img src="{{ post.image | relative_url }}"
+               alt="{{ post.title }}"
+               style="width: 100%; border-radius: 6px; margin-bottom: 12px;" />
+        </a>
+      {% endif %}
 
       <h3 style="margin-bottom: 6px;">
         <a href="{{ post.url | relative_url }}" style="color: #2b6777; text-decoration: none;">
@@ -41,10 +44,5 @@ lang: "id"
         → Baca Selengkapnya
       </a>
     </article>
-  <head>
-  {% include head.html %}
-</head>
   {% endfor %}
-  <a href="84bf3793852b4ee6966440bb4090ebe3.txt" download hidden></a>
-{% include featured-post.html %}
 </section>
