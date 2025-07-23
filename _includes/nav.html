@@ -1,26 +1,33 @@
+{% assign static_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
+
 <ul role="menubar"
     style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
 
+  <!-- Beranda manual -->
   <li role="none">
     <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda">Beranda</a>
   </li>
 
-  <li role="none">
-    <a role="menuitem" href="{{ '/about/' | relative_url }}" aria-label="Tentang Blog">Tentang</a>
-  </li>
+  {% for page in static_pages %}
+    {% if page.title and page.permalink != '/' %}
+      <li role="none">
+        <a role="menuitem"
+           href="{{ page.permalink | relative_url }}"
+           aria-label="{{ page.title }}">
+          {{ page.title }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 
+  <!-- Kontak eksternal (WhatsApp) -->
   <li role="none">
-    <a role="menuitem" href="{{ '/katalog/' | relative_url }}" aria-label="Katalog Produk">Katalog</a>
-  </li>
-
-  <li role="none">
-    <a role="menuitem" href="{{ '/search/' | relative_url }}" aria-label="Pencarian Konten">Cari</a>
-  </li>
-
-  <li role="none">
-    <a role="menuitem" href="https://wa.me/6288801758800" target="_blank" rel="noopener" aria-label="Kontak WhatsApp">
+    <a role="menuitem"
+       href="https://wa.me/6288801758800"
+       target="_blank"
+       rel="noopener"
+       aria-label="Kontak WhatsApp">
       Kontak
     </a>
   </li>
-
 </ul>
