@@ -1,48 +1,37 @@
-<!-- 🔝 Tombol Burger -->
-<button class="nav-toggle" aria-label="Buka Menu" aria-expanded="false"
-        style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; margin: 10px auto;">
-  ☰
-</button>
+<!-- Tombol Burger -->
+<button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
 
-<!-- 🧭 Navigasi Burger -->
-<ul class="nav-menu" role="menubar"
-    style="list-style: none; margin: 0 auto; padding: 15px; background-color: #fefefe; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex-direction: column; gap: 12px; display: none; width: 90%; max-width: 300px; border-radius: 6px; z-index: 1000;">
+<!-- Overlay Gelap -->
+<div class="nav-overlay"></div>
 
-  <li><a href="{{ '/' | relative_url }}" class="nav-link nav-box">Beranda</a></li>
+<!-- Menu Navigasi Popup -->
+<nav class="nav-menu">
+  <a href="{{ '/katalog/' | relative_url }}" class="nav-link">Katalog</a>
+  <a href="{{ '/tutorial/' | relative_url }}" class="nav-link">Tutorial</a>
+  <a href="{{ '/faq/' | relative_url }}" class="nav-link">FAQ</a>
+  <a href="{{ '/tentang/' | relative_url }}" class="nav-link">Tentang</a>
+  <a href="https://wa.me/6288801758800" target="_blank" class="nav-link">Kontak via WA</a>
+</nav>
 
-  {% assign nav_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
-  {% for page in nav_pages %}
-    {% if page.title and page.permalink != '/' %}
-      <li><a href="{{ page.permalink | relative_url }}" class="nav-link nav-box">{{ page.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-
-  <li><a href="https://wa.me/6288801758800" class="nav-link nav-box" target="_blank" rel="noopener">Kontak</a></li>
-</ul>
-
-<!-- 🧠 Script Interaktif -->
+<!-- Script Toggle Menu -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".nav-toggle");
-    const menu = document.querySelector(".nav-menu");
-    const links = document.querySelectorAll(".nav-link");
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.querySelector(".nav-menu");
+  const overlay = document.querySelector(".nav-overlay");
 
-    if (toggle && menu) {
-      toggle.addEventListener("click", function () {
-        menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        toggle.setAttribute("aria-expanded", menu.style.display === "flex");
-      });
-    }
+  function closeMenu() {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
 
-    links.forEach(link => {
-      link.addEventListener("click", function () {
-        links.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-        menu.style.display = "none";
-        toggle.setAttribute("aria-expanded", false);
-      });
-    });
+  toggle.addEventListener("click", function() {
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
   });
+
+  overlay.addEventListener("click", closeMenu);
+});
 </script>
 
     
