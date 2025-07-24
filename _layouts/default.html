@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" itemscope itemtype="https://schema.org/WebPage">
+
   {% if page.head_mode == "lite" and site.head_lite_active %}
     {% include head-lite.html %}
   {% else %}
@@ -7,9 +8,25 @@
   {% endif %}
 
   <body style="margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;">
-    
-    <!-- 🔰 HEADER (dengan Banner, Navigasi, Breadcrumb, dsb.) -->
-    {% include header.html %}
+
+    <!-- 🔰 HEADER -->
+    <header itemscope itemtype="https://schema.org/WPHeader"
+            style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0;">
+      
+      <!-- Banner -->
+      <div style="text-align: center;">
+        <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
+             alt="Banner Blog Ade Sansuniar"
+             loading="lazy"
+             width="1000"
+             height="250"
+             style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
+      </div>
+
+      <!-- 🧭 Navigasi Burger -->
+      {% include nav-burger.html %}
+
+    </header>
 
     <!-- 📑 KONTEN UTAMA -->
     <main role="main"
@@ -28,5 +45,6 @@
     {% if site.firebase_rating_active %}
       {% include firebase-rating.html %}
     {% endif %}
+
   </body>
 </html>
