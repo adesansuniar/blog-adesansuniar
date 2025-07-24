@@ -44,3 +44,25 @@ Temukan produk jahit eksklusif buatan Penjahit Alamanda yang bisa langsung dipes
 - Semua produk dijahit oleh tim Penjahit Alamanda dengan standar presisi dan desain yang bisa disesuaikan.  
 - Pembayaran bisa dilakukan setelah diskusi desain via WhatsApp.  
 - Gambar produk akan segera ditampilkan dalam versi grid visual.
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Katalog Busana Penjahit Alamanda",
+  "description": "Kumpulan artikel katalog produk unggulan dan inspirasi menjahit.",
+  "url": "{{ page.url | absolute_url }}",
+  "inLanguage": "id-ID",
+  "numberOfItems": {{ katalog_posts.size }},
+  "itemListElement": [
+    {% assign katalog_posts = site.posts | where_exp: "p", "p.tags contains 'katalog'" %}
+    {% for post in katalog_posts %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "url": "{{ post.url | absolute_url }}",
+      "name": "{{ post.title | strip_newlines | strip | escape }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
