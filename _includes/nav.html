@@ -1,29 +1,15 @@
-<nav role="navigation" class="site-nav">
-  <!-- Tombol burger -->
-  <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
-    ☰
-  </button>
+<div class="burger" aria-label="Menu Navigasi" tabindex="0">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
-  <!-- Container menu -->
-  <ul class="nav-menu" role="menubar">
-    <!-- Beranda -->
-    <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
-
-    {% for page in static_pages %}
-      {% if page.title and page.permalink != '/' %}
-        <li>
-          <a href="{{ page.permalink | relative_url }}"
-             class="nav-link">
-            {{ page.title }}
-          </a>
-        </li>
-      {% endif %}
-    {% endfor %}
-
-    <!-- Kontak -->
-    <li>
-      <a href="https://wa.me/6288801758800" target="_blank"
-         rel="noopener" class="nav-link">Kontak</a>
-    </li>
+<nav class="main-nav" role="navigation" aria-label="Navigasi utama">
+  <ul>
+    <li><a href="{{ '/' | relative_url }}">Beranda</a></li>
+    <li><a href="{{ '/tentang/' | relative_url }}">Tentang</a></li>
+    <li><a href="{{ '/katalog/' | relative_url }}">Katalog</a></li>
+    <li><a href="{{ '/search/' | relative_url }}">Cari</a></li>
+    <li><a href="https://wa.me/6288801758800" target="_blank">Kontak</a></li>
   </ul>
 </nav>
