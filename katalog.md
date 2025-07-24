@@ -1,4 +1,4 @@
----
+j---
 layout: page
 title: Katalog Produk
 permalink: /katalog/
@@ -44,4 +44,4 @@ Temukan produk jahit eksklusif buatan Penjahit Alamanda yang bisa langsung dipes
 - Semua produk dijahit oleh tim Penjahit Alamanda dengan standar presisi dan desain yang bisa disesuaikan.  
 - Pembayaran bisa dilakukan setelah diskusi desain via WhatsApp.  
 - Gambar produk akan segera ditampilkan dalam versi grid visual.
-{% include jsonld-katalog.html %}
+
