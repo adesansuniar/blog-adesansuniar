@@ -1,24 +1,12 @@
-<ul class="nav-ringkas" role="menubar"
-    style="list-style: none; margin: 0 auto; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
-  
-  <!-- Beranda -->
-  <li role="none">
-    <a role="menuitem" href="{{ '/' | relative_url }}" class="nav-link nav-box" aria-label="Beranda">Beranda</a>
-  </li>
+<ul class="main-nav-menu" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0; list-style: none;">
+  <li><a href="{{ '/' | relative_url }}" class="nav-link nav-box">Beranda</a></li>
 
-  <!-- Katalog -->
-  <li role="none">
-    <a role="menuitem" href="{{ '/katalog/' | relative_url }}" class="nav-link nav-box" aria-label="Katalog">Katalog</a>
-  </li>
+  {% assign nav_pages = site.pages | where_exp: "p", "p.layout == 'page'" %}
+  {% for page in nav_pages %}
+    {% if page.title and page.permalink != '/' %}
+      <li><a href="{{ page.permalink | relative_url }}" class="nav-link nav-box">{{ page.title }}</a></li>
+    {% endif %}
+  {% endfor %}
 
-  <!-- Kontak -->
-  <li role="none">
-    <a role="menuitem"
-       href="https://wa.me/6288801758800"
-       target="_blank"
-       rel="noopener"
-       class="nav-link nav-box"
-       aria-label="Kontak WhatsApp">Kontak</a>
-  </li>
+  <li><a href="https://wa.me/6288801758800" target="_blank" rel="noopener" class="nav-link nav-box">Kontak</a></li>
 </ul>
-
