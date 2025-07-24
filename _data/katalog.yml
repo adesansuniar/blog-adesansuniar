@@ -1,0 +1,17 @@
+- name: "Gamis Batik Outdoor"
+  price: 250000
+  desc: "Gamis kasual berbahan batik parang kombinasi katun."
+  sku: "gamis-batik-outdoor"
+  link: "https://wa.me/6288801758800"
+
+- name: "Outer Ringan Motif Batik"
+  price: 180000
+  desc: "Outer santai berbahan batik halus."
+  sku: "outer-batik-ringan"
+  link: "https://wa.me/6288801758800"
+
+- name: "Seragam Sekolah SMA Custom"
+  price: 160000
+  desc: "Seragam presisi dengan bordir nama."
+  sku: "seragam-sma-custom"
+  link: "https://wa.me/6288801758800"
