@@ -252,8 +252,30 @@ nav a.active {
     display: flex;
   }
 }
+/* 🍱 Navigasi Berkotak */
+.nav-box {
+  display: block;
+  background-color: #f2f7fa;
+  border: 1px solid #ccdbe5;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+}
 
-
+.nav-box:hover {
+  background-color: #e0f0f8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  color: #b8004b;
+}
+@media (max-width: 768px) {
+  .nav-box {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
 
 
 
