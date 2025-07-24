@@ -1,77 +1,51 @@
-<nav id="main-nav" role="navigation" aria-label="Navigasi utama"
-     style="text-align: center; background-color: #f7f7f7; padding: 10px 0;">
-  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-    <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
-    <li><a href="{{ '/tentang/' | relative_url }}" class="nav-link">Tentang</a></li>
-    <li><a href="{{ '/katalog/' | relative_url }}" class="nav-link">Katalog</a></li>
-    <li><a href="{{ '/search/' | relative_url }}" class="nav-link">Cari</a></li>
-    <li><a href="https://wa.me/6288801758800" class="nav-link">Kontak</a></li>
-    <li class="dropdown">
-      <a href="#" class="nav-link dropdown-toggle" onclick="return false;">Kategori ▼</a>
-      <ul class="dropdown-menu">
-        <li><a href="/label/aturan/" class="nav-link">Aturan</a></li>
-        <li><a href="/label/tips/" class="nav-link">Tips</a></li>
-        <li><a href="/label/fashion/" class="nav-link">Fashion</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav><style>
-  .nav-link {
-    text-decoration: none;
-    color: #2b6777;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 8px 14px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
+<!DOCTYPE html>
+<html lang="id" itemscope itemtype="https://schema.org/WebPage">
 
-  .nav-link:hover {
-    background-color: #e0f0ff;
-  }
+  {% if page.head_mode == "lite" and site.head_lite_active %}
+    {% include head-lite.html %}
+  {% else %}
+    {% include head.html %}
+  {% endif %}
 
-  .nav-link.active {
-    background-color: #2b6777;
-    color: #fff !important;
-  }
+  <body style="margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;">
 
-  .dropdown {
-    position: relative;
-  }
+    <!-- 🔰 HEADER -->
+    <header itemscope itemtype="https://schema.org/WPHeader"
+            style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0;">
+      
+      <!-- Banner -->
+      <div style="text-align: center;">
+        <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
+             alt="Banner Blog Ade Sansuniar"
+             loading="lazy"
+             width="1000"
+             height="250"
+             style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
+      </div>
 
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    background: #fff;
-    list-style: none;
-    padding: 10px;
-    border: 1px solid #ccc;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-  }
+      <!-- 🧭 Navigasi Burger -->
+      {% include nav-burger.html %}
 
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
+    </header>
 
-  .dropdown-menu li {
-    margin-bottom: 10px;
-  }
+    <!-- 📑 KONTEN UTAMA -->
+    <main role="main"
+          style="max-width: 960px; margin: auto; padding: 20px; line-height: 1.7; text-align: justify;">
+      {{ content }}
 
-  .dropdown-menu li:last-child {
-    margin-bottom: 0;
-  }
-</style><script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll(".nav-link");
-    navLinks.forEach(link => {
-      const href = link.getAttribute("href");
-      if (currentPath === href || currentPath.startsWith(href)) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
+      {% if page.layout == "post" %}
+        {% include giscus.html %}
+        {% include rating.html %}
+      {% endif %}
+    </main>
+
+    <!-- 🔚 FOOTER -->
+    {% include footer.html %}
+
+    {% if site.firebase_rating_active %}
+      {% include firebase-rating.html %}
+    {% endif %}
+
+  </body>
+</html>
     
