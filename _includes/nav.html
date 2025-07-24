@@ -1,33 +1,29 @@
-{% assign static_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
+<nav role="navigation" class="site-nav">
+  <!-- Tombol burger -->
+  <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+    ☰
+  </button>
 
-<ul role="menubar"
-    style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
+  <!-- Container menu -->
+  <ul class="nav-menu" role="menubar">
+    <!-- Beranda -->
+    <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
 
-  <!-- Beranda manual -->
-  <li role="none">
-    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda">Beranda</a>
-  </li>
+    {% for page in static_pages %}
+      {% if page.title and page.permalink != '/' %}
+        <li>
+          <a href="{{ page.permalink | relative_url }}"
+             class="nav-link">
+            {{ page.title }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
 
-  {% for page in static_pages %}
-    {% if page.title and page.permalink != '/' %}
-      <li role="none">
-        <a role="menuitem"
-           href="{{ page.permalink | relative_url }}"
-           aria-label="{{ page.title }}">
-          {{ page.title }}
-        </a>
-      </li>
-    {% endif %}
-  {% endfor %}
-
-  <!-- Kontak eksternal (WhatsApp) -->
-  <li role="none">
-    <a role="menuitem"
-       href="https://wa.me/6288801758800"
-       target="_blank"
-       rel="noopener"
-       aria-label="Kontak WhatsApp">
-      Kontak
-    </a>
-  </li>
-</ul>
+    <!-- Kontak -->
+    <li>
+      <a href="https://wa.me/6288801758800" target="_blank"
+         rel="noopener" class="nav-link">Kontak</a>
+    </li>
+  </ul>
+</nav>
