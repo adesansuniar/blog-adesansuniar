@@ -263,7 +263,68 @@ a:hover {
   height: auto;
   object-fit: cover;
 }
+.nav-toggle {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
 
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-menu.active {
+  transform: translateX(0);
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 16px;
+  color: #444;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-link:hover {
+  background: #eee;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 
 
 
