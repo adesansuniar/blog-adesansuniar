@@ -1,26 +1,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Katalog Produk Penjahit Alamanda",
-  "description": "Daftar produk handmade dari Penjahit Alamanda",
-  "numberOfItems": {{ site.data.katalog | size }},
-  "itemListElement": [
-    {% for item in site.data.katalog %}
-      {
-        "@type": "Product",
-        "name": "{{ item.name }}",
-        "description": "{{ item.desc }}",
-        "sku": "{{ item.sku }}",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "IDR",
-          "price": "{{ item.price }}",
-          "availability": "https://schema.org/InStock",
-          "url": "{{ item.link }}"
-        }
-      }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ]
+  "@type": "Service",
+  "name": "Layanan Jahit Custom Penjahit Alamanda",
+  "serviceType": "Jahit Gamis, Seragam, Outer Batik",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Penjahit Alamanda",
+    "url": "https://penjahitalamanda.com",
+    "image": "https://penjahitalamanda.com/assets/img/logoblogade.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tenggumung Baru Selatan Gg. V/24",
+      "addressLocality": "Surabaya",
+      "addressRegion": "Jawa Timur",
+      "postalCode": "60153",
+      "addressCountry": "ID"
+    },
+    "telephone": "+6288801758800"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Surabaya, Jawa Timur"
+  },
+  "description": "Penjahit Alamanda menyediakan layanan jahit custom berkualitas tinggi untuk gamis, outer, dan seragam sekolah dengan desain eksklusif dan harga terjangkau di Surabaya."
 }
 </script>
