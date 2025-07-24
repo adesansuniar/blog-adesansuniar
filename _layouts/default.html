@@ -30,7 +30,11 @@
 
       <!-- 🍔 Navigasi Burger Mobile -->
       {% include nav-burger.html %}
-      {% include nav-ringkas-gadget.html %}
+
+      <!-- 📱 Navigasi Ringkas Gadget ➜ hanya tampil di Beranda -->
+      {% if page.url == "/" %}
+        {% include nav-ringkas-gadget.html %}
+      {% endif %}
 
     </header>
 
