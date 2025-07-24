@@ -1,51 +1,49 @@
-<nav role="navigation" class="site-nav" aria-label="Navigasi utama">
-  <!-- Tombol burger -->
-  <button class="nav-toggle" aria-label="Buka Menu" aria-expanded="false" style="background: none; border: none; font-size: 1.5em; cursor: pointer; margin-bottom: 10px;">
-    ☰
-  </button>
+<!-- 🔝 Tombol Burger -->
+<button class="nav-toggle" aria-label="Buka Menu" aria-expanded="false"
+        style="background: none; border: none; font-size: 1.6em; cursor: pointer;">
+  ☰
+</button>
 
-  <!-- Menu Navigasi -->
-  <ul class="nav-menu" role="menubar">
-    <!-- Beranda -->
-    <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
+<!-- 🧭 Navigasi Lengkap (tersembunyi di mobile, muncul saat klik burger) -->
+<ul class="nav-menu" role="menubar"
+    style="list-style: none; margin: 0; padding: 15px; background-color: #fefefe; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex-direction: column; gap: 12px; display: none; position: absolute; top: 50px; left: 15px; z-index: 1000; width: 250px; border-radius: 6px;">
 
-    {% assign static_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
-    {% for page in static_pages %}
-      {% if page.title and page.permalink != '/' %}
-        <li>
-          <a href="{{ page.permalink | relative_url }}" class="nav-link">
-            {{ page.title }}
-          </a>
-        </li>
-      {% endif %}
-    {% endfor %}
+  <!-- Navigasi panjang: komunitas, edukasi, referensi -->
+  <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
 
-    <!-- Kontak -->
-    <li>
-      <a href="https://wa.me/6288801758800" target="_blank" rel="noopener" class="nav-link">Kontak</a>
-    </li>
-  </ul>
+  {% assign nav_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
+  {% for page in nav_pages %}
+    {% if page.title and page.permalink != '/' %}
+      <li><a href="{{ page.permalink | relative_url }}" class="nav-link">{{ page.title }}</a></li>
+    {% endif %}
+  {% endfor %}
 
-  <!-- Burger Script Inline -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.querySelector(".nav-toggle");
-      const menu = document.querySelector(".nav-menu");
-      const links = document.querySelectorAll(".nav-link");
+  <!-- Eksternal -->
+  <li><a href="https://wa.me/6288801758800" class="nav-link" target="_blank" rel="noopener">Kontak</a></li>
+</ul>
 
-      if (toggle && menu) {
-        toggle.addEventListener("click", function () {
-          menu.classList.toggle("active");
-          toggle.setAttribute("aria-expanded", menu.classList.contains("active"));
-        });
-      }
+<!-- 🧠 Script Interaktif -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".nav-toggle");
+    const menu = document.querySelector(".nav-menu");
+    const links = document.querySelectorAll(".nav-link");
 
-      links.forEach(link => {
-        link.addEventListener("click", function () {
-          links.forEach(l => l.classList.remove("active"));
-          this.classList.add("active");
-        });
+    if (toggle && menu) {
+      toggle.addEventListener("click", function () {
+        menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        menu.classList.toggle("active");
+        toggle.setAttribute("aria-expanded", menu.classList.contains("active"));
+      });
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", function () {
+        links.forEach(l => l.classList.remove("active"));
+        this.classList.add("active");
+        menu.style.display = "none"; // Tutup menu setelah klik
+        toggle.setAttribute("aria-expanded", false);
       });
     });
-  </script>
-</nav>
+  });
+</script>
