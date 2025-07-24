@@ -1,221 +1,150 @@
-/* Reset */
+/* 🌐 Reset */
 *, *::before, *::after {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Root */
+/* 🔠 Font Root */
 html {
-scroll-behavior: smooth;
-font-size: 24px;
+  scroll-behavior: smooth;
+  font-size: 18px; /* Ukuran dasar optimal SEO dan UX */
 }
 
-/* Body */
+/* 🩶 Body */
 body {
-font-family: 'Segoe UI', sans-serif;
-background-color: #fdfbf9;
-color: #2d2d2d;
-line-height: 1.8;
-padding: 24px;
-max-width: 960px;
-margin: auto;
-word-wrap: break-word;
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  background-color: #fdfbf9;
+  color: #1a1a1a;
+  line-height: 1.8;
+  padding: 24px;
+  max-width: 960px;
+  margin: auto;
+  word-wrap: break-word;
 }
 
-/* Heading */
+/* 📝 Heading */
 h1, h2, h3, h4, h5, h6 {
-color: #2c3e50;
-margin-top: 32px;
-margin-bottom: 16px;
-line-height: 1.3;
+  color: #1c3c4d;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  line-height: 1.3;
 }
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.2em; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.3em; }
 
-/* Paragraf */
+/* 🧾 Paragraf */
 p {
-margin-bottom: 20px;
-text-align: justify;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-size: 1.05em;
 }
 
-/* Gambar Lazy Load /
+/* 🖼️ Gambar Lazy Load */
 img {
-max-width: 100%;
-height: auto;
-display: block;
-margin-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
 }
 img[loading="lazy"] {
-filter: blur(4px);
-transition: filter 0.3s ease;
+  filter: blur(4px);
+  transition: filter 0.3s ease;
 }
-img[loading="lazy"]:not([src="data:image"]) {
-filter: blur(0);
+img[loading="lazy"]:not([src*="data:image"]) {
+  filter: blur(0);
 }
 
-/* Header */
+/* 🧭 Header */
 header {
-text-align: center;
-background-color: #eef1f0;
-border-bottom: 2px solid #d0d0d0;
-padding: 40px 20px;
-margin-bottom: 30px;
+  text-align: center;
+  background-color: #f0f4f8;
+  border-bottom: 2px solid #ccc;
+  padding: 40px 20px;
+  margin-bottom: 30px;
 }
 header h1 {
-font-size: 2em;
-font-weight: bold;
-color: #1c3c4d;
-letter-spacing: 1px;
-text-transform: uppercase;
-margin-bottom: 5px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #1c3c4d;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 header p {
-font-size: 0.9em;
-color: #666;
-font-style: italic;
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
 }
 
-/* Navigasi */
+/* 🧭 Navigasi */
 nav {
-margin-top: 15px;
+  margin-top: 15px;
 }
 nav a {
-margin: 0 12px;
-font-weight: 600;
-font-size: 1em;
-color: #2b6777;
-text-decoration: none;
-transition: 0.3s ease;
+  margin: 0 12px;
+  font-weight: 600;
+  font-size: 1em;
+  color: #1565C0;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 nav a:hover {
-color: #1c3c4d;
-text-decoration: underline;
+  color: #004080;
+  text-decoration: underline;
 }
-
-/* Navigasi Utama */
-.main-nav ul {
-list-style: none;
-padding: 0;
-margin: 0;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 12px;
-}
-.main-nav li {
-display: inline;
-}
-.main-nav a {
-color: #2b6777;
-font-weight: bold;
-padding: 6px 14px;
-border-radius: 5px;
-}
-.main-nav a:hover {
-background-color: #e0f0f5;
-}
-
-/* Konten Utama */
-main {
-background: #fff;
-padding: 24px;
-border-radius: 8px;
-margin-bottom: 50px;
-}
-.page-content,
-.post-content {
-text-align: justify;
-line-height: 1.8;
-font-size: 1rem;
-}
-ul, ol {
-margin-bottom: 20px;
-padding-left: 24px;
-}
-
-/* Footer */
-footer {
-background-color: #f2f2f2;
-text-align: center;
-padding: 24px 15px;
-font-size: 0.85em;
-color: #777;
-border-top: 1px solid #ccc;
-line-height: 1.5;
-}
-footer a {
-color: #2b6777;
-text-decoration: none;
-}
-footer a:hover {
-color: #1e4a5f;
-text-decoration: underline;
-}
-
-/* Link */
-a {
-color: #2b6777;
-text-decoration: none;
-}
-a:hover {
-color: #1e4a5f;
-text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-body {
-padding: 15px;
-}
-nav a {
-display: block;
-margin: 8px 0;
-text-align: center;
-}
-header h1 {
-font-size: 1.6em;
-}
-main {
-padding: 18px;
-}
-footer {
-font-size: 0.8em;
-}
-}
-
-@media (max-width: 480px) {
-.main-nav ul {
-flex-direction: column;
-align-items: center;
-}
-.main-nav a {
-width: 100%;
-text-align: center;
-padding: 10px;
-}
-}
-.banner-wrapper img {
-aspect-ratio: 4 / 1;
-width: 100%;
-height: auto;
-object-fit: cover;
-}
-/* ✅ Ukuran Font Navigasi Lebih Jelas */
-.main-nav a {
-  font-size: 1.1em; /* sebelumnya 1em */
-}
-
-/* ✅ Highlight Menu Aktif */
-.main-nav a.active,
-nav a.active {
-  background-color: #d8f0f5;
-  color: #1c3c4d;
+nav a.active,
+.main-nav a.active {
+  background-color: #d0ecf7;
+  color: #004080;
   font-weight: 700;
 }
 
-/* ✅ Navigasi Burger (Mobile) */
+/* 🔷 Navigasi Utama */
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.main-nav li {
+  display: inline;
+}
+.main-nav a {
+  color: #1565C0;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 1.05em;
+}
+.main-nav a:hover {
+  background-color: #e0f0f8;
+}
+
+/* 📦 Navigasi Berkotak */
+.nav-box {
+  display: block;
+  background-color: #f2f7fa;
+  border: 1px solid #ccdbe5;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+}
+.nav-box:hover {
+  background-color: #e0f0f8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  color: #b8004b;
+}
+
+/* 🍔 Burger Navigation */
 .burger {
   display: none;
   flex-direction: column;
@@ -225,7 +154,6 @@ nav a.active {
   cursor: pointer;
   margin: 10px auto;
 }
-
 .burger span {
   height: 3px;
   background: #2b6777;
@@ -233,7 +161,76 @@ nav a.active {
   transition: all 0.3s ease;
 }
 
+/* 📄 Konten Utama */
+main {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+.page-content,
+.post-content {
+  text-align: justify;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+ul, ol {
+  margin-bottom: 20px;
+  padding-left: 24px;
+}
+
+/* 👣 Footer */
+footer {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 24px 15px;
+  font-size: 0.85em;
+  color: #777;
+  border-top: 1px solid #ccc;
+  line-height: 1.5;
+}
+footer a {
+  color: #1565C0;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+
+/* 🔗 Link Umum */
+a {
+  color: #1565C0;
+  text-decoration: none;
+}
+a:hover {
+  color: #004080;
+  text-decoration: underline;
+}
+
+/* 📱 Responsif */
 @media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  body {
+    padding: 15px;
+  }
+  nav a {
+    display: block;
+    margin: 8px 0;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 1.6em;
+  }
+  main {
+    padding: 18px;
+  }
+  footer {
+    font-size: 0.8em;
+  }
+
   .burger {
     display: flex;
   }
@@ -251,31 +248,22 @@ nav a.active {
   .main-nav ul.show {
     display: flex;
   }
-}
-/* 🍱 Navigasi Berkotak */
-.nav-box {
-  display: block;
-  background-color: #f2f7fa;
-  border: 1px solid #ccdbe5;
-  padding: 10px 16px;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-weight: 600;
-}
 
-.nav-box:hover {
-  background-color: #e0f0f8;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  color: #b8004b;
-}
-@media (max-width: 768px) {
   .nav-box {
     text-align: center;
     width: 100%;
     margin-bottom: 12px;
   }
 }
+
+/* 🖼️ Banner */
+.banner-wrapper img {
+  aspect-ratio: 4 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 
 
 
