@@ -325,6 +325,20 @@ a:hover {
   opacity: 1;
   visibility: visible;
 }
+.nav-box {
+  padding: 10px 16px;
+  background: #f4f4f4;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background 0.2s;
+}
 
+.nav-box:hover {
+  background: #e0e0e0;
+}
 
 
