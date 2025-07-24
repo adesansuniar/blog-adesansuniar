@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Katalog Produk
+title: "Katalog Produk"
 permalink: /katalog/
 tags: [katalog, produk, fashion, handmade]
 description: Kumpulan produk jahitan handmade seperti gamis batik, outer santai, dan seragam custom buatan Penjahit Alamanda.
@@ -12,32 +12,14 @@ Temukan produk jahit eksklusif buatan Penjahit Alamanda yang bisa langsung dipes
 
 ---
 
-### 🧵 Gamis Batik Outdoor  
-💸 **Harga:** Rp250.000  
-📌 **Deskripsi:** Gamis kasual berbahan batik parang kombinasi katun, cocok untuk aktivitas luar ruang.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
+{% for item in site.data.katalog %}
+### 🧵 {{ item.name }}  
+💸 **Harga:** Rp{{ item.price | divided_by: 1 | prepend: '' | replace: ".0", "" }}  
+📌 **Deskripsi:** {{ item.desc }}  
+👉 [Pesan via WhatsApp]({{ item.link }})
 ---
 
-### 🧣 Outer Ringan Motif Batik  
-💸 **Harga:** Rp180.000  
-📌 **Deskripsi:** Outer layer santai berbahan batik halus, cocok dipadukan dengan kaos polos.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
----
-
-### 🏫 Seragam Sekolah SMA Custom  
-💸 **Harga:** Rp160.000 / stel  
-📌 **Deskripsi:** Seragam jahitan rapi dan presisi, bisa request nama bordir.  
-👉 [Pesan via WhatsApp](https://wa.me/6288801758800)
-
----
-
-### 🎨 Request Desain Khusus  
-💬 Ingin produk yang lebih personal atau sesuai acara khusus?  
-👉 [Klik untuk Konsultasi Gratis](https://wa.me/6288801758800)
-
----
+{% endfor %}
 
 ## 🎯 Catatan
 
@@ -45,3 +27,4 @@ Temukan produk jahit eksklusif buatan Penjahit Alamanda yang bisa langsung dipes
 - Pembayaran bisa dilakukan setelah diskusi desain via WhatsApp.  
 - Gambar produk akan segera ditampilkan dalam versi grid visual.
 
+{% include schema-katalog.html %}
