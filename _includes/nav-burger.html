@@ -1,0 +1,51 @@
+<nav role="navigation" class="site-nav" aria-label="Navigasi utama">
+  <!-- Tombol burger -->
+  <button class="nav-toggle" aria-label="Buka Menu" aria-expanded="false" style="background: none; border: none; font-size: 1.5em; cursor: pointer; margin-bottom: 10px;">
+    ☰
+  </button>
+
+  <!-- Menu Navigasi -->
+  <ul class="nav-menu" role="menubar">
+    <!-- Beranda -->
+    <li><a href="{{ '/' | relative_url }}" class="nav-link">Beranda</a></li>
+
+    {% assign static_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
+    {% for page in static_pages %}
+      {% if page.title and page.permalink != '/' %}
+        <li>
+          <a href="{{ page.permalink | relative_url }}" class="nav-link">
+            {{ page.title }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    <!-- Kontak -->
+    <li>
+      <a href="https://wa.me/6288801758800" target="_blank" rel="noopener" class="nav-link">Kontak</a>
+    </li>
+  </ul>
+
+  <!-- Burger Script Inline -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".nav-toggle");
+      const menu = document.querySelector(".nav-menu");
+      const links = document.querySelectorAll(".nav-link");
+
+      if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+          menu.classList.toggle("active");
+          toggle.setAttribute("aria-expanded", menu.classList.contains("active"));
+        });
+      }
+
+      links.forEach(link => {
+        link.addEventListener("click", function () {
+          links.forEach(l => l.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+    });
+  </script>
+</nav>
