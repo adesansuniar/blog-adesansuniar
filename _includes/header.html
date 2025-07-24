@@ -36,3 +36,25 @@
     </a>
   </li>
 </ul>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".main-nav ul");
+
+    if (burger && menu) {
+      burger.addEventListener("click", function () {
+        menu.classList.toggle("show");
+      });
+    }
+
+    // Tambahkan class "active" pada link navigasi yang sesuai halaman
+    const links = document.querySelectorAll("nav a");
+    const current = window.location.pathname;
+
+    links.forEach(link => {
+      if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
