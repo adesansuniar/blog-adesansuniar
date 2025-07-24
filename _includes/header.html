@@ -1,21 +1,38 @@
-<header itemscope itemtype="https://schema.org/WPHeader"
-        style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0; font-family: 'Segoe UI', sans-serif;">
+<!-- Tombol Burger -->
+<button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"
+        style="background:none; border:none; font-size:1.5em; cursor:pointer;">
+  ☰
+</button>
 
-        <!-- 🖼️ Banner Blog -->
-<div style="text-align: center;">
-  <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
-       alt="Banner Blog Ade Sansuniar"
-       loading="lazy"
-       width="1000"
-       height="250"
-       style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
-</div>
+<!-- Navigasi -->
+<ul class="nav-menu" role="menubar"
+    style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
+  
+  <li role="none">
+    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda" class="nav-link">Beranda</a>
+  </li>
 
-  <!-- 🧭 Navigasi Utama (dari nav.html) -->
-  <nav id="main-nav" role="navigation" aria-label="Navigasi utama"
-       style="text-align: center; margin-bottom: 10px;">
-    {% include nav.html %}
-  </nav>
+  {% for page in static_pages %}
+    {% if page.title and page.permalink != '/' %}
+      <li role="none">
+        <a role="menuitem"
+           href="{{ page.permalink | relative_url }}"
+           aria-label="{{ page.title }}"
+           class="nav-link">
+          {{ page.title }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 
-</header>
-
+  <li role="none">
+    <a role="menuitem"
+       href="https://wa.me/6288801758800"
+       target="_blank"
+       rel="noopener"
+       aria-label="Kontak WhatsApp"
+       class="nav-link">
+      Kontak
+    </a>
+  </li>
+</ul>
