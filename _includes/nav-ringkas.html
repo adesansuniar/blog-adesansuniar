@@ -1,12 +1,5 @@
-<ul class="main-nav-menu" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0; list-style: none;">
-  <li><a href="{{ '/' | relative_url }}" class="nav-link nav-box">Beranda</a></li>
-
-  {% assign nav_pages = site.pages | where_exp: "p", "p.layout == 'page'" %}
-  {% for page in nav_pages %}
-    {% if page.title and page.permalink != '/' %}
-      <li><a href="{{ page.permalink | relative_url }}" class="nav-link nav-box">{{ page.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-
-  <li><a href="https://wa.me/6288801758800" target="_blank" rel="noopener" class="nav-link nav-box">Kontak</a></li>
-</ul>
+<div class="nav-ringkas-container" style="display: grid; gap: 14px;">
+  <a href="{{ '/' | relative_url }}" class="nav-box">Beranda</a>
+  <a href="{{ '/katalog/' | relative_url }}" class="nav-box">Katalog</a>
+  <a href="https://wa.me/6288801758800" target="_blank" class="nav-box">Kontak via WA</a>
+</div>
