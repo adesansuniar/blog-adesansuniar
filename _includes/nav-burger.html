@@ -1,14 +1,13 @@
 <!-- 🔝 Tombol Burger -->
 <button class="nav-toggle" aria-label="Buka Menu" aria-expanded="false"
-        style="background: none; border: none; font-size: 3.0em; cursor: pointer;">
+        style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; margin: 10px auto;">
   ☰
 </button>
 
-<!-- 🧭 Navigasi Lengkap (tersembunyi di mobile, muncul saat klik burger) -->
+<!-- 🧭 Navigasi Burger -->
 <ul class="nav-menu" role="menubar"
-    style="list-style: none; margin: 0; padding: 15px; background-color: #fefefe; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex-direction: column; gap: 12px; display: none; position: absolute; top: 50px; left: 15px; z-index: 1000; width: 250px; border-radius: 6px;">
+    style="list-style: none; margin: 0 auto; padding: 15px; background-color: #fefefe; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex-direction: column; gap: 12px; display: none; width: 90%; max-width: 300px; border-radius: 6px; z-index: 1000;">
 
-  <!-- Navigasi panjang: komunitas, edukasi, referensi -->
   <li><a href="{{ '/' | relative_url }}" class="nav-link nav-box">Beranda</a></li>
 
   {% assign nav_pages = site.pages | where_exp: "item", "item.layout == 'page'" %}
@@ -18,7 +17,6 @@
     {% endif %}
   {% endfor %}
 
-  <!-- Eksternal -->
   <li><a href="https://wa.me/6288801758800" class="nav-link nav-box" target="_blank" rel="noopener">Kontak</a></li>
 </ul>
 
@@ -32,8 +30,7 @@
     if (toggle && menu) {
       toggle.addEventListener("click", function () {
         menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        menu.classList.toggle("active");
-        toggle.setAttribute("aria-expanded", menu.classList.contains("active"));
+        toggle.setAttribute("aria-expanded", menu.style.display === "flex");
       });
     }
 
@@ -41,9 +38,10 @@
       link.addEventListener("click", function () {
         links.forEach(l => l.classList.remove("active"));
         this.classList.add("active");
-        menu.style.display = "none"; // Tutup menu setelah klik
+        menu.style.display = "none";
         toggle.setAttribute("aria-expanded", false);
       });
     });
   });
 </script>
+    
