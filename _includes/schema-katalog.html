@@ -23,7 +23,16 @@
     "@type": "Place",
     "name": "Surabaya, Jawa Timur"
   },
-  "description": "Penjahit Alamanda melayani jahitan custom seperti gamis batik, outer santai, dan seragam sekolah. Harga terjangkau, desain bisa disesuaikan kebutuhan pelanggan.",
-  "priceRange": "Rp100.000-Rp200.000"
+  "description": "Penjahit Alamanda melayani jahitan custom seperti gamis batik, outer santai, dan seragam sekolah. Desain bisa disesuaikan kebutuhan pelanggan.",
+  "offers": { // Menggunakan 'offers' untuk harga spesifik
+    "@type": "Offer",
+    "priceCurrency": "IDR",
+    "priceSpecification": { // Digunakan untuk rentang harga
+      "@type": "PriceSpecification",
+      "minPrice": 100000,
+      "maxPrice": 200000
+    },
+    "availability": "https://schema.org/InStock" // Asumsi layanan selalu tersedia
+  }
 }
 </script>
