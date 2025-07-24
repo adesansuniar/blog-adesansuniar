@@ -1,99 +1,72 @@
-/* Awal style dasar */
+/* 🔧 Struktur dasar navigasi */
 .site-nav {
   position: relative;
 }
+
+/* 🔘 Tombol burger */
 .nav-toggle {
   display: none;
-  font-size: 1.5em;
   background: none;
   border: none;
+  font-size: 1.6em; /* ✅ lebih besar */
+  cursor: pointer;
+  margin-bottom: 10px;
 }
+
+/* 🎯 Navigasi utama */
 .nav-menu {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 24px;          /* ✅ lebih lebar */
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 1.05em;  /* ✅ font lebih besar */
 }
 
-/* Untuk mobile */
+/* 📱 Responsive: burger menu di mobile */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
   }
+
   .nav-menu {
     display: none;
     flex-direction: column;
     position: absolute;
-    background: #fefefe;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    background-color: #fefefe;
+    top: 50px;
+    left: 15px;
+    z-index: 1000;
+    width: 320px;        /* ✅ popup lebih besar */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    font-size: 1.1em;
+    gap: 14px;
   }
+
   .nav-menu.active {
     display: flex;
   }
 }
 
-/* Link aktif */
+/* 🌟 Navigasi aktif + interaksi */
 .nav-link {
   color: #444;
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
+.nav-link:hover {
+  color: #b8004b;
+}
+
 .nav-link.active,
 .nav-link:active {
   color: #b8004b;
   font-weight: bold;
 }
-/* ===== Burger Menu Responsive ===== */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.nav-menu {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Responsive: tampilkan burger di layar kecil */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    background-color: #fefefe;
-    padding: 15px;
-    border-top: 1px solid #ddd;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-}
-
-/* ===== Navigasi Aktif: Highlight warna saat diklik ===== */
-.nav-link {
-  color: #444;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-link.active {
-  color: #b8004b;
-  font-weight: bold;
-}
+  
