@@ -355,3 +355,13 @@ a:hover {
 .nav-box:hover {
   background: #eee;
 }
+@font-face {
+  font-family: 'CustomFont';
+  src: url('custom-font.woff2') format('woff2');
+  font-display: swap;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
