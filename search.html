@@ -1,56 +1,109 @@
----
-layout: default
-title: "Arsip Bulanan"
-permalink: /search.html
-description: "Daftar semua artikel blog Ade Sansuniar berdasarkan bulan terbit."
-lang: "id"
----
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Arsip Blog | Penjahit Alamanda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #fefefe;
+      --card: #ffffff;
+      --text: #333;
+      --muted: #666;
+      --border: #ddd;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --card: #1f1f1f;
+        --text: #eee;
+        --muted: #aaa;
+        --border: #333;
+      }
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      margin: 2rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    #search-results {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .search-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+    .search-item:hover {
+      transform: translateY(-4px);
+    }
+    .search-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .search-item h3 {
+      margin: 0.75rem 1rem 0.25rem;
+      font-size: 1.1rem;
+    }
+    .search-item p {
+      margin: 0 1rem 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .search-item small, .meta {
+      margin: 0 1rem 0.5rem;
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .meta span {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🗂️ Arsip Artikel Penjahit Alamanda</h1>
+  <section id="search-results">Memuat daftar konten terbaru...</section>
 
-<main role="main" itemscope itemtype="https://schema.org/CollectionPage"
-      style="max-width: 700px; margin: auto; padding: 30px; line-height: 2; text-align: left;">
+  <script>
+    const searchIndexURL = '/assets/search.json';
 
-  <h1 style="text-align: center; margin-bottom: 40px;">📂 Arsip Bulanan</h1>
-
-  <div id="archive-list"></div>
-</main>
-
-<script>
-  const container = document.getElementById("archive-list");
-
-  fetch("{{ '/search.json' | relative_url }}")
-    .then(res => res.json())
-    .then(data => {
-      const archive = {};
-
-      data.forEach(post => {
-        const date = new Date(post.iso_date);
-        const monthYear = date.toLocaleString("id-ID", { month: "long", year: "numeric" });
-
-        if (!archive[monthYear]) {
-          archive[monthYear] = [];
-        }
-        archive[monthYear].push(post);
+    fetch(searchIndexURL)
+      .then(response => response.json())
+      .then(data => {
+        const posts = data.posts.sort((a, b) => b.iso_date.localeCompare(a.iso_date));
+        renderSearch(posts);
       });
 
-      for (const [monthYear, posts] of Object.entries(archive)) {
-        const section = document.createElement("section");
-        section.innerHTML = `<h2 style="color:#2b6777;">${monthYear}</h2><ul style="list-style:none; padding-left:0;"></ul>`;
-        const ul = section.querySelector("ul");
-
-        posts.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date)).forEach(post => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-            <a href="${post.url}" style="text-decoration:none; color:#333;">
-              📅 ${post.formatted_date}
-            </a>
-          `;
-          ul.appendChild(li);
-        });
-
-        container.appendChild(section);
-      }
-    })
-    .catch(() => {
-      container.innerHTML = "<p style='color:red;'>Gagal memuat arsip bulanan.</p>";
-    });
-</script>
+    function renderSearch(posts) {
+      const container = document.getElementById('search-results');
+      container.innerHTML = posts.map(post => `
+        <article class="search-item">
+          <a href="${post.url}">
+            <img src="${post.image}" alt="${post.image_alt}" loading="lazy">
+            <h3>${post.title}</h3>
+          </a>
+          <p>${post.excerpt}</p>
+          <small>📅 ${post.formatted_date}</small>
+          <div class="meta">
+            <span>📁 Kategori: ${post.categories.join(', ')}</span>
+            <span>🏷️ Tags: ${post.tags.join(', ')}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
