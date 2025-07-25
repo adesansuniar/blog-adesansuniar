@@ -52,29 +52,5 @@
     {% endif %}
 {% include footer.html %}
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
-  const overlay = document.querySelector(".nav-overlay");
-  const closeBtn = document.querySelector(".nav-close");
-
-  function openMenu() {
-    menu.classList.add("active");
-    overlay.classList.add("active");
-    toggle.setAttribute("aria-expanded", "true");
-  }
-
-  function closeMenu() {
-    menu.classList.remove("active");
-    overlay.classList.remove("active");
-    toggle.setAttribute("aria-expanded", "false");
-  }
-
-  toggle?.addEventListener("click", openMenu);
-  overlay?.addEventListener("click", closeMenu);
-  closeBtn?.addEventListener("click", closeMenu);
-});
-</script>
   </body>
 </html>
