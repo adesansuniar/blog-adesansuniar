@@ -1,60 +1,68 @@
 ---
 layout: default
-title: "Pencarian"
+title: "Pencarian Artikel"
 permalink: /search.html
-description: "Cari artikel berdasarkan judul, kategori, atau topik seputar blog Ade Sansuniar."
+description: "Cari artikel blog berdasarkan judul atau kata kunci."
 lang: "id"
 ---
 
-<main style="max-width: 800px; margin: auto; padding: 30px;">
+<main style="max-width: 960px; margin: auto; padding: 30px 20px;">
   <h1 style="text-align: center;">🔎 Pencarian Artikel</h1>
 
-  <input type="text" id="searchInput" placeholder="Ketik judul atau kata kunci..." style="width: 100%; padding: 10px; font-size: 1.1em; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px;">
+  <input id="search-input"
+         type="text"
+         placeholder="Ketik judul atau kata kunci..."
+         style="width: 100%; padding: 12px 16px; font-size: 1em; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px;" />
 
-  <ul id="searchResults" style="list-style: none; padding-left: 0;"></ul>
+  <ul id="search-results" style="list-style: none; padding-left: 0;"></ul>
+
+  <p id="no-results" style="text-align: center; color: #777; display: none;">Tidak ditemukan hasil untuk kata kunci tersebut.</p>
 </main>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("searchInput");
-    const resultsContainer = document.getElementById("searchResults");
-    let articles = [];
+document.addEventListener("DOMContentLoaded", function () {
+  const input = document.getElementById("search-input");
+  const resultContainer = document.getElementById("search-results");
+  const noResultText = document.getElementById("no-results");
 
-    fetch("{{ '/search.json' | relative_url }}")
-      .then(response => response.json())
-      .then(data => { articles = data; });
+  let posts = [];
 
-    searchInput.addEventListener("input", function () {
-      const query = this.value.toLowerCase();
-      resultsContainer.innerHTML = "";
+  fetch("{{ '/search.json' | relative_url }}")
+    .then((response) => response.json())
+    .then((data) => {
+      posts = data;
+    });
 
-      if (query.length < 3) {
-        resultsContainer.innerHTML = "<li>Ketik minimal 3 huruf untuk mulai mencari.</li>";
-        return;
-      }
+  input.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase().trim();
+    resultContainer.innerHTML = "";
+    noResultText.style.display = "none";
 
-      const filtered = articles.filter(post =>
-        post.title.toLowerCase().includes(query) ||
-        post.tags.toLowerCase().includes(query) ||
-        post.categories.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query)
+    if (keyword.length === 0) return;
+
+    const results = posts.filter((post) => {
+      return (
+        post.title.toLowerCase().includes(keyword) ||
+        post.excerpt.toLowerCase().includes(keyword) ||
+        (post.tags && post.tags.join(" ").toLowerCase().includes(keyword))
       );
+    });
 
-      if (filtered.length === 0) {
-        resultsContainer.innerHTML = "<li>Tidak ditemukan artikel yang cocok.</li>";
-        return;
-      }
+    if (results.length === 0) {
+      noResultText.style.display = "block";
+      return;
+    }
 
-      filtered.forEach(post => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <a href="${post.url}" style="font-weight:bold; color:#2b6777; font-size:1.1em;">${post.title}</a><br>
-          <small>${post.date}</small><br>
-          <p style="font-size:0.95em; color:#555;">${post.excerpt}</p>
-        `;
-        li.style.marginBottom = "20px";
-        resultsContainer.appendChild(li);
-      });
+    results.forEach((post) => {
+      const item = document.createElement("li");
+      item.style.marginBottom = "24px";
+      item.innerHTML = `
+        <a href="${post.url}" style="font-weight: bold; font-size: 1.1em; color: #2b6777;">${post.title}</a><br>
+        <small style="color: #888;">${post.date}</small><br>
+        <p style="margin-top: 6px; color: #555;">${post.excerpt}</p>
+      `;
+      resultContainer.appendChild(item);
     });
   });
+});
 </script>
