@@ -112,6 +112,40 @@
     border-bottom: none;
   }
 </style>
+  <style>
+    .menu-tetap {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-toggle,
+.nav-overlay {
+  display: none;
+}
+
+/* Menu burger hanya tampil di mobile */
+@media (max-width: 768px) {
+  .nav-toggle,
+  .nav-overlay {
+    display: block;
+  }
+
+  .menu-burger {
+    display: none; /* awalnya tersembunyi */
+  }
+
+  .nav-overlay.open .menu-burger {
+    display: block;
+  }
+}
+  </style>
 
   <!-- ✅ Modular Include dengan Kondisi -->
   {% if site.include_canonical %}
