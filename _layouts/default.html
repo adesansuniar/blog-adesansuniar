@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="id" itemscope itemtype="https://schema.org/WebPage">
-
-  {% if page.head_mode == "lite" and site.head_lite_active %}
-    {% include head-lite.html %}
-  {% else %}
-    {% include head.html %}
-  {% endif %}
+  <head>
+    {% if page.head_mode == "lite" and site.head_lite_active %}
+      {% include head-lite.html %}
+    {% else %}
+      {% include head.html %}
+    {% endif %}
+  </head>
 
   <body style="margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333;">
 
@@ -13,7 +14,7 @@
     <header itemscope itemtype="https://schema.org/WPHeader"
             style="background-color: #f7f7f7; padding: 15px 0; border-bottom: 2px solid #e0e0e0;">
 
-     <!-- 📸 Banner -->
+      <!-- 📸 Banner -->
       <div style="text-align: center;">
         <img src="{{ '/assets/img/bannerblogade.webp' | relative_url }}"
              alt="Banner Blog Ade Sansuniar"
@@ -44,10 +45,39 @@
       {% endif %}
     </main>
 
-    {% include header.html %}
-    {% include footer.html %}
+    <!-- 🔻 Footer -->
     {% if site.firebase_rating_active %}
       {% include firebase-rating.html %}
     {% endif %}
+    {% include footer.html %}
+
+    <!-- ✅ Script Navigasi Burger -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const burger = document.querySelector(".burger");
+        const popup = document.querySelector(".nav-popup");
+        const overlay = document.querySelector(".nav-overlay");
+        const closeBtn = document.querySelector(".nav-close");
+
+        burger?.addEventListener("click", () => {
+          popup.classList.add("active");
+          overlay.classList.add("active");
+          burger.setAttribute("aria-expanded", "true");
+        });
+
+        overlay?.addEventListener("click", () => {
+          popup.classList.remove("active");
+          overlay.classList.remove("active");
+          burger.setAttribute("aria-expanded", "false");
+        });
+
+        closeBtn?.addEventListener("click", () => {
+          popup.classList.remove("active");
+          overlay.classList.remove("active");
+          burger.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
+
   </body>
 </html>
