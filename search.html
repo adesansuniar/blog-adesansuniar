@@ -1,42 +1,60 @@
 ---
 layout: default
-permalink: /daftar-artikel-filter.html
-title: Telusuri Artikel
-description: Pencarian & filter berdasarkan judul, kategori, dan tag
-lang: id
+title: "Pencarian"
+permalink: /search.html
+description: "Cari artikel berdasarkan judul, kategori, atau topik seputar blog Ade Sansuniar."
+lang: "id"
 ---
 
-<h1>🔍 Telusuri Artikel</h1>
-<input type="text" id="searchInput" placeholder="Cari judul atau kata kunci..." />
+<main style="max-width: 800px; margin: auto; padding: 30px;">
+  <h1 style="text-align: center;">🔎 Pencarian Artikel</h1>
 
-<div id="results"></div>
+  <input type="text" id="searchInput" placeholder="Ketik judul atau kata kunci..." style="width: 100%; padding: 10px; font-size: 1.1em; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px;">
+
+  <ul id="searchResults" style="list-style: none; padding-left: 0;"></ul>
+</main>
 
 <script>
-const searchURL = '/blog-adesansuniar/search.json';
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("searchResults");
+    let articles = [];
 
-fetch(searchURL)
-  .then(res => res.json())
-  .then(data => {
-    const posts = data.posts;
-    const input = document.getElementById('searchInput');
-    const results = document.getElementById('results');
+    fetch("{{ '/search.json' | relative_url }}")
+      .then(response => response.json())
+      .then(data => { articles = data; });
 
-    function render(keyword = '') {
-      const filtered = posts.filter(p =>
-        p.title.toLowerCase().includes(keyword.toLowerCase()) ||
-        p.excerpt.toLowerCase().includes(keyword.toLowerCase())
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      resultsContainer.innerHTML = "";
+
+      if (query.length < 3) {
+        resultsContainer.innerHTML = "<li>Ketik minimal 3 huruf untuk mulai mencari.</li>";
+        return;
+      }
+
+      const filtered = articles.filter(post =>
+        post.title.toLowerCase().includes(query) ||
+        post.tags.toLowerCase().includes(query) ||
+        post.categories.toLowerCase().includes(query) ||
+        post.excerpt.toLowerCase().includes(query)
       );
 
-      results.innerHTML = filtered.map(p => `
-        <div class="post-item">
-          <h3><a href="${p.url}">${p.title}</a></h3>
-          <small>${p.date}</small>
-          <p>${p.excerpt}</p>
-        </div>
-      `).join('');
-    }
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = "<li>Tidak ditemukan artikel yang cocok.</li>";
+        return;
+      }
 
-    input.addEventListener('input', () => render(input.value));
-    render();
+      filtered.forEach(post => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <a href="${post.url}" style="font-weight:bold; color:#2b6777; font-size:1.1em;">${post.title}</a><br>
+          <small>${post.date}</small><br>
+          <p style="font-size:0.95em; color:#555;">${post.excerpt}</p>
+        `;
+        li.style.marginBottom = "20px";
+        resultsContainer.appendChild(li);
+      });
+    });
   });
 </script>
