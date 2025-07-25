@@ -78,7 +78,7 @@
   <section id="search-results">Memuat daftar konten terbaru...</section>
 
   <script>
-    const searchIndexURL = '/assets/search.json';
+    const searchIndexURL = '/blog-adesansuniar/search.json';
 
     fetch(searchIndexURL)
       .then(response => response.json())
@@ -86,7 +86,7 @@
         const posts = data.posts.sort((a, b) => b.iso_date.localeCompare(a.iso_date));
         renderSearch(posts);
       });
-
+    
     function renderSearch(posts) {
       const container = document.getElementById('search-results');
       container.innerHTML = posts.map(post => `
@@ -104,6 +104,16 @@
         </article>
       `).join('');
     }
+    fetch(searchIndexURL)
+  .then(response => response.json())
+  .then(data => {
+    const posts = data.posts.sort((a, b) => b.iso_date.localeCompare(a.iso_date));
+    renderSearch(posts);
+  })
+  .catch(() => {
+    document.getElementById('search-results').innerHTML =
+      '<p style="color:red;">Gagal memuat daftar artikel.</p>';
+  });
   </script>
 </body>
 </html>
