@@ -1,119 +1,42 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Arsip Blog | Penjahit Alamanda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      --bg: #fefefe;
-      --card: #ffffff;
-      --text: #333;
-      --muted: #666;
-      --border: #ddd;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121212;
-        --card: #1f1f1f;
-        --text: #eee;
-        --muted: #aaa;
-        --border: #333;
-      }
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, sans-serif;
-      margin: 2rem;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    #search-results {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .search-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease;
-    }
-    .search-item:hover {
-      transform: translateY(-4px);
-    }
-    .search-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .search-item h3 {
-      margin: 0.75rem 1rem 0.25rem;
-      font-size: 1.1rem;
-    }
-    .search-item p {
-      margin: 0 1rem 1rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-    .search-item small, .meta {
-      margin: 0 1rem 0.5rem;
-      display: block;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .meta span {
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-  </style>
-</head>
-<body>
-  <h1>🗂️ Arsip Artikel Penjahit Alamanda</h1>
-  <section id="search-results">Memuat daftar konten terbaru...</section>
+---
+layout: default
+permalink: /daftar-artikel-filter.html
+title: Telusuri Artikel
+description: Pencarian & filter berdasarkan judul, kategori, dan tag
+lang: id
+---
 
-  <script>
-    const searchIndexURL = '/blog-adesansuniar/search.json';
+<h1>🔍 Telusuri Artikel</h1>
+<input type="text" id="searchInput" placeholder="Cari judul atau kata kunci..." />
 
-    fetch(searchIndexURL)
-      .then(response => response.json())
-      .then(data => {
-        const posts = data.posts.sort((a, b) => b.iso_date.localeCompare(a.iso_date));
-        renderSearch(posts);
-      });
-    
-    function renderSearch(posts) {
-      const container = document.getElementById('search-results');
-      container.innerHTML = posts.map(post => `
-        <article class="search-item">
-          <a href="${post.url}">
-            <img src="${post.image}" alt="${post.image_alt}" loading="lazy">
-            <h3>${post.title}</h3>
-          </a>
-          <p>${post.excerpt}</p>
-          <small>📅 ${post.formatted_date}</small>
-          <div class="meta">
-            <span>📁 Kategori: ${post.categories.join(', ')}</span>
-            <span>🏷️ Tags: ${post.tags.join(', ')}</span>
-          </div>
-        </article>
+<div id="results"></div>
+
+<script>
+const searchURL = '/blog-adesansuniar/search.json';
+
+fetch(searchURL)
+  .then(res => res.json())
+  .then(data => {
+    const posts = data.posts;
+    const input = document.getElementById('searchInput');
+    const results = document.getElementById('results');
+
+    function render(keyword = '') {
+      const filtered = posts.filter(p =>
+        p.title.toLowerCase().includes(keyword.toLowerCase()) ||
+        p.excerpt.toLowerCase().includes(keyword.toLowerCase())
+      );
+
+      results.innerHTML = filtered.map(p => `
+        <div class="post-item">
+          <h3><a href="${p.url}">${p.title}</a></h3>
+          <small>${p.date}</small>
+          <p>${p.excerpt}</p>
+        </div>
       `).join('');
     }
-    fetch(searchIndexURL)
-  .then(response => response.json())
-  .then(data => {
-    const posts = data.posts.sort((a, b) => b.iso_date.localeCompare(a.iso_date));
-    renderSearch(posts);
-  })
-  .catch(() => {
-    document.getElementById('search-results').innerHTML =
-      '<p style="color:red;">Gagal memuat daftar artikel.</p>';
+
+    input.addEventListener('input', () => render(input.value));
+    render();
   });
-  </script>
-</body>
-</html>
+</script>
