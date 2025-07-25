@@ -1,101 +1,56 @@
 ---
 layout: default
-title: Pencarian
+title: "Arsip Bulanan"
+permalink: /search.html
+description: "Daftar semua artikel blog Ade Sansuniar berdasarkan bulan terbit."
+lang: "id"
 ---
 
-<div class="search-section">
-  <input type="text" id="searchBox" placeholder="Cari judul atau isi..." />
-  <div id="searchResults"></div>
+<main role="main" itemscope itemtype="https://schema.org/CollectionPage"
+      style="max-width: 700px; margin: auto; padding: 30px; line-height: 2; text-align: left;">
 
-  <hr />
-  <h3>📅 Arsip Bulanan</h3>
-  <ul id="monthlyArchive"></ul>
+  <h1 style="text-align: center; margin-bottom: 40px;">📂 Arsip Bulanan</h1>
 
-  <hr />
-  <h3>📁 Kategori</h3>
-  <ul id="categoryList"></ul>
-</div>
+  <div id="archive-list"></div>
+</main>
 
-<script src="/assets/js/search-mini.js"></script>
 <script>
-  fetch('/search-mini.json')
-    .then(response => response.json())
-    .then(posts => {
-      const searchBox = document.getElementById('searchBox');
-      const searchResults = document.getElementById('searchResults');
-      const monthlyArchive = document.getElementById('monthlyArchive');
-      const categoryList = document.getElementById('categoryList');
+  const container = document.getElementById("archive-list");
 
-      // --- 🔍 PENCARIAN LIVE ---
-      searchBox.addEventListener('input', function () {
-        const keyword = this.value.toLowerCase();
-        const filtered = posts.filter(post =>
-          post.title.toLowerCase().includes(keyword) ||
-          post.excerpt.toLowerCase().includes(keyword)
-        );
-        renderResults(filtered);
-      });
+  fetch("{{ '/search.json' | relative_url }}")
+    .then(res => res.json())
+    .then(data => {
+      const archive = {};
 
-      // --- 📅 ARSIP BULANAN ---
-      const archiveMap = {};
-      posts.forEach(post => {
-        const dateObj = new Date(post.iso_date);
-        const key = dateObj.toLocaleString('id-ID', { month: 'long', year: 'numeric' });
-        if (!archiveMap[key]) archiveMap[key] = [];
-        archiveMap[key].push(post);
-      });
+      data.forEach(post => {
+        const date = new Date(post.iso_date);
+        const monthYear = date.toLocaleString("id-ID", { month: "long", year: "numeric" });
 
-      Object.keys(archiveMap).sort((a, b) => {
-        return new Date(archiveMap[b][0].iso_date) - new Date(archiveMap[a][0].iso_date);
-      }).forEach(label => {
-        const item = document.createElement('li');
-        item.innerHTML = `<a href="#" data-archive="${label}">${label} (${archiveMap[label].length})</a>`;
-        monthlyArchive.appendChild(item);
-      });
-
-      monthlyArchive.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') {
-          e.preventDefault();
-          const filtered = archiveMap[e.target.dataset.archive];
-          renderResults(filtered);
+        if (!archive[monthYear]) {
+          archive[monthYear] = [];
         }
+        archive[monthYear].push(post);
       });
 
-      // --- 📁 KATEGORI ---
-      const categoryMap = {};
-      posts.forEach(post => {
-        if (post.category) {
-          const categories = Array.isArray(post.category) ? post.category : [post.category];
-          categories.forEach(cat => {
-            if (!categoryMap[cat]) categoryMap[cat] = [];
-            categoryMap[cat].push(post);
-          });
-        }
-      });
+      for (const [monthYear, posts] of Object.entries(archive)) {
+        const section = document.createElement("section");
+        section.innerHTML = `<h2 style="color:#2b6777;">${monthYear}</h2><ul style="list-style:none; padding-left:0;"></ul>`;
+        const ul = section.querySelector("ul");
 
-      Object.keys(categoryMap).sort().forEach(cat => {
-        const item = document.createElement('li');
-        item.innerHTML = `<a href="#" data-cat="${cat}">${cat} (${categoryMap[cat].length})</a>`;
-        categoryList.appendChild(item);
-      });
+        posts.sort((a, b) => new Date(b.iso_date) - new Date(a.iso_date)).forEach(post => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <a href="${post.url}" style="text-decoration:none; color:#333;">
+              📅 ${post.formatted_date}
+            </a>
+          `;
+          ul.appendChild(li);
+        });
 
-      categoryList.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') {
-          e.preventDefault();
-          const filtered = categoryMap[e.target.dataset.cat];
-          renderResults(filtered);
-        }
-      });
-
-      // --- 🖥️ RENDER HASIL ---
-      function renderResults(list) {
-        searchResults.innerHTML = list.map(post => `
-          <div class="search-item">
-            <h3><a href="${post.url}">${post.title}</a></h3>
-            <small>${post.formatted_date}</small>
-            <p>${post.excerpt}</p>
-          </div>
-        `).join('');
+        container.appendChild(section);
       }
+    })
+    .catch(() => {
+      container.innerHTML = "<p style='color:red;'>Gagal memuat arsip bulanan.</p>";
     });
 </script>
