@@ -23,9 +23,8 @@
              style="max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;" />
       </div>
 
-      <!-- 🔗 Navigasi Utama -->
+      <!-- 🔗 Navigasi -->
       {% include nav-ringkas.html %}
-
     </header>
 
     <!-- 📄 KONTEN UTAMA -->
@@ -39,11 +38,11 @@
       {% endif %}
     </main>
 
+    <!-- 🔚 FOOTER -->
     {% if site.firebase_rating_active %}
       {% include firebase-rating.html %}
     {% endif %}
 
     {% include footer.html %}
-
   </body>
 </html>
