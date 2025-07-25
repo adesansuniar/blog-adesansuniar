@@ -1,35 +1,36 @@
 <!-- Tombol Burger -->  <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"  
 style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; position: absolute; top: 15px; left: 15px; z-index: 999;">
 ☰
+<!-- Tombol Burger -->
+<button class="burger" aria-label="Buka menu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
 </button>
 
-</nav>  <!-- Navigasi -->  <ul class="nav-menu" role="menubar"  
-    style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">    <li role="none">  
-    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda" class="nav-link">Beranda</a>  
-  </li>  {% for page in static_pages %}
-{% if page.title and page.permalink != '/' %}
-<li role="none">
-<a role="menuitem"  
-href="{{ page.permalink | relative_url }}"  
-aria-label="{{ page.title }}"  
-class="nav-link">
-{{ page.title }}
-</a>
-</li>
-{% endif %}
-{% endfor %}
+<!-- Overlay -->
+<div class="nav-overlay"></div>
 
-  <li role="none">  
-    <a role="menuitem"  
-       href="https://wa.me/6288801758800"  
-       target="_blank"  
-       rel="noopener"  
-       aria-label="Kontak WhatsApp"  
-       class="nav-link">  
-      Kontak  
-    </a>  
-  </li>  
-</ul>  
+<!-- Burger Menu untuk Mobile -->
+<nav class="nav-popup" aria-label="Navigasi Mobile">
+  <button class="nav-close" aria-label="Tutup Menu">✖</button>
+  <a href="{{ '/' | relative_url }}">Beranda</a>
+  <a href="{{ '/katalog/' | relative_url }}">Katalog</a>
+  <a href="{{ '/search.html' | relative_url }}">Cari</a>
+  <a href="{{ '/tentang/' | relative_url }}">Tentang</a>
+  <a href="https://wa.me/6288801758800" target="_blank">Kontak via WA</a>
+</nav>
+
+<!-- Navigasi Desktop -->
+<nav class="main-nav" role="navigation" aria-label="Navigasi Utama">
+  <ul class="nav-list">
+    <li><a href="{{ '/' | relative_url }}">Beranda</a></li>
+    <li><a href="{{ '/katalog/' | relative_url }}">Katalog</a></li>
+    <li><a href="{{ '/search.html' | relative_url }}">Cari</a></li>
+    <li><a href="{{ '/tentang/' | relative_url }}">Tentang</a></li>
+    <li><a href="https://wa.me/6288801758800" target="_blank">Kontak</a></li>
+  </ul>
+</nav>
 <script>  
   document.addEventListener("DOMContentLoaded", function () {  
     const burger = document.querySelector(".burger");  
