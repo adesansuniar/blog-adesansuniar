@@ -210,6 +210,28 @@ nav a.active,
   background-color: #e0f0f8;
   color: #004080;
 }
+.nav-link,
+.nav-popup a {
+  text-decoration: none;
+  color: #1565C0;
+  padding: 8px 12px;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-popup a:hover {
+  background-color: #e0f0f8;
+  color: #004080;
+}
+
+.nav-link.active,
+.nav-popup a.active {
+  background-color: #d0ecf7;
+  color: #004080;
+}
 
 /* 🌐 Media Query untuk Mobile */
 @media (max-width: 768px) {
