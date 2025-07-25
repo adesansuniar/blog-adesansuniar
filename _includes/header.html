@@ -1,91 +1,54 @@
-<!-- 🔘 Tombol Burger (Mobile) -->
-<button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"
-        style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; position: absolute; top: 15px; left: 15px; z-index: 999;">
-  ☰
+<!-- Tombol Burger -->  <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"  
+style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; position: absolute; top: 15px; left: 15px; z-index: 999;">
+☰
 </button>
 
-<!-- 🌒 Overlay Gelap -->
-<div class="nav-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 998;"></div>
+</nav>  <!-- Navigasi -->  <ul class="nav-menu" role="menubar"  
+    style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">    <li role="none">  
+    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda" class="nav-link">Beranda</a>  
+  </li>  {% for page in static_pages %}
+{% if page.title and page.permalink != '/' %}
+<li role="none">
+<a role="menuitem"  
+href="{{ page.permalink | relative_url }}"  
+aria-label="{{ page.title }}"  
+class="nav-link">
+{{ page.title }}
+</a>
+</li>
+{% endif %}
+{% endfor %}
 
-<!-- 📱 Navigasi Popup (Mobile) -->
-<nav class="nav-popup" style="display: none; flex-direction: column; position: fixed; top: 0; left: 0; width: 250px; height: 100%; background: #fefefe; padding: 20px; box-shadow: 2px 0 8px rgba(0,0,0,0.15); z-index: 999; gap: 12px;">
+  <li role="none">  
+    <a role="menuitem"  
+       href="https://wa.me/6288801758800"  
+       target="_blank"  
+       rel="noopener"  
+       aria-label="Kontak WhatsApp"  
+       class="nav-link">  
+      Kontak  
+    </a>  
+  </li>  
+</ul>  
+<script>  
+  document.addEventListener("DOMContentLoaded", function () {  
+    const burger = document.querySelector(".burger");  
+    const menu = document.querySelector(".main-nav ul");  if (burger && menu) {  
+  burger.addEventListener("click", function () {  
+    menu.classList.toggle("show");  
+  });  
+}  
 
-  <!-- ❌ Tombol Tutup -->
-  <button class="nav-close" aria-label="Tutup Menu" style="align-self: flex-end; background: none; border: none; font-size: 1.5em; cursor: pointer;">✖</button>
+// Tambahkan class "active" pada link navigasi yang sesuai halaman  
+const links = document.querySelectorAll("nav a");  
+const current = window.location.pathname;  
 
-  <!-- 🔗 Link Navigasi Mobile -->
-  <a href="{{ '/' | relative_url }}">Beranda</a>
-  <a href="{{ '/katalog/' | relative_url }}">Katalog</a>
-  <a href="{{ '/search.html' | relative_url }}">Cari</a>
-  <a href="{{ '/tentang/' | relative_url }}">Tentang</a>
-  <a href="https://wa.me/6288801758800" target="_blank">Kontak via WA</a>
-</nav>
+links.forEach(link => {  
+  if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {  
+    link.classList.add("active");  
+  }  
+});
 
-<!-- 🖥️ Navigasi Utama (Desktop) -->
-<ul class="nav-main" role="menubar"
-    style="list-style: none; margin: 0 auto 20px; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 1em;">
-  
-  <li role="none">
-    <a role="menuitem" href="{{ '/' | relative_url }}" aria-label="Beranda" class="nav-link">Beranda</a>
-  </li>
-
-  {% for page in static_pages %}
-    {% if page.title and page.permalink != '/' %}
-      <li role="none">
-        <a role="menuitem"
-           href="{{ page.permalink | relative_url }}"
-           aria-label="{{ page.title }}"
-           class="nav-link">
-          {{ page.title }}
-        </a>
-      </li>
-    {% endif %}
-  {% endfor %}
-
-  <li role="none">
-    <a role="menuitem"
-       href="https://wa.me/6288801758800"
-       target="_blank"
-       rel="noopener"
-       aria-label="Kontak WhatsApp"
-       class="nav-link">
-      Kontak
-    </a>
-  </li>
-</ul>
-
-<!-- 🔧 Script Interaktif Navigasi -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-popup");
-  const overlay = document.querySelector(".nav-overlay");
-  const closeBtn = document.querySelector(".nav-close");
-
-  function openMenu() {
-    menu.style.display = "flex";
-    overlay.style.display = "block";
-    toggle.setAttribute("aria-expanded", "true");
-  }
-
-  function closeMenu() {
-    menu.style.display = "none";
-    overlay.style.display = "none";
-    toggle.setAttribute("aria-expanded", "false");
-  }
-
-  toggle?.addEventListener("click", openMenu);
-  overlay?.addEventListener("click", closeMenu);
-  closeBtn?.addEventListener("click", closeMenu);
-
-  // Menandai menu aktif berdasarkan URL
-  const links = document.querySelectorAll("nav a, .nav-main a");
-  const current = window.location.pathname;
-
-  links.forEach(link => {
-    if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {
-      link.classList.add("active");
-    }
-  });
 });
 </script>
+
