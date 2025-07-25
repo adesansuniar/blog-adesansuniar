@@ -81,134 +81,36 @@ header p {
 }
 
 /* 🔧 Navigasi Umum */
-nav {
-  margin-top: 15px;
-}
-nav a {
-  margin: 0 12px;
-  font-weight: 600;
-  font-size: 1em;
-  color: #1565C0;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-nav a:hover {
-  color: #004080;
-  text-decoration: underline;
-}
-nav a.active,
-.main-nav a.active {
-  background-color: #d0ecf7;
-  color: #004080;
-  font-weight: 700;
-}
-
-/* 🔷 Navigasi Utama */
-.main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.main-nav li {
-  display: inline;
-}
-.main-nav a {
-  color: #1565C0;
-  font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 5px;
-  font-size: 1.05em;
-  min-height: 44px; /* ✅ Untuk kestabilan tampilan */
-  line-height: 1.4;
-}
-.main-nav a:hover {
-  background-color: #e0f0f8;
-  color: #004080;
-}
-
-/* 📦 Navigasi Berkotak */
-.nav-box {
-  display: block;
-  background-color: #f2f7fa;
-  border: 1px solid #ccdbe5;
-  padding: 10px 16px;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-weight: 600;
-  min-height: 44px; /* ✅ Hindari CLS */
-  line-height: 1.4;
-}
-.nav-box:hover {
-  background-color: #d0e9f8;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  color: #004080;
-}
-
-/* 🍔 Burger Navigation */
-.burger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 28px;
-  height: 22px;
-  cursor: pointer;
-  margin: 10px auto;
-}
-.burger span {
-  width: 100%;
-  height: 4px;
-  background: #2b6777;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* 🧭 Menu Burger Popup */
-.nav-toggle {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 1001;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
 .nav-menu {
-  list-style: none;
-  margin: 0;
-  padding: 15px;
-  background-color: #fefefe;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  flex-direction: column;
-  gap: 12px;
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 15px;
-  z-index: 1000;
-  width: 250px;
-  border-radius: 6px;
+list-style: none;
+margin: 0;
+padding: 15px;
+background-color: #fefefe;
+border: 1px solid #ccc;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+flex-direction: column;
+gap: 12px;
+display: none;
+position: absolute;
+top: 50px;
+left: 15px;
+z-index: 1000;
+width: 250px;
+border-radius: 6px;
 }
 .nav-menu.active {
-  display: flex;
+display: flex;
 }
 .nav-menu a {
-  padding: 10px;
-  font-size: 1em;
-  color: #1565C0;
-  border-radius: 4px;
-  text-align: left;
+padding: 10px;
+font-size: 1em;
+color: #1565C0;
+border-radius: 4px;
+text-align: left;
 }
 .nav-menu a:hover {
-  background-color: #e0f0f8;
-  color: #004080;
+background-color: #e0f0f8;
+color: #004080;
 }
 
 /* 🌐 Media Query untuk Mobile */
