@@ -257,12 +257,14 @@ a:hover {
 }
 
 /* 🖼️ Banner */
-.banner-wrapper img {
-  aspect-ratio: 4 / 1;
+.banner-wrapper {
   width: 100%;
+  max-width: 960px;
+  margin: auto;
+  aspect-ratio: 4 / 1;
   height: auto;
-  object-fit: cover;
 }
+
 .nav-toggle {
   position: fixed;
   top: 14px;
