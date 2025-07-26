@@ -31,6 +31,10 @@ Selamat datang di repositori resmi [Blog Adesansuniar](https://adesansuniar.gith
 ## 📁 Struktur Penting
 
 ---
+## Backup Log
+- 26 Juli 2025: Backup lengkap blog & search filter
+- 20 Juli 2025: Implementasi pencarian filter interaktif
+- 13 Juli 2025: Audit struktur JSON & search.json
 
 ## 📌 Lisensi
 
