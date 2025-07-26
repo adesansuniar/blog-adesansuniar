@@ -101,13 +101,13 @@ a:hover {
 /* 🍔 NAVIGASI RESPONSIF */
 .nav-toggle {
   position: fixed;
-  top: 14px;
-  left: 14px;
+  top: 20px; /* Sedikit mundurkan agar tidak menumpuk dengan header */
+  left: 16px;
   background: none;
   border: none;
   font-size: 26px;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 10001; /* Pastikan tombol selalu di atas popup */
 }
 .nav-popup {
   display: none;
