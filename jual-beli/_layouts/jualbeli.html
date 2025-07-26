@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/jualbeli.css">
+</head>
+<body>
+
+  {% include header-jualbeli.html %}
+  {% include nav-jualbeli.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>&copy; {{ site.time | date: '%Y' }} Alamanda | Jual/Beli</p>
+  </footer>
+
+</body>
+</html>
