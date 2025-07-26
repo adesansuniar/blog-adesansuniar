@@ -1,14 +1,22 @@
 ---
 layout: null
 ---
+
 [
-  {% for post in site.posts %}
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+  {% unless post.draft or post.tags == nil %}
   {
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
     "date": "{{ post.date | date: '%Y-%m-%d' }}",
-    "excerpt": {{ post.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }},
+    "excerpt": {% if post.excerpt %}
+      {{ post.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }}
+    {% else %}
+      {{ post.content | strip_html | strip_newlines | truncate: 160 | jsonify }}
+    {% endif %},
     "tags": {{ post.tags | jsonify }}
   }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
+  {% endunless %}
+{% endfor %}
 ]
