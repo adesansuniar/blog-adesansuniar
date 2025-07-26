@@ -75,23 +75,5 @@
  {% include header.html %}
   {{ content }}
   {% include footer.html %}
-
-  <!-- ✅ Script burger menu di sini -->
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      const burger = document.querySelector(".burger");
-      const statusText = document.getElementById("menuStatus");
-
-      const isOpen = nav.classList.toggle("open");
-      burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
-      if (statusText) {
-        statusText.textContent = isOpen
-          ? "Status menu: Terbuka"
-          : "Status menu: Tertutup";
-      }
-    }
-  </script>
 </body>
 </html>
