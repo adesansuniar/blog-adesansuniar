@@ -1,0 +1,50 @@
+name: ✅ Validasi search.json Otomatis
+
+on:
+  push:
+    paths:
+      - 'search.json'
+  pull_request:
+    paths:
+      - 'search.json'
+  workflow_dispatch: # manual trigger
+
+jobs:
+  lint-json:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔍 Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: 🔎 Cek Validitas search.json dengan jq
+      run: |
+        if jq '.' search.json > /dev/null; then
+          echo "✅ search.json valid secara struktur JSON."
+        else
+          echo "❌ Format search.json tidak valid! Perbaiki sebelum merge."
+          exit 1
+        fi
+
+    - name: 📋 Cek field wajib untuk tiap post
+      run: |
+        # Validasi minimal untuk setiap entri
+        jq -e '.[] | select(.title and .url and .date and .excerpt)' search.json > /dev/null \
+        || (echo "❌ Ada entri yang tidak punya field wajib (title, url, date, excerpt)" && exit 1)
+
+    - name: 🚨 Cek tag kosong / tidak ada
+      run: |
+        jq -e '.[] | select(.tags and (.tags | length > 0))' search.json > /dev/null \
+        || (echo "❌ Ada post tanpa tag yang bisa menggagalkan pencarian" && exit 1)
+
+    - name: 🧠 Cek duplikat title (opsional)
+      run: |
+        titles=$(jq -r '.[].title' search.json)
+        dupe=$(echo "$titles" | sort | uniq -d)
+        if [ -n "$dupe" ]; then
+          echo "⚠️ Duplikat judul ditemukan:"
+          echo "$dupe"
+          exit 1
+        else
+          echo "✅ Tidak ada duplikat judul."
+        fi
