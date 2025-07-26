@@ -6,17 +6,17 @@ description: "Cari artikel blog berdasarkan judul atau kata kunci."
 lang: "id"
 ---
 
-<main style="max-width: 960px; margin: auto; padding: 30px 20px;">
-  <h1 style="text-align: center;">🔎 Pencarian Artikel</h1>
+<main class="search-wrapper">
+  <h1 class="search-heading">🔎 Pencarian Artikel</h1>
 
   <input id="search-input"
          type="text"
          placeholder="Ketik judul atau kata kunci..."
-         style="width: 100%; padding: 12px 16px; font-size: 1em; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px;" />
+         class="search-input"
+         aria-label="Form Pencarian Artikel" />
 
-  <ul id="search-results" style="list-style: none; padding-left: 0;"></ul>
-
-  <p id="no-results" style="text-align: center; color: #777; display: none;">Tidak ditemukan hasil untuk kata kunci tersebut.</p>
+  <ul id="search-results" class="search-results"></ul>
+  <p id="no-results" class="search-no-results">Tidak ditemukan hasil untuk kata kunci tersebut.</p>
 </main>
 
 <script>
@@ -28,9 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let posts = [];
 
   fetch("{{ '/search.json' | relative_url }}")
-    .then((response) => response.json())
+    .then((res) => res.json())
     .then((data) => {
       posts = data;
+    })
+    .catch(() => {
+      noResultText.textContent = "Data tidak bisa dimuat. Silakan coba beberapa saat lagi.";
+      noResultText.style.display = "block";
     });
 
   input.addEventListener("input", function () {
@@ -40,26 +44,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (keyword.length === 0) return;
 
-    const results = posts.filter((post) => {
-      return (
+    const results = posts
+      .filter(post =>
         post.title.toLowerCase().includes(keyword) ||
         post.excerpt.toLowerCase().includes(keyword) ||
         (post.tags && post.tags.join(" ").toLowerCase().includes(keyword))
-      );
-    });
+      )
+      .slice(0, 20); // Batas 20 hasil
 
     if (results.length === 0) {
       noResultText.style.display = "block";
       return;
     }
 
-    results.forEach((post) => {
+    results.forEach(post => {
       const item = document.createElement("li");
-      item.style.marginBottom = "24px";
+      item.className = "search-item";
       item.innerHTML = `
-        <a href="${post.url}" style="font-weight: bold; font-size: 1.1em; color: #2b6777;">${post.title}</a><br>
-        <small style="color: #888;">${post.date}</small><br>
-        <p style="margin-top: 6px; color: #555;">${post.excerpt}</p>
+        <a href="${post.url}" class="search-title">${post.title}</a><br>
+        <small class="search-date">${post.date}</small><br>
+        <p class="search-excerpt">${post.excerpt}</p>
       `;
       resultContainer.appendChild(item);
     });
