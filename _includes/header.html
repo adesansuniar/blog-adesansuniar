@@ -11,7 +11,7 @@
   <a href="{{ '/katalog/' | relative_url }}">Katalog</a>
   <a href="{{ '/search.html' | relative_url }}">Cari</a>
   <a href="{{ '/tentang/' | relative_url }}">Tentang</a>
-  <a href="https://wa.me/6288801758800" target="_blank">Kontak via WA</a>
+  <a href="https://wa.me/6288801758800" target="_blank" rel="noopener">Kontak via WA</a>
 </nav>
 
 <!-- Navigasi Desktop -->
@@ -21,40 +21,7 @@
     <li><a href="{{ '/katalog/' | relative_url }}">Katalog</a></li>
     <li><a href="{{ '/search.html' | relative_url }}">Cari</a></li>
     <li><a href="{{ '/tentang/' | relative_url }}">Tentang</a></li>
-    <li><a href="https://wa.me/6288801758800" target="_blank">Kontak</a></li>
+    <li><a href="https://wa.me/6288801758800" target="_blank" rel="noopener">Kontak</a></li>
   </ul>
 </nav>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navToggle = document.querySelector(".nav-toggle");
-    const navPopup = document.querySelector(".nav-popup");
-    const navClose = document.querySelector(".nav-close");
-    const navOverlay = document.querySelector(".nav-overlay");
-
-    function openMenu() {
-      navPopup.classList.add("open");
-      navOverlay?.classList.add("active");
-      navToggle.setAttribute("aria-expanded", "true");
-    }
-
-    function closeMenu() {
-      navPopup.classList.remove("open");
-      navOverlay?.classList.remove("active");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
-
-    navToggle?.addEventListener("click", openMenu);
-    navClose?.addEventListener("click", closeMenu);
-    navOverlay?.addEventListener("click", closeMenu);
-
-    const links = document.querySelectorAll("nav a");
-    const current = window.location.pathname;
-    links.forEach(link => {
-      if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
 
