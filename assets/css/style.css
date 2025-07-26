@@ -424,3 +424,10 @@ a:hover {
   transform: translateY(20px);
   animation: fadeIn 1s ease forwards;
 }
+.nav-popup {
+  display: none;
+}
+
+.nav-popup.open {
+  display: block;
+}
