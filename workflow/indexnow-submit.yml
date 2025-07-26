@@ -1,0 +1,30 @@
+name: IndexNow Auto Submit
+
+on:
+  push:
+    paths:
+      - "_posts/**/*.md"
+
+jobs:
+  submit-to-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Build list of changed URLs
+        id: get_urls
+        run: |
+          echo "Post URLs:"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+          | grep "^_posts/" \
+          | while read filepath; do
+              filename=$(basename "$filepath" .md)
+              year=$(echo "$filename" | cut -d'-' -f1)
+              month=$(echo "$filename" | cut -d'-' -f2)
+              day=$(echo "$filename" | cut -d'-' -f3)
+              slug=$(echo "$filename" | cut -d'-' -f4-)
+              url="https://adesansuniar.github.io/blog-adesansuniar/${year}/${month}/${day}/${slug}.html"
+              echo "Submitting: $url"
+              curl -X POST "https://www.bing.com/indexnow?url=$url&key=84bf3793852b4ee6966440bb4090ebe3"
+            done
