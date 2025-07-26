@@ -67,14 +67,26 @@
       navClose?.addEventListener("click", closeMenu);
       navOverlay?.addEventListener("click", closeMenu);
 
-      // Highlight menu aktif
-      const links = document.querySelectorAll("nav a");
-      const current = window.location.pathname;
-      links.forEach(link => {
-        if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {
-          link.classList.add("active");
-        }
-      });
+      // 🔍 Script Aktif Menu dengan Normalisasi dan Pencocokan Fleksibel
+const normalize = path => {
+  const temp = path.toLowerCase().split("?")[0]; // Buang query string
+  return temp.endsWith("/") ? temp : temp + "/";
+};
+
+const current = normalize(window.location.pathname);
+const links = document.querySelectorAll("nav a");
+
+links.forEach(link => {
+  const hrefRaw = link.getAttribute("href");
+  if (!hrefRaw) return;
+
+  const hrefFull = normalize(hrefRaw);
+
+  // Cocokkan dengan path yang sedang dibuka (lebih toleran terhadap nested link)
+  if (current.includes(hrefFull)) {
+    link.classList.add("active");
+  }
+});
     });
   </script>
 </body>
