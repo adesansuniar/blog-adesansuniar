@@ -1,15 +1,8 @@
-<!-- Tombol Burger -->  <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"  
-style="background: none; border: none; font-size: 2em; cursor: pointer; display: block; position: absolute; top: 15px; left: 15px; z-index: 999;">
-☰
 <!-- Tombol Burger -->
-<button class="burger" aria-label="Buka menu" aria-expanded="false" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
+<button class="nav-toggle" aria-label="Buka menu" aria-expanded="false"
+  style="background: none; border: none; font-size: 2em; cursor: pointer; position: absolute; top: 15px; left: 15px; z-index: 999;">
+  ☰
 </button>
-
-<!-- Overlay -->
-<div class="nav-overlay"></div>
 
 <!-- Burger Menu untuk Mobile -->
 <nav class="nav-popup" aria-label="Navigasi Mobile">
@@ -31,25 +24,32 @@ style="background: none; border: none; font-size: 2em; cursor: pointer; display:
     <li><a href="https://wa.me/6288801758800" target="_blank">Kontak</a></li>
   </ul>
 </nav>
-<script>  
-  document.addEventListener("DOMContentLoaded", function () {  
-    const burger = document.querySelector(".burger");  
-    const menu = document.querySelector(".main-nav ul");  if (burger && menu) {  
-  burger.addEventListener("click", function () {  
-    menu.classList.toggle("show");  
-  });  
-}  
 
-// Tambahkan class "active" pada link navigasi yang sesuai halaman  
-const links = document.querySelectorAll("nav a");  
-const current = window.location.pathname;  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navToggle = document.querySelector(".nav-toggle");
+    const navPopup = document.querySelector(".nav-popup");
+    const navClose = document.querySelector(".nav-close");
 
-links.forEach(link => {  
-  if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {  
-    link.classList.add("active");  
-  }  
-});
+    if (navToggle && navPopup) {
+      navToggle.addEventListener("click", () => {
+        navPopup.classList.add("open");
+      });
+    }
 
-});
+    if (navClose && navPopup) {
+      navClose.addEventListener("click", () => {
+        navPopup.classList.remove("open");
+      });
+    }
+
+    const links = document.querySelectorAll("nav a");
+    const current = window.location.pathname;
+    links.forEach(link => {
+      if (link.getAttribute("href") === current || current.startsWith(link.getAttribute("href"))) {
+        link.classList.add("active");
+      }
+    });
+  });
 </script>
 
