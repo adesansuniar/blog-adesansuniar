@@ -5,17 +5,17 @@
   <meta name="robots" content="index, follow" />
 
   <!-- ✅ SEO Dinamis -->
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Blog Ade Sansuniar seputar tips menjahit, katalog baju, dan ongkos jahit di Surabaya.{% endif %}" />
-  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}ongkos jahit, tips menjahit, baju, fashion Surabaya, Indonesia{% endif %}" />
+  <meta name="description" content="{{ page.description | default: 'Blog Ade Sansuniar seputar tips menjahit, katalog baju, dan ongkos jahit di Surabaya.' }}" />
+  <meta name="keywords" content="{{ page.keywords | default: 'ongkos jahit, tips menjahit, baju, fashion Surabaya, Indonesia' }}" />
   <meta name="author" content="Ade Sansuniar" />
 
-  <!-- ✅ Open Graph (Facebook & WhatsApp) -->
+  <!-- ✅ Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="id_ID" />
   <meta property="og:title" content="{{ page.title | default: 'Blog Ade Sansuniar' }}" />
   <meta property="og:description" content="{{ page.description | default: 'Tips dan katalog menjahit dari Surabaya, Indonesia.' }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="{{ page.image | default: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg' | absolute_url }}" />
+  <meta property="og:image" content="{{ page.image | absolute_url }}" />
 
   <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -23,65 +23,46 @@
   <meta name="twitter:creator" content="@alamandacollect1" />
   <meta name="twitter:title" content="{{ page.title | default: 'Blog Ade Sansuniar - Tips Menjahit' }}" />
   <meta name="twitter:description" content="{{ page.description | default: 'Dapatkan tips, ongkos jahit, dan katalog busana dari Surabaya.' }}" />
-  <meta name="twitter:image" content="{{ page.image | default: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg' | absolute_url }}" />
+  <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
 
-  <!-- ✅ Title Halaman -->
-  <title>{{ page.title | default: "Blog Ade Sansuniar" }} | Blog Ade Sansuniar</title>
-<!-- ✅ Huruf font -->
-  <link rel="preload" href="https://fonts.gstatic.com/..." as="font" type="font/woff2" crossorigin>
-  <!-- ✅ Preload Banner -->
-  <link rel="preload" as="image" href="/assets/images/bannerblogade.webp" fetchpriority="high">
+  <!-- ✅ Title -->
+  <title>{{ page.title | default: site.title }}</title>
 
   <!-- ✅ Favicon -->
   <link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg" />
 
-  <!-- ✅ CSS Utama -->
+  <!-- ✅ CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 
-  <!-- ✅ Giscus Preconnect -->
+  <!-- ✅ Preload Banner -->
+  <link rel="preload" as="image" href="/assets/images/bannerblogade.webp" fetchpriority="high">
+
+  <!-- ✅ Giscus -->
   <link rel="preconnect" href="https://giscus.app" crossorigin />
 
-  <!-- ✅ Lazy Load Gambar via JS -->
+  <!-- ✅ Lazy Load JS -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll("img").forEach(img => {
-        img.loading = "lazy";
-      });
+      document.querySelectorAll("img").forEach(img => img.loading = "lazy");
     });
   </script>
 
-  <!-- ✅ Canonical Link -->
-  {% if page.canonical %}
-    <link rel="canonical" href="{{ page.canonical | absolute_url }}" />
-  {% else %}
-    <link rel="canonical" href="{{ page.url | absolute_url }}" />
-  {% endif %}
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="{{ page.canonical | default: page.url | absolute_url }}" />
 
-  <!-- ✅ JSON-LD Structured Data -->
+  <!-- ✅ Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "{{ page.title | default: 'Blog Ade Sansuniar' }}",
-    "image": ["{{ page.image | default: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQxhXIfAFwD4uPOPYRu5pGTc6_-Vx6WItGtzll61caZjZi94j9W4bAiXPuhyjs3daG4JbBh0a8N_XNuj41zi0pWplBPlzTtqekq_Aug8fdJqhR7N9w8GBlc4iCSRcMXgtDX0gmdFa2J8UA-QEzPbQahM7xlS0wa1RYGt5mtKDS5kegB3xA6vxiZ99HCHjV/s500/penjahitalamanda.jpg' | absolute_url }}"],
+    "image": ["{{ page.image | absolute_url }}"],
     "author": { "@type": "Person", "name": "Ade Sansuniar" },
     "publisher": { "@type": "Organization", "name": "Blog Ade Sansuniar" },
     "datePublished": "{{ page.date | date_to_xmlschema }}",
     "description": "{{ page.description | default: 'Tips menjahit dan katalog produk dari Surabaya.' }}",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" }
   }
-
-  <!-- ✅ Modular Include dengan Kondisi -->
-  {% if site.include_canonical %}
-    {% include canonical.html %}
-  {% endif %}
-  {% if site.include_jsonld_post %}
-    {% include jsonld-post.html %}
-  {% endif %}
-  {% if site.include_jsonld_home %}
-    {% include jsonld-home.html %}
-  {% endif %}
-  {% if site.include_jsonld_about %}
-    {% include jsonld-about.html %}
-  {% endif %}
+  </script>
 </head>
+
