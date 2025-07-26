@@ -217,6 +217,54 @@ a:hover {
   }
 }
 
+/* ✅ Format H1–H4: tebal dan huruf awal kapital */
+h1, h2, h3, h4 {
+  font-weight: bold;
+  text-transform: capitalize; /* mengubah huruf pertama tiap kata jadi besar */
+}
+
+/* ✅ Format paragraf: rata kiri-kanan */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* 💡 Tambahan opsional untuk jarak antar paragraf & heading */
+p, h1, h2, h3, h4 {
+  margin-bottom: 1.2em;
+}
+
+/* ✅ Format H1–H4: tebal dan huruf awal kapital */
+h1, h2, h3, h4 {
+  font-weight: bold;
+  text-transform: capitalize; /* mengubah huruf pertama tiap kata jadi besar */
+}
+
+/* ✅ Format paragraf: rata kiri-kanan */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* 💡 Tambahan opsional untuk jarak antar paragraf & heading */
+p, h1, h2, h3, h4 {
+  margin-bottom: 1.2em;
+}
+
+/* Backlink: biru, tebal, dan miring */
+a.backlink {
+  color: #0077cc;         /* Biru khas tautan SEO */
+  font-weight: bold;      /* Huruf tebal */
+  font-style: italic;     /* Huruf miring */
+  text-decoration: none;  /* Tanpa garis bawah (opsional) */
+  border-bottom: 1px dotted #0077cc; /* Tambahan: efek hover style */
+}
+
+a.backlink:hover {
+  color: #0055aa;
+  text-decoration: underline;
+}
+
 /* 👣 FOOTER */
 footer {
   background-color: #f2f2f2;
@@ -236,6 +284,7 @@ footer a:hover {
 @media (max-width: 768px) {
   html {
     font-size: 16px;
+    text-align: left;
   }
 
   body {
