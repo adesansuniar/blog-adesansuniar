@@ -113,7 +113,7 @@ a:hover {
   display: none;
   flex-direction: column;
   position: fixed;
-  top: 60px;
+  top: 70px;
   left: 15px;
   width: 260px;
   background: #fff;
@@ -121,7 +121,10 @@ a:hover {
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-radius: 8px;
-  z-index: 1000;
+  z-index: 9999;
+  max-height: 90vh;
+  overflow-y: auto;
+  gap: 12px; /* jarak antar link */
 }
 .nav-popup.open {
   display: flex;
@@ -130,6 +133,7 @@ a:hover {
   padding: 10px;
   font-size: 1em;
   color: #1565C0;
+  text-decoration: none;
 }
 .nav-popup a:hover {
   background-color: #e0f0f8;
