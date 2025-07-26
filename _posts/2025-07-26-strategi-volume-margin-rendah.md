@@ -70,13 +70,18 @@ Contoh kategori usaha:
 ---
 
 ## 📊 Potensi Keuntungan Jangka Panjang
+**Faktor :**
+- _Efisiensi produksi_
+- _Loyalitas konsumen_
+- _Skalabilitas_
+- _Daya saing harga_
 
-| Faktor            | Efek Positif                      |
-|-------------------|-----------------------------------|
-| Efisiensi produksi | Menekan biaya per unit            |
-| Loyalitas konsumen | Transaksi berulang                |
-| Skalabilitas       | Mudah didelegasikan atau diotomasi |
-| Daya saing harga   | Menang di pasar kompetitif        |
+**Efek Positif**
+-  _Menekan biaya per unit_
+-  _Transaksi Berulang_
+-  _Mudah didelegasikan atau diotomasi_
+-  _Menang dipasar kompetitif_
+
 
 ---
 
