@@ -10,8 +10,6 @@ lang: "id"
 permalink: /strategi-volume-margin-rendah.html
 ---
 
-<h1>Strategi Volume Tinggi Margin Rendah</h1>
-
 Menjual lebih banyak produk dengan margin kecil per unit? Ini bukan sekadar teori—model bisnis high volume–low margin telah menjadi tulang punggung ritel modern.ngan persaingan harga yang ketat. Strategi ini menekankan penjualan dalam jumlah besar sambil menjaga agar setiap transaksi tetap menguntungkan melalui efisiensi dan skalabilitas.
 
 Artikel ini akan mengupas bagaimana kamu bisa menerapkan strategi ini secara realistis dalam usaha mikro atau UKM, dari perencanaan produk hingga optimasi proses penjualan.
