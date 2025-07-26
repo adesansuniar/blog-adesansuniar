@@ -60,5 +60,16 @@
       });
     });
   </script>
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    const statusText = document.getElementById("menuStatus");
+    const isOpen = nav.classList.toggle("open");
+
+    statusText.textContent = isOpen
+      ? "Status menu: Terbuka"
+      : "Status menu: Tertutup";
+  }
+</script>
 </body>
 </html>
