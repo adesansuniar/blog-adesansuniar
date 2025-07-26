@@ -140,9 +140,7 @@ a:hover {
 }
 
 /* 🌐 OVERLAY */
-.nav-overlay {
-  display: none;
-}
+
 .nav-overlay.active {
   display: block;
   position: fixed;
@@ -195,9 +193,39 @@ footer a:hover {
 
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-  html { font-size: 16px; }
-  body { padding: 15px; }
-  header h1 { font-size: 1.6em; }
-  main { padding: 18px; }
-  footer { font-size: 0.8em; }
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+
+  /* 🔧 Perbaikan khusus navigasi mobile */
+  .main-nav {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    display: block !important;
+    font-size: 24px;
+  }
+
+  .nav-popup {
+    width: 90%;
+    left: 5%;
+    top: 70px;
+  }
 }
