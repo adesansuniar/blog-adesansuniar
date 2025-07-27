@@ -1,0 +1,13 @@
+<div class="produk-grid">
+  {% for item in site.data.katalog-produk %}
+    <div class="produk-item">
+      <img src="{{ item.gambar }}" alt="{{ item.nama }}">
+      <h3>{{ item.nama }}</h3>
+      <p>{{ item.deskripsi }}</p>
+      <p class="harga">{{ item.harga }}</p>
+      {% if item.link %}
+        <a href="{{ item.link }}" class="cta">Lihat Detail</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
