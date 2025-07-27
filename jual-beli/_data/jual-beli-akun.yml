@@ -1,0 +1,15 @@
+- akun_id: U001
+  nama: Lestari Handmade
+  email: lestari@email.com
+  tlp: 6281234567890
+  wa_verified: true
+  foto: /assets/img/profil/lestari.webp
+  alamat: Surabaya, Jawa Timur
+
+- akun_id: U002
+  nama: Batik Nusantara
+  email: batik@email.com
+  tlp: 6281122334455
+  wa_verified: true
+  foto: /assets/img/profil/batik.webp
+  alamat: Yogyakarta, DIY
