@@ -1,22 +1,28 @@
-.header-jualbeli {
+/* Header Section */
+.section-header-jualbeli {
   background-color: #ffe7e0; /* Warna khas Toko-Alamanda */
   padding: 1rem 2rem;
   border-bottom: 2px solid #d68b78;
   text-align: center;
 }
 
-.header-jualbeli h2 {
+/* Judul Logo */
+.section-header-jualbeli .logo-title {
   margin: 0;
   font-size: 1.8rem;
   color: #b4533c;
   font-family: 'Poppins', sans-serif;
 }
 
-.logo-header-jualbeli {
-  max-height: 50px;
-  margin-bottom: 0.5rem;
+/* Judul Katalog */
+.section-header-jualbeli .katalog-title {
+  font-size: 1.5rem;
+  color: #195b8c; /* cocok dengan warna dasar biru */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
 }
 
+/* Logo Utama */
 .logo-jualbeli {
   display: block;
   margin: 0 auto 0.5rem auto;
@@ -24,8 +30,28 @@
   max-width: 40vw;
   height: auto;
 }
-.header-jualbeli h2 {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #195b8c; /* cocok dengan warna dasar biru */
+
+/* CTA Button Modular */
+.cta-button {
+  display: inline-block;
+  font-weight: 600;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta-button.utama {
+  background-color: #ec4899;
+}
+.cta-button.utama:hover {
+  background-color: #db2777;
+}
+
+.cta-button.sekunder {
+  background-color: #94a3b8;
+}
+.cta-button.sekunder:hover {
+  background-color: #64748b;
 }
