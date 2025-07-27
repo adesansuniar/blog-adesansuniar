@@ -55,3 +55,30 @@
 .cta-button.sekunder:hover {
   background-color: #64748b;
 }
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.produk-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+}
+.produk-item img {
+  max-width: 100%;
+  height: auto;
+}
+.harga {
+  font-weight: bold;
+  color: #444;
+}
+.cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
