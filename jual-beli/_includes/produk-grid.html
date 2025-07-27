@@ -1,7 +1,7 @@
 <div class="produk-grid">
   {% for item in site.data['jual-beli-katalog'] %}
     <div class="produk-item">
-      <img src="{{ item.gambar }}" alt="{{ item.nama }}">
+      <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}">
       <h3>{{ item.nama }}</h3>
       <p>{{ item.deskripsi }}</p>
       <p class="harga">{{ item.harga }}</p>
