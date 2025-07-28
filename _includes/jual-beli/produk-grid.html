@@ -1,13 +1,31 @@
 <div class="produk-grid">
   {% for item in site.data['jual-beli-katalog'] %}
-    <div class="produk-item">
-      <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}">
-      <h3>{{ item.nama }}</h3>
-      <p>{{ item.deskripsi }}</p>
-      <p class="harga">{{ item.harga }}</p>
-      {% if item.link %}
-        <a href="{{ item.link }}" class="cta">Lihat Detail</a>
+    <article class="produk-item" itemscope itemtype="https://schema.org/Product">
+      <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}"
+           alt="{{ item.nama }}"
+           itemprop="image">
+      
+      <h3 itemprop="name">{{ item.nama }}</h3>
+      <p itemprop="description">{{ item.deskripsi }}</p>
+      
+      <p class="harga" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <span itemprop="priceCurrency" content="IDR">Rp</span>
+        <span itemprop="price">{{ item.harga }}</span>
+      </p>
+
+      {% if item.kategori %}
+        <p class="kategori">{{ item.kategori }}</p>
       {% endif %}
-    </div>
+      
+      {% if item.label %}
+        <p class="label">{{ item.label }}</p>
+      {% endif %}
+      
+      {% if item.slug %}
+        <a href="/jual-beli/{{ item.slug }}" class="cta" itemprop="url">Lihat Detail</a>
+      {% elsif item.link %}
+        <a href="{{ item.link }}" class="cta" itemprop="url">Lihat Detail</a>
+      {% endif %}
+    </article>
   {% endfor %}
 </div>
