@@ -82,3 +82,26 @@
   text-decoration: none;
   border-radius: 4px;
 }
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.produk-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.produk-item:hover {
+  transform: scale(1.02);
+}
+
+.produk-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
