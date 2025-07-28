@@ -1,28 +1,30 @@
-/* Header Section */
+/* ============================= */
+/* HEADER KATALOG JUAL-BELI     */
+/* ============================= */
 .section-header-jualbeli {
-  background-color: #ffe7e0; /* Warna khas Toko-Alamanda */
-  padding: 1rem 2rem;
+  background-color: #ffe7e0;
+  padding: 2rem 1rem;
   border-bottom: 2px solid #d68b78;
   text-align: center;
 }
 
-/* Judul Logo */
 .section-header-jualbeli .logo-title {
-  margin: 0;
   font-size: 1.8rem;
   color: #b4533c;
   font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.3rem;
 }
 
-/* Judul Katalog */
 .section-header-jualbeli .katalog-title {
-  font-size: 1.5rem;
-  color: #195b8c; /* cocok dengan warna dasar biru */
+  font-size: 1.4rem;
+  color: #195b8c;
   font-family: 'Poppins', sans-serif;
-  margin: 0;
+  margin-bottom: 1rem;
 }
 
-/* Logo Utama */
+/* ============================= */
+/* LOGO UTAMA                   */
+/* ============================= */
 .logo-jualbeli {
   display: block;
   margin: 0 auto 0.5rem auto;
@@ -31,15 +33,61 @@
   height: auto;
 }
 
-/* CTA Button Modular */
+/* ============================= */
+/* GRID PRODUK UTAMA            */
+/* ============================= */
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ============================= */
+/* KARTU PRODUK                 */
+/* ============================= */
+.produk-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.produk-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.produk-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* ============================= */
+/* HARGA PRODUK                 */
+/* ============================= */
+.harga {
+  font-weight: bold;
+  color: #b4533c;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ============================= */
+/* TOMBOL CTA MODULAR           */
+/* ============================= */
 .cta-button {
   display: inline-block;
+  padding: 0.6rem 1rem;
   font-weight: 600;
-  color: white;
-  padding: 12px 20px;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease;
+  margin-top: 0.7rem;
+  color: white;
 }
 
 .cta-button.utama {
@@ -55,53 +103,19 @@
 .cta-button.sekunder:hover {
   background-color: #64748b;
 }
-.produk-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
-.produk-item {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  text-align: center;
-}
-.produk-item img {
-  max-width: 100%;
-  height: auto;
-}
-.harga {
-  font-weight: bold;
-  color: #444;
-}
-.cta {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-.produk-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
 
-.produk-item {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
+/* ============================= */
+/* MOBILE RESPONSIVE            */
+/* ============================= */
+@media (max-width: 600px) {
+  .produk-grid {
+    grid-template-columns: 1fr;
+  }
 
-.produk-item:hover {
-  transform: scale(1.02);
+  .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
-
-.produk-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
+  
