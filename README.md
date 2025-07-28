@@ -1,43 +1,51 @@
-# 🧵 Blog Adesansuniar
+# 🧵 blog adesansuniar
 
-**Blog inspirasi menjahit, tips berguna, dan katalog produk handmade.**
+**blog inspirasi menjahit, tips berguna, dan katalog produk handmade.**
 
-Selamat datang di repositori resmi [Blog Adesansuniar](https://adesansuniar.github.io/blog-adesansuniar/), platform berbasis GitHub Pages yang menyajikan:
+selamat datang di repositori resmi [blog adesansuniar](https://adesansuniar.github.io/blog-adesansuniar/), platform berbasis github pages yang menyajikan:
 
-- ✨ Tips dan trik seputar dunia menjahit
-- 📚 Artikel inspiratif untuk pemula maupun profesional
-- 📦 Katalog produk handmade seperti gamis batik, outer, dan seragam sekolah custom
-- 💬 Konsultasi gratis langsung via WhatsApp
+- ✨ tips dan trik seputar dunia menjahit
+- 📚 artikel inspiratif untuk pemula maupun profesional
+- 📦 katalog produk handmade seperti gamis batik, outer, dan seragam sekolah custom
+- 💬 konsultasi gratis langsung via whatsapp
 
----
-
-## 🔗 Akses Blog
-
-👉 [Kunjungi Blog](https://adesansuniar.github.io/blog-adesansuniar/)  
-👉 [Katalog Produk](https://adesansuniar.github.io/blog-adesansuniar/katalog/)  
-👉 [Kontak WhatsApp](https://wa.me/6288801758800)
+![last commit](https://img.shields.io/github/last-commit/adesansuniar/blog-adesansuniar)
+![repo size](https://img.shields.io/github/repo-size/adesansuniar/blog-adesansuniar)
 
 ---
 
-## ⚙️ Teknologi yang Digunakan
+## 🔗 akses blog
 
-- Jekyll + GitHub Pages
-- Tema: Minima + Kustom Layout
-- SEO: `jekyll-seo-tag`, `jekyll-sitemap`
-- Fully responsive & mobile optimized
+- [blog utama](https://adesansuniar.github.io/blog-adesansuniar/)
+- [katalog produk](https://adesansuniar.github.io/blog-adesansuniar/katalog/)
+- [kontak whatsapp](https://wa.me/6288801758800)
+
+---
+
+## ⚙️ teknologi yang digunakan
+
+- jekyll + github pages
+- tema: minima + layout kustom
+- seo: `jekyll-seo-tag`, `jekyll-sitemap`
+- desain mobile-first & responsif
 
 ---
 
-## 📁 Struktur Penting
+## 📁 struktur penting
+
+- `_posts/` – artikel dan tips menjahit
+- `_layouts/` – template html utama
+- `_includes/` – komponen modular seperti navigasi, header, dan schema
+- `assets/` – gambar, css, js
+- `katalog/` – data produk handmade
+- `search.json` – filter pencarian interaktif
 
 ---
-## Backup Log
-- 26 Juli 2025: Backup lengkap blog & search filter
-- 20 Juli 2025: Implementasi pencarian filter interaktif
-- 13 Juli 2025: Audit struktur JSON & search.json
 
-## 📌 Lisensi
+## 🛠️ cara build lokal
 
-Konten ini dirancang untuk berbagi ilmu dan inspirasi. Silakan gunakan dan sebutkan sumber jika mengutip.
-
----
+```bash
+git clone git@github.com:adesansuniar/blog-adesansuniar.git
+cd blog-adesansuniar
+bundle install
+bundle exec jekyll serve
