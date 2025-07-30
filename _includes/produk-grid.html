@@ -1,31 +1,36 @@
 <div class="produk-grid">
   {% for item in site.data['jual-beli-katalog'] %}
     <article class="produk-item" itemscope itemtype="https://schema.org/Product">
-      <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}"
-           alt="{{ item.nama }}"
-           itemprop="image">
-      
-      <h3 itemprop="name">{{ item.nama }}</h3>
-      <p itemprop="description">{{ item.deskripsi }}</p>
-      
-      <p class="harga" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-        <span itemprop="priceCurrency" content="IDR">Rp</span>
-        <span itemprop="price">{{ item.harga }}</span>
-      </p>
+  <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}"
+       alt="{{ item.nama }}"
+       itemprop="image" loading="lazy">
 
-      {% if item.kategori %}
-        <p class="kategori">{{ item.kategori }}</p>
-      {% endif %}
-      
-      {% if item.label %}
-        <p class="label">{{ item.label }}</p>
-      {% endif %}
-      
-      {% if item.slug %}
-        <a href="/jual-beli/{{ item.slug }}" class="cta" itemprop="url">Lihat Detail</a>
-      {% elsif item.link %}
-        <a href="{{ item.link }}" class="cta" itemprop="url">Lihat Detail</a>
-      {% endif %}
-    </article>
+  <h3 itemprop="name">{{ item.nama }}</h3>
+  <p itemprop="description">{{ item.deskripsi }}</p>
+
+  <p class="harga" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <span itemprop="priceCurrency" content="IDR">Rp</span>
+    <span itemprop="price">{{ item.harga }}</span>
+    <span itemprop="availability" content="https://schema.org/InStock">Stok tersedia</span>
+  </p>
+
+  {% if item.brand %}
+    <p itemprop="brand">{{ item.brand }}</p>
+  {% endif %}
+
+  {% if item.kategori %}
+    <p class="kategori">{{ item.kategori }}</p>
+  {% endif %}
+
+  {% if item.label %}
+    <p class="label">{{ item.label }}</p>
+  {% endif %}
+
+  {% if item.slug %}
+    <a href="/jual-beli/{{ item.slug }}" class="cta" itemprop="url">Lihat Detail</a>
+  {% elsif item.link %}
+    <a href="{{ item.link }}" class="cta" itemprop="url">Lihat Detail</a>
+  {% endif %}
+</article>
   {% endfor %}
 </div>
