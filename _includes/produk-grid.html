@@ -15,7 +15,9 @@
   </p>
 
   {% if item.brand %}
-    <p itemprop="brand">{{ item.brand }}</p>
+      <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+  <span itemprop="name">{{ item.brand }}</span>
+</span>
   {% endif %}
 
   {% if item.kategori %}
