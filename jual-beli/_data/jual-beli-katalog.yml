@@ -64,3 +64,21 @@
   akun_id: U002
   status: aktif
   tanggal_upload: 2025-07-27
+  
+- produk_id: F001
+  slug: baju-katun-polos
+  link_detail: /jual-beli/baju-katun-polos
+  nama: Baju Katun Polos
+  deskripsi: "Baju polos dari bahan katun adem, cocok untuk cuaca tropis."
+  harga: 85000
+  availability: InStock
+  brand: Alamanda
+  unit: Rupiah
+  gambar:
+    - /assets/img/produk/baju-polos1.webp
+    - /assets/img/produk/baju-polos2.webp
+  kategori: fashion
+  tags: [katun, polos, handmade]
+  akun_id: U001
+  status: aktif
+  tanggal_upload: 2025-07-27
