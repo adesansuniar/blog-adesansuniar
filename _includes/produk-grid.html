@@ -1,38 +1,41 @@
 <div class="produk-grid">
   {% for item in site.data['jual-beli-katalog'] %}
-    <article class="produk-item" itemscope itemtype="https://schema.org/Product">
-  <img src="{{ item.gambar | default: '/assets/img/default-produk.webp' }}"
-       alt="{{ item.nama }}"
-       itemprop="image" loading="lazy">
+    {% if item.status == "aktif" %}
+      <article class="produk-item" itemscope itemtype="https://schema.org/Product">
+        
+        <img src="{{ item.gambar[0] | default: '/assets/img/default-produk.webp' }}"
+             alt="{{ item.nama }}"
+             itemprop="image"
+             loading="lazy" />
 
-  <h3 itemprop="name">{{ item.nama }}</h3>
-  <p itemprop="description">{{ item.deskripsi }}</p>
+        <h3 itemprop="name">{{ item.nama }}</h3>
+        <p itemprop="description">{{ item.deskripsi }}</p>
 
-  <p class="harga" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-    <span itemprop="priceCurrency" content="IDR">Rp</span>
-    <span itemprop="price">{{ item.harga }}</span>
-    <span itemprop="availability" content="https://schema.org/InStock">Stok tersedia</span>
-  </p>
+        <p class="harga" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="IDR" />
+          <span itemprop="price">{{ item.harga }}</span>
+          <link itemprop="availability" href="https://schema.org/{{ item.availability | default: 'InStock' }}" />
+        </p>
 
-  {% if item.brand %}
-      <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
-  <span itemprop="name">{{ item.brand }}</span>
-</span>
-  {% endif %}
+        {% if item.brand %}
+          <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+            <span itemprop="name">{{ item.brand }}</span>
+          </span>
+        {% endif %}
 
-  {% if item.kategori %}
-    <p class="kategori">{{ item.kategori }}</p>
-  {% endif %}
+        {% if item.kategori %}
+          <p class="kategori">{{ item.kategori }}</p>
+        {% endif %}
 
-  {% if item.label %}
-    <p class="label">{{ item.label }}</p>
-  {% endif %}
+        {% if item.label %}
+          <p class="label">{{ item.label }}</p>
+        {% endif %}
 
-  {% if item.slug %}
-    <a href="/jual-beli/{{ item.slug }}" class="cta" itemprop="url">Lihat Detail</a>
-  {% elsif item.link %}
-    <a href="{{ item.link }}" class="cta" itemprop="url">Lihat Detail</a>
-  {% endif %}
-</article>
+        <a href="{{ item.link_detail | default: '/jual-beli/' | append: item.slug }}" class="cta" itemprop="url">
+          Lihat Detail
+        </a>
+
+      </article>
+    {% endif %}
   {% endfor %}
 </div>
