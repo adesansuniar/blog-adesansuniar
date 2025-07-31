@@ -1,0 +1,84 @@
+- produk_id: F001
+  slug: baju-katun-polos
+  nama: Baju Katun Polos
+  deskripsi: Baju polos dari bahan katun adem, cocok untuk cuaca tropis.
+  harga: 85000
+  gambar:
+    - /assets/img/produk/baju-polos1.webp
+    - /assets/img/produk/baju-polos2.webp
+  kategori: fashion
+  tags:
+    - katun
+    - polos
+    - handmade
+  akun_id: U001
+  status: aktif
+  tanggal_upload: 2025-07-27
+
+- produk_id: F002
+  slug: blouse-lurik
+  nama: Blouse Lurik Modern
+  deskripsi: Blouse lurik bergaya kontemporer untuk acara kasual hingga formal.
+  harga: 125000
+  gambar:
+    - /assets/img/produk/blouse-lurik1.webp
+  kategori: fashion
+  tags:
+    - lurik
+    - etnik
+    - wanita
+  akun_id: U002
+  status: aktif
+  tanggal_upload: 2025-07-27
+
+- produk_id: K001
+  slug: tas-kanvas-lipat
+  nama: Tas Kanvas Lipat
+  deskripsi: Tas kanvas handmade yang bisa dilipat, cocok untuk belanja dan jalan-jalan.
+  harga: 65000
+  gambar:
+    - /assets/img/produk/tas-kanvas1.webp
+    - /assets/img/produk/tas-kanvas2.webp
+  kategori: kerajinan
+  tags:
+    - tas
+    - kanvas
+    - lipat
+    - handmade
+  akun_id: U001
+  status: aktif
+  tanggal_upload: 2025-07-27
+
+- produk_id: K002
+  slug: dompet-batik-zipper
+  nama: Dompet Batik Zipper
+  deskripsi: Dompet batik dengan resleting, ukuran compact dan tahan lama.
+  harga: 45000
+  gambar:
+    - /assets/img/produk/dompet-batik1.webp
+  kategori: kerajinan
+  tags:
+    - batik
+    - dompet
+    - zipper
+  akun_id: U002
+  status: aktif
+  tanggal_upload: 2025-07-27
+  
+- produk_id: F001
+  slug: baju-katun-polos
+  link_detail: /jual-beli/baju-katun-polos
+  nama: Baju Katun Polos
+  deskripsi: "Baju polos dari bahan katun adem, cocok untuk cuaca tropis."
+  harga: 85000
+  availability: InStock
+  brand: Alamanda
+  unit: Rupiah
+  gambar:
+    - /assets/img/produk/baju-polos1.webp
+    - /assets/img/produk/baju-polos2.webp
+  kategori: fashion
+  tags: [katun, polos, handmade]
+  akun_id: U001
+  status: aktif
+  tanggal_upload: 2025-07-27
