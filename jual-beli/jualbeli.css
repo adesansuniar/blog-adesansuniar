@@ -155,15 +155,34 @@
 /* ============================= */
 /* MOBILE RESPONSIVE            */
 /* ============================= */
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .produk-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.75rem;
   }
 
-  .cta-button {
+  .produk-item {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+.produk-item {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.produk-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+  .cta-button,
+  .cta {
     display: block;
     width: 100%;
     text-align: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    box-sizing: border-box;
   }
 }
-  
