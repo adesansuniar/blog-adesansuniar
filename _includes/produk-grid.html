@@ -1,12 +1,12 @@
 <div class="produk-grid">
   {% for item in site.data['jual-beli-katalog'] %}
     {% if item.status == "aktif" %}
-      <article class="produk-item" itemscope itemtype="https://schema.org/Product">
+      {% assign gambar = item.gambar[0] | default: '/assets/img/default-produk.webp' %}
+      {% assign slug = item.slug | default: item.nama | slugify %}
+      
+      <article class="produk-item kategori-{{ item.kategori | slugify }}" itemscope itemtype="https://schema.org/Product">
         
-        <img src="{{ item.gambar[0] | default: '/assets/img/default-produk.webp' }}"
-             alt="{{ item.nama }}"
-             itemprop="image"
-             loading="lazy" />
+        <img src="{{ gambar }}" alt="{{ item.nama }}" itemprop="image" loading="lazy" />
 
         <h3 itemprop="name">{{ item.nama }}</h3>
         <p itemprop="description">{{ item.deskripsi }}</p>
@@ -18,20 +18,20 @@
         </p>
 
         {% if item.brand %}
-          <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
-            <span itemprop="name">{{ item.brand }}</span>
-          </span>
+          <p class="badge-brand" itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+            🏷️ <span itemprop="name">{{ item.brand }}</span>
+          </p>
         {% endif %}
 
         {% if item.kategori %}
-          <p class="kategori">{{ item.kategori }}</p>
+          <p class="kategori">🗂️ {{ item.kategori }}</p>
         {% endif %}
 
         {% if item.label %}
-          <p class="label">{{ item.label }}</p>
+          <p class="badge-label">🔖 {{ item.label }}</p>
         {% endif %}
 
-        <a href="{{ item.link_detail | default: '/jual-beli/' | append: item.slug }}" class="cta" itemprop="url">
+        <a href="/jual-beli/{{ slug }}" class="cta" itemprop="url">
           Lihat Detail
         </a>
 
