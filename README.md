@@ -1,48 +1,67 @@
-# 🧵 blog adesansuniar
+# 🧵 Blog Ade Sansuniar
 
-**blog inspirasi menjahit, tips berguna, dan katalog produk handmade.**
+**Blog inspiratif tentang menjahit, tutorial, dan katalog produk handmade.**
 
-selamat datang di repositori resmi [blog adesansuniar](https://adesansuniar.github.io/blog-adesansuniar/), platform berbasis github pages yang menyajikan:
+Selamat datang di repositori resmi [Blog Ade Sansuniar](https://adesansuniar.github.io/blog-adesansuniar/) — platform berbasis GitHub Pages yang menyajikan:
 
-- ✨ tips dan trik seputar dunia menjahit
-- 📚 artikel inspiratif untuk pemula maupun profesional
-- 📦 katalog produk handmade seperti gamis batik, outer, dan seragam sekolah custom
-- 💬 konsultasi gratis langsung via whatsapp
+- ✨ Tips dan trik dunia menjahit
+- 📚 Artikel inspiratif untuk pemula & profesional
+- 📦 Katalog produk handmade seperti gamis batik & seragam custom
+- 💬 Konsultasi gratis via WhatsApp
 
 ![last commit](https://img.shields.io/github/last-commit/adesansuniar/blog-adesansuniar)
 ![repo size](https://img.shields.io/github/repo-size/adesansuniar/blog-adesansuniar)
+![visitors](https://komarev.com/ghpvc/?username=adesansuniar&label=Visitors)
 
 ---
 
-## 🔗 akses blog
-
-- [blog utama](https://adesansuniar.github.io/blog-adesansuniar/)
-- [katalog produk](https://adesansuniar.github.io/blog-adesansuniar/katalog/)
-- [kontak whatsapp](https://wa.me/6288801758800)
+<p align="center">
+  <img src="/assets/img/bannerblogade.webp" alt="Blog Ade Sansuniar Banner" width="100%" />
+</p>
 
 ---
 
-## ⚙️ teknologi yang digunakan
+## 🔗 Akses Cepat
 
-- jekyll + github pages
-- tema: minima + layout kustom
-- seo: `jekyll-seo-tag`, `jekyll-sitemap`
-- desain mobile-first & responsif
-
----
-
-## 📁 struktur penting
-
-- `_posts/` – artikel dan tips menjahit
-- `_layouts/` – template html utama
-- `_includes/` – komponen modular seperti navigasi, header, dan schema
-- `assets/` – gambar, css, js
-- `katalog/` – data produk handmade
-- `search.json` – filter pencarian interaktif
+- 🌐 [Blog Utama](https://adesansuniar.github.io/blog-adesansuniar/)
+- 🛍️ [Katalog Produk](https://adesansuniar.github.io/blog-adesansuniar/katalog/)
+- 📲 [WhatsApp](https://wa.me/6288801758800)
 
 ---
 
-## 🛠️ cara build lokal
+## ⚙️ Teknologi yang Digunakan
+
+- `jekyll` + `github pages`
+- Tema: `minima` + layout custom
+- SEO: `jekyll-seo-tag`, `jekyll-sitemap`
+- Desain: mobile-first, responsif
+
+---
+
+## 📁 Struktur Proyek
+
+| Folder/File       | Fungsi                                                  |
+|-------------------|----------------------------------------------------------|
+| `_posts/`         | Artikel & tips menjahit                                  |
+| `_layouts/`       | Template HTML utama                                      |
+| `_includes/`      | Komponen modular (navigasi, schema, header)              |
+| `assets/`         | Gambar, CSS, JS                                          |
+| `katalog/`        | Data produk handmade                                     |
+| `search.json`     | Filter pencarian interaktif                              |
+
+---
+
+## 📦 Modul Aktif
+
+- [x] Artikel & Blog Post
+- [x] Katalog Produk Handmade
+- [x] Filter Pencarian Interaktif
+- [x] Halaman Akun Penjual
+- [ ] Validasi WA & Upload Produk Publik _(coming soon)_
+
+---
+
+## 🛠️ Build Lokal
 
 ```bash
 git clone git@github.com:adesansuniar/blog-adesansuniar.git
