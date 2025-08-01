@@ -1,0 +1,43 @@
+---
+layout: default
+title: Daftar Akun Penjual
+permalink: /akun.html
+---
+
+<section class="akun-list">
+  <h2>📦 Penjual Terverifikasi & Komunitas</h2>
+
+  <input type="text" id="akunSearch" placeholder="🔍 Cari nama akun..." onkeyup="filterAkun()" />
+
+  <div class="grid-akun">
+    {% assign akun_list = site.data['jual-beli-akun'] %}
+    {% for akun in akun_list %}
+      <div class="akun-card{% unless akun.wa_verified %} unverified{% endunless %}">
+        <div class="foto-wrapper">
+          <img src="{{ akun.foto }}" alt="{{ akun.nama }}">
+          <span class="badge">{% if akun.wa_verified %}✅ Verified{% else %}🚫 Pending{% endif %}</span>
+        </div>
+        <h3>🧵 {{ akun.nama }}</h3>
+        <p><strong>📍</strong> {{ akun.alamat }}</p>
+        <p><strong>📧</strong> <a href="mailto:{{ akun.email }}">{{ akun.email }}</a></p>
+
+        {% if akun.wa_verified %}
+          <p><a class="wa-btn" href="https://wa.me/{{ akun.tlp }}">💬 Kontak via WhatsApp</a></p>
+        {% else %}
+          <p class="wa-status">❌ Belum terverifikasi WhatsApp</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+function filterAkun() {
+  let input = document.getElementById("akunSearch").value.toLowerCase();
+  let cards = document.querySelectorAll(".akun-card");
+  cards.forEach(card => {
+    let nama = card.querySelector("h3").textContent.toLowerCase();
+    card.style.display = nama.includes(input) ? "block" : "none";
+  });
+}
+</script>
